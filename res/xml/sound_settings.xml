@@ -104,6 +104,13 @@
             android:entryValues="@array/less_notification_sounds_values" />
 
         <CheckBoxPreference
+            android:key="notification_vibrate_during_calls"
+            android:title="@string/notification_vibrate_during_calls_title"
+            android:summary="@string/notification_vibrate_during_calls_summary"
+            android:persistent="false"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
             android:key="dtmf_tone"
             android:title="@string/dtmf_tone_enable_title"
             android:defaultValue="true" />

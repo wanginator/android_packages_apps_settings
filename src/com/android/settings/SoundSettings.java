@@ -89,6 +89,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_POWER_NOTIFICATIONS_RINGTONE = "power_notifications_ringtone";
     private static final String PREF_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
     private static final String KEY_VOLUME_PANEL_TIMEOUT = "volume_panel_timeout";
+    private static final String KEY_VIBRATE_DURING_CALLS = "notification_vibrate_during_calls";
 
     private static final String[] NEED_VOICE_CAPABILITY = {
             KEY_RINGTONE, KEY_DTMF_TONE, KEY_CATEGORY_CALLS,
@@ -115,6 +116,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private Preference mRingtonePreference;
     private Preference mNotificationPreference;
     private SeekBarPreference mVolumePanelTimeout;
+    private CheckBoxPreference mVibrateDuringCalls;
 
     private Runnable mRingtoneLookupRunnable;
 
@@ -230,10 +232,15 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             mVolumePanelTimeout.setValue(statusVolumePanelTimeout / 1000);
             mVolumePanelTimeout.setOnPreferenceChangeListener(this);
 
+        mVibrateDuringCalls = (CheckBoxPreference) findPreference(KEY_VIBRATE_DURING_CALLS);
+        mVibrateDuringCalls.setChecked(Settings.System.getInt(resolver,
+                Settings.System.NOTIFICATION_VIBRATE_DURING_ALERTS_DISABLED, 0) != 0);
+
         if (mVib == null || !mVib.hasVibrator()) {
             removePreference(KEY_VIBRATE);
             removePreference(KEY_HAPTIC_FEEDBACK);
             removePreference(KEY_VIBRATION_DURATION);
+            removePreference(KEY_VIBRATE_DURING_CALLS);
           }
 
         if (TelephonyManager.PHONE_TYPE_CDMA == activePhoneType) {
@@ -396,9 +403,15 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_SOUNDS_ENABLED,
                     mLockSounds.isChecked() ? 1 : 0);
 
+        } else if (preference == mVibrateDuringCalls) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.NOTIFICATION_VIBRATE_DURING_ALERTS_DISABLED,
+                    mVibrateDuringCalls.isChecked() ? 1 : 0);
+
         } else if (preference == mMusicFx) {
             // let the framework fire off the intent
             return false;
+
         } else if (preference == mDockAudioSettings) {
             int dockState = mDockIntent != null
                     ? mDockIntent.getIntExtra(Intent.EXTRA_DOCK_STATE, 0)
