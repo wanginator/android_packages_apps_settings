@@ -15,4 +15,9 @@
         android:fragment="com.android.settings.rascarlo.VolumeRocker"
         android:title="@string/volume_rocker_category_title" />
 
+    <PreferenceScreen
+        android:key="plug_in_prompt_settings"
+        android:fragment="com.android.settings.rascarlo.PlugInPromptSettings"
+        android:title="@string/plug_in_prompt_settings_title" />
+
 </PreferenceScreen>
