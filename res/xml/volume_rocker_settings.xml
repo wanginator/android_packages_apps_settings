@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/volume_rocker_category_title" >
 
+    <CheckBoxPreference
+        android:key="volume_adjust_sounds"
+        android:persistent="false"
+        android:summary="@string/volume_adjust_sounds_enable_summary"
+        android:title="@string/volume_adjust_sounds_enable_title" />
+
     <ListPreference
+        android:dialogTitle="@string/volume_key_cursor_control_title"
+        android:entries="@array/volume_key_cursor_control_entries"
+        android:entryValues="@array/volume_key_cursor_control_values"
         android:key="volume_key_cursor_control"
         android:persistent="false"
-        android:dialogTitle="@string/volume_key_cursor_control_title"
-        android:title="@string/volume_key_cursor_control_title"
-        android:entries="@array/volume_key_cursor_control_entries"
-        android:entryValues="@array/volume_key_cursor_control_values" />
+        android:title="@string/volume_key_cursor_control_title" />
 
     <CheckBoxPreference
+        android:defaultValue="false"
         android:key="pref_volume_wake"
-        android:title="@string/pref_volume_wake_title"
         android:summary="@string/pref_volume_wake_summary"
-        android:defaultValue="false" />
-    
+        android:title="@string/pref_volume_wake_title" />
+
     <CheckBoxPreference
         android:key="volbtn_music_controls"
-        android:title="@string/volbtn_music_controls_title"
+        android:persistent="false"
         android:summary="@string/volbtn_music_controls_summary"
-        android:persistent="false" />
+        android:title="@string/volbtn_music_controls_title" />
 
 </PreferenceScreen>

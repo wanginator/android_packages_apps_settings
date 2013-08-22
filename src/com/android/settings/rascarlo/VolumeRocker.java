@@ -13,10 +13,12 @@ import com.android.settings.SettingsPreferenceFragment;
 
 public class VolumeRocker extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
+    private static final String KEY_VOLUME_ADJUST_SOUNDS = "volume_adjust_sounds";
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
     private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
     private static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
 
+    private CheckBoxPreference mVolumeAdjustSounds;
     private CheckBoxPreference mVolumeWake;
     private CheckBoxPreference mVolBtnMusicCtrl;
     private ListPreference mVolumeKeyCursorControl;
@@ -26,6 +28,10 @@ public class VolumeRocker extends SettingsPreferenceFragment implements OnPrefer
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.volume_rocker_settings);
+
+        mVolumeAdjustSounds = (CheckBoxPreference) findPreference(KEY_VOLUME_ADJUST_SOUNDS);
+        mVolumeAdjustSounds.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.VOLUME_ADJUST_SOUNDS_ENABLED, 1) != 0);
 
         mVolumeWake = (CheckBoxPreference) findPreference(KEY_VOLUME_WAKE);
         mVolumeWake.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
@@ -56,6 +62,9 @@ public class VolumeRocker extends SettingsPreferenceFragment implements OnPrefer
                     Settings.System.VOLBTN_MUSIC_CONTROLS,
                     mVolBtnMusicCtrl.isChecked()
                     ? 1 : 0);
+         } else if (preference == mVolumeAdjustSounds) {
+             Settings.System.putInt(getContentResolver(), Settings.System.VOLUME_ADJUST_SOUNDS_ENABLED,
+                     mVolumeAdjustSounds.isChecked() ? 1 : 0);
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
