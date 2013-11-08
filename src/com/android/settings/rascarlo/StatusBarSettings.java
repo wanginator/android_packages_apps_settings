@@ -212,6 +212,11 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
         return false;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
     private void loadResources() {
         Resources resources = getActivity().getResources();
         MASK_UP = resources.getInteger(R.integer.maskUp);
