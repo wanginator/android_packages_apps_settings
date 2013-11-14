@@ -18,6 +18,8 @@ package com.android.settings.rascarlo;
 
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.PreferenceScreen;
+import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -25,13 +27,36 @@ import com.android.settings.SettingsPreferenceFragment;
 public class SystemSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SystemSettings";
+    private static final String KEY_LED_SETTINGS = "led_settings";
+
+    private PreferenceScreen mLedSettings;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.system_settings);
+
+        // Led settings
+        mLedSettings = (PreferenceScreen) findPreference(KEY_LED_SETTINGS);
+        if (mLedSettings != null) {
+            if (!getResources().getBoolean(
+                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+                getPreferenceScreen().removePreference(mLedSettings);
+            } else {
+                updateLightPulseDescription();
+            }
         }
+    }
+
+    private void updateLightPulseDescription() {
+        if (Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.NOTIFICATION_LIGHT_PULSE, 0) == 1) {
+            mLedSettings.setSummary(getString(R.string.enabled_string));
+        } else {
+            mLedSettings.setSummary(getString(R.string.disabled_string));
+        }
+    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {

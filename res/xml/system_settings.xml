@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/system_interface_title" >
 
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/system_interface_title"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-
-     <PreferenceScreen
-        android:key="status_bar"
+    <PreferenceScreen
         android:fragment="com.android.settings.rascarlo.StatusBarSettings"
+        android:key="status_bar"
         android:title="@string/status_bar_title" />
 
     <PreferenceScreen
-        android:key="volume_rocker_settings"
         android:fragment="com.android.settings.rascarlo.VolumeRocker"
+        android:key="volume_rocker_settings"
         android:title="@string/volume_rocker_category_title" />
 
     <PreferenceScreen
-        android:key="plug_in_prompt_settings"
         android:fragment="com.android.settings.rascarlo.PlugInPromptSettings"
+        android:key="plug_in_prompt_settings"
         android:title="@string/plug_in_prompt_settings_title" />
+
+    <PreferenceScreen
+        android:fragment="com.android.settings.rascarlo.NotificationLightSettings"
+        android:key="led_settings"
+        android:title="@string/led_settings_category_title" />
 
 </PreferenceScreen>
