@@ -72,6 +72,11 @@ public class LockscreenStyle extends SettingsPreferenceFragment
             "lockscreen_lock_color";
     private static final String KEY_LOCKSCREEN_DOTS_COLOR =
             "lockscreen_dots_color";
+    private static final String KEY_LOCKSCREEN_TARGETS_COLOR =
+            "lockscreen_targets_color";
+    private static final String KEY_LOCKSCREEN_MISC_COLOR =
+            "lockscreen_misc_color";
+
 
     private String mDefault;
 
@@ -80,6 +85,8 @@ public class LockscreenStyle extends SettingsPreferenceFragment
     private ColorPickerPreference mFrameColor;
     private ColorPickerPreference mLockColor;
     private ColorPickerPreference mDotsColor;
+    private ColorPickerPreference mTargetsColor;
+    private ColorPickerPreference mMiscColor;
 
     private ListPreference mLockIcon;
 
@@ -152,6 +159,26 @@ public class LockscreenStyle extends SettingsPreferenceFragment
                 getResources().getString(
                 R.string.lockscreen_dots_color_summary), dotsColor);
         mDotsColor.setNewPreviewColor(dotsColor);
+
+        mTargetsColor = (ColorPickerPreference)
+                findPreference(KEY_LOCKSCREEN_TARGETS_COLOR);
+        mTargetsColor.setOnPreferenceChangeListener(this);
+        int targetColor = Settings.Secure.getInt(getContentResolver(),
+                    Settings.Secure.LOCKSCREEN_TARGETS_COLOR, -2);
+        setPreferenceSummary(mTargetsColor,
+                getResources().getString(
+                R.string.lockscreen_targets_color_summary), targetColor);
+        mTargetsColor.setNewPreviewColor(targetColor);
+
+        mMiscColor = (ColorPickerPreference)
+                findPreference(KEY_LOCKSCREEN_MISC_COLOR);
+        mMiscColor.setOnPreferenceChangeListener(this);
+        int miscColor = Settings.Secure.getInt(getContentResolver(),
+                    Settings.Secure.LOCKSCREEN_MISC_COLOR, -2);
+        setPreferenceSummary(mMiscColor,
+                getResources().getString(
+                R.string.lockscreen_misc_color_summary), miscColor);
+        mMiscColor.setNewPreviewColor(miscColor);
 
         // No lock-slider is available
         boolean dotsDisabled = new LockPatternUtils(getActivity()).isSecure()
@@ -228,8 +255,11 @@ public class LockscreenStyle extends SettingsPreferenceFragment
             int indexOf = mLockIcon.findIndexOfValue(newValue.toString());
             if (indexOf == 0) {
                 requestLockImage();
-            } else 
+            } else  if (indexOf == 2) {
                 deleteLockIcon();
+            } else {
+                resizeMahdiLock();
+            }
             return true;
         } else if (preference == mColorizeCustom) {
             Settings.Secure.putInt(getContentResolver(),
@@ -257,6 +287,20 @@ public class LockscreenStyle extends SettingsPreferenceFragment
             setPreferenceSummary(preference,
                     getResources().getString(R.string.lockscreen_dots_color_summary), val);
             return true;
+        } else if (preference == mTargetsColor) {
+            int val = Integer.valueOf(String.valueOf(newValue));
+            Settings.Secure.putInt(getContentResolver(),
+                    Settings.Secure.LOCKSCREEN_TARGETS_COLOR, val);
+            setPreferenceSummary(preference,
+                    getResources().getString(R.string.lockscreen_targets_color_summary), val);
+            return true;
+        } else if (preference == mMiscColor) {
+            int val = Integer.valueOf(String.valueOf(newValue));
+            Settings.Secure.putInt(getContentResolver(),
+                    Settings.Secure.LOCKSCREEN_MISC_COLOR, val);
+            setPreferenceSummary(preference,
+                    getResources().getString(R.string.lockscreen_misc_color_summary), val);
+            return true;
         }
         return false;
     }
@@ -277,6 +321,9 @@ public class LockscreenStyle extends SettingsPreferenceFragment
                 Settings.Secure.LOCKSCREEN_LOCK_ICON);
         if (value == null) {
             resId = R.string.lockscreen_lock_icon_default;
+            mLockIcon.setValueIndex(2);
+        } else if (value.contains("mahdi_lock")) {
+            resId = R.string.lockscreen_lock_icon_mahdi;
             mLockIcon.setValueIndex(1);
         } else {
             resId = R.string.lockscreen_lock_icon_custom;
@@ -289,8 +336,7 @@ public class LockscreenStyle extends SettingsPreferenceFragment
         Intent intent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-        int px = (int) TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 144, getResources().getDisplayMetrics());
+        int px = requestImageSize();
 
         intent.setType("image/*");
         intent.putExtra("crop", "true");
@@ -328,6 +374,43 @@ public class LockscreenStyle extends SettingsPreferenceFragment
 
         mColorizeCustom.setEnabled(false);
         updateLockSummary();
+    }
+
+    private void resizeMahdiLock() {
+        Bitmap mahdiLock = BitmapFactory.decodeResource(getResources(), R.drawable.mahdi_lock);
+        if (mahdiLock != null) {
+            String path = null;
+            int px = requestImageSize();
+            mahdiLock = Bitmap.createScaledBitmap(mahdiLock, px, px, true);
+            try {
+                mLockImage.createNewFile();
+                mLockImage.setWritable(true, false);
+                File image = new File(getActivity().getFilesDir() + File.separator
+                            + "mahdi_lock" + System.currentTimeMillis() + ".png");
+                path = image.getAbsolutePath();
+                mLockImage.renameTo(image);
+                FileOutputStream outPut = new FileOutputStream(image);
+                mahdiLock.compress(Bitmap.CompressFormat.PNG, 100, outPut);
+                image.setReadable(true, false);
+                outPut.flush();
+                outPut.close();
+            } catch (Exception e) {
+                // Uh-oh Nothing we can do here.
+                Log.e(TAG, e.getMessage(), e);
+                return;
+            }
+
+            deleteLockIcon();  // Delete current icon if it exists before saving new.
+            Settings.Secure.putString(getContentResolver(),
+                    Settings.Secure.LOCKSCREEN_LOCK_ICON, path);
+            mColorizeCustom.setEnabled(path != null);
+            updateLockSummary();
+        }
+    }
+
+    private int requestImageSize() {
+        return (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, 68, getResources().getDisplayMetrics());
     }
 
     private void showDialogInner(int id) {
@@ -368,6 +451,10 @@ public class LockscreenStyle extends SettingsPreferenceFragment
                                     Settings.Secure.LOCKSCREEN_LOCK_COLOR, -2);
                             Settings.Secure.putInt(getActivity().getContentResolver(),
                                     Settings.Secure.LOCKSCREEN_DOTS_COLOR, -2);
+                            Settings.Secure.putInt(getActivity().getContentResolver(),
+                                    Settings.Secure.LOCKSCREEN_TARGETS_COLOR, -2);
+                            Settings.Secure.putInt(getActivity().getContentResolver(),
+                                    Settings.Secure.LOCKSCREEN_MISC_COLOR, -2);
                             getOwner().createCustomView();
                         }
                     })
@@ -382,3 +469,4 @@ public class LockscreenStyle extends SettingsPreferenceFragment
         }
     }
 }
+

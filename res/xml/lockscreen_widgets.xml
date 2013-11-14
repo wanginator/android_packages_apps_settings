@@ -21,11 +21,16 @@
             android:key="lockscreen_enable_widgets"
             android:title="@string/security_enable_widgets_title" />
 
+        <CheckBoxPreference
+            android:key="lockscreen_disable_frame"
+            android:title="@string/lockscreen_widget_frame_title"
+            android:summary="@string/lockscreen_widget_frame_summary" />
+
         <PreferenceScreen
-        android:key="lock_clock"
-        android:title="@string/lock_clock_title"
-        android:summary="@string/lock_clock_summary">
-        <intent android:action="android.intent.action.MAIN"
+            android:key="lock_clock"
+            android:title="@string/lock_clock_title"
+            android:summary="@string/lock_clock_summary">
+            <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.cyanogenmod.lockclock"
                 android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
         </PreferenceScreen>
