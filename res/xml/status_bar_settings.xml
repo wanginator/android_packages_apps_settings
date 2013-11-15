@@ -26,6 +26,12 @@
             android:defaultValue="false" />
     </PreferenceCategory>
 
+    <PreferenceScreen
+            android:fragment="com.android.settings.rascarlo.BatteryIconStyle"
+            android:key="battery_style_pref"
+            android:title="@string/battery_icon_title"
+	    android:summary="@string/battery_icon_summary" />
+
    <PreferenceScreen
             android:key="category_network_traffic"
             android:title="@string/network_traffic_title"
