@@ -214,6 +214,7 @@
     <string name="navring_action_google_now">Google Now</string>
     <string name="navring_choose_action_title">Choose action</string>
     <string name="navring_action_power_menu">Power menu</string>
+    <string name="navring_action_screenrecord">Screen record</string>
 
     <!--Lockscreen See Through-->
     <string name="see_through_title">See through</string>
@@ -258,4 +259,4 @@
     <string name="screen_recorder_bitrate_50000000">50000000</string>
     <string name="screen_recorder_bitrate_100000000">100000000</string>
 
-</resources>
+    </resources>
