@@ -19,6 +19,11 @@
         android:title="@string/volume_rocker_category_title" />
 
     <PreferenceScreen
+        android:fragment="com.android.settings.rascarlo.LockscreenTargets"
+        android:key="lockscreen_targets"
+        android:title="@string/lockscreen_target_title" />
+
+    <PreferenceScreen
         android:fragment="com.android.settings.rascarlo.PlugInPromptSettings"
         android:key="plug_in_prompt_settings"
         android:title="@string/plug_in_prompt_settings_title" />
