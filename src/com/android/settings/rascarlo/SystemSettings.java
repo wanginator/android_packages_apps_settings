@@ -23,12 +23,15 @@ import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 public class SystemSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SystemSettings";
+    private static final String KEY_STATUS_BAR = "status_bar";
     private static final String KEY_LED_SETTINGS = "led_settings";
 
+    private PreferenceScreen mStatusBar;
     private PreferenceScreen mLedSettings;
 
     @Override
@@ -37,11 +40,20 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.system_settings);
 
+        // don't show status bar preference screen on tablet
+        // available settings right now are for phones only
+        mStatusBar = (PreferenceScreen) findPreference(KEY_STATUS_BAR);
+            if (!Utils.isPhone(getActivity())) {
+                if (mStatusBar != null) {
+                getPreferenceScreen().removePreference(mStatusBar);
+            }
+        }
+
         // Led settings
         mLedSettings = (PreferenceScreen) findPreference(KEY_LED_SETTINGS);
         if (mLedSettings != null) {
             if (!getResources().getBoolean(
-                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+                    com.android.internal.R.bool.config_intrusiveNotificationLed)) {
                 getPreferenceScreen().removePreference(mLedSettings);
             } else {
                 updateLightPulseDescription();
