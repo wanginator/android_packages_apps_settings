@@ -1189,5 +1189,6 @@ public class Settings extends PreferenceActivity
     public static class DisplayRotationSettingsActivity extends Settings { /* empty */ }
     public static class ProfilesSettingsActivity extends Settings { /* empty */ }
     public static class NavbarSettingsActivity extends Settings { /* empty */ }
-    public static class ThemeSettingsActivity extends Settings { /* empty */ }    
+    public static class ThemeSettingsActivity extends Settings { /* empty */ }
+    public static class RamBarActivity extends Settings { /* empty */ }    
 }
