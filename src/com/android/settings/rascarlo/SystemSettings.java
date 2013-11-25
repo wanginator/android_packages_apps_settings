@@ -28,10 +28,8 @@ import com.android.settings.Utils;
 public class SystemSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SystemSettings";
-    private static final String KEY_STATUS_BAR = "status_bar";
     private static final String KEY_LED_SETTINGS = "led_settings";
 
-    private PreferenceScreen mStatusBar;
     private PreferenceScreen mLedSettings;
 
     @Override
@@ -39,15 +37,6 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.system_settings);
-
-        // don't show status bar preference screen on tablet
-        // available settings right now are for phones only
-        mStatusBar = (PreferenceScreen) findPreference(KEY_STATUS_BAR);
-            if (!Utils.isPhone(getActivity())) {
-                if (mStatusBar != null) {
-                getPreferenceScreen().removePreference(mStatusBar);
-            }
-        }
 
         // Led settings
         mLedSettings = (PreferenceScreen) findPreference(KEY_LED_SETTINGS);
