@@ -21,6 +21,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements OnP
     private static String STATUS_BAR_GENERAL_CATEGORY = "status_bar_general_category";
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
     private static final String STATUS_BAR_NATIVE_BATTERY_PERCENTAGE = "status_bar_native_battery_percentage";
+    // Clock
+    private static final String STATUS_BAR_CLOCK = "status_bar_show_clock";
+    private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
     // Quick Settings
     private static final String QUICK_SETTINGS_CATEGORY = "status_bar_quick_settings_category";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
@@ -29,6 +32,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements OnP
     private PreferenceCategory mStatusBarGeneralCategory;
     private ListPreference mStatusBarNativeBatteryPercentage;
     private CheckBoxPreference mStatusBarBrightnessControl;
+    // Clock
+    private ListPreference mStatusBarAmPm;
+    private CheckBoxPreference mStatusBarClock;
     // Quick Settings
     private ListPreference mQuickPulldown;
 
@@ -66,6 +72,27 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements OnP
             mStatusBarNativeBatteryPercentage.setValue(String.valueOf(statusBarNativeBatteryPercentageValue));
             mStatusBarNativeBatteryPercentage.setSummary(mStatusBarNativeBatteryPercentage.getEntry());
 
+            // Clock
+            mStatusBarClock = (CheckBoxPreference) getPreferenceScreen().findPreference(STATUS_BAR_CLOCK);
+            mStatusBarClock.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_CLOCK, 1) == 1));
+            // Am-Pm
+            mStatusBarAmPm = (ListPreference) getPreferenceScreen().findPreference(STATUS_BAR_AM_PM);
+            try {
+                if (Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                        Settings.System.TIME_12_24) == 24) {
+                    mStatusBarAmPm.setEnabled(false);
+                    mStatusBarAmPm.setSummary(R.string.status_bar_am_pm_info);
+                }
+            } catch (SettingNotFoundException e ) {
+            }
+
+            int statusBarAmPm = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_AM_PM, 2);
+            mStatusBarAmPm.setValue(String.valueOf(statusBarAmPm));
+            mStatusBarAmPm.setSummary(mStatusBarAmPm.getEntry());
+            mStatusBarAmPm.setOnPreferenceChangeListener(this);
+
             // Quick settings category
             // Quick Settings pull down
             mQuickPulldown = (ListPreference) getPreferenceScreen().findPreference(QUICK_PULLDOWN);
@@ -94,6 +121,14 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements OnP
                     .getEntries()[statusBarNativeBatteryPercentageIndex]);
             return true;
 
+        } else if (preference == mStatusBarAmPm) {
+            int statusBarAmPm = Integer.valueOf((String) objValue);
+            int indexAmPm = mStatusBarAmPm.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_AM_PM, statusBarAmPm);
+            mStatusBarAmPm.setSummary(mStatusBarAmPm.getEntries()[indexAmPm]);
+            return true;
+
         } else if (preference == mQuickPulldown) {
             int quickPulldownValue = Integer.valueOf((String) objValue);
             int quickPulldownIndex = mQuickPulldown.findIndexOfValue((String) objValue);
@@ -112,6 +147,12 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements OnP
             value = mStatusBarBrightnessControl.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, value ? 1 : 0);
+            return true;
+
+        } else if (preference == mStatusBarClock) {
+            value = mStatusBarClock.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_CLOCK, value ? 1 : 0);
             return true;
         }
         return false;
