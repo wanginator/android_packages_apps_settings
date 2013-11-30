@@ -141,6 +141,7 @@ public class NavRing extends Fragment implements
         mActions.addAction(ACTION_POWER, R.string.navring_action_screen_off);
 
         mActions.addAction(ACTION_APP, R.string.select_application);
+        mActions.addAction(ACTION_POWER_MENU, R.string.navring_action_power_menu);
     }
 
     private void setDrawables() {
