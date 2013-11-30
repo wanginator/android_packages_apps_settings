@@ -150,6 +150,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
 
+    private static final String DEVELOPMENT_SHORTCUT_KEY = "development_shortcut";
+
     private IWindowManager mWindowManager;
     private IBackupManager mBackupManager;
     private DevicePolicyManager mDpm;
@@ -202,6 +204,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private CheckBoxPreference mShowAllANRs;
     private CheckBoxPreference mKillAppLongpressBack;
+
+    private CheckBoxPreference mDevelopmentShortcut;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
     private final ArrayList<CheckBoxPreference> mResetCbPrefs
@@ -262,11 +266,14 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mPassword = (PreferenceScreen) findPreference(LOCAL_BACKUP_PASSWORD);
         mAllPrefs.add(mPassword);
 
+	mDevelopmentShortcut = findAndInitCheckboxPref(DEVELOPMENT_SHORTCUT_KEY);
+
         if (!android.os.Process.myUserHandle().equals(UserHandle.OWNER)) {
             disableForUser(mEnableAdb);
             disableForUser(mClearAdbKeys);
             disableForUser(mEnableTerminal);
             disableForUser(mPassword);
+	    disableForUser(mDevelopmentShortcut);
         }
 
         mDebugAppPref = findPreference(DEBUG_APP_KEY);
@@ -508,6 +515,17 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateWifiDisplayCertificationOptions();
     }
 
+    private void resetDevelopmentShortcutOptions() {
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.Secure.DEVELOPMENT_SHORTCUT, 0);
+    }
+
+    private void writeDevelopmentShortcutOptions() {
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.Secure.DEVELOPMENT_SHORTCUT,
+                mDevelopmentShortcut.isChecked() ? 1 : 0);
+    }
+
     private void resetDangerousOptions() {
         mDontPokeProperties = true;
         for (int i=0; i<mResetCbPrefs.size(); i++) {
@@ -518,6 +536,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             }
         }
         resetDebuggerOptions();
+	resetDevelopmentShortcutOptions();
+
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
         writeAnimationScaleOption(2, mAnimatorDurationScale, null);
@@ -1280,6 +1300,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeShowHwLayersUpdatesOptions();
         } else if (preference == mDebugLayout) {
             writeDebugLayoutOptions();
+	} else if (preference == mDevelopmentShortcut) {
+            writeDevelopmentShortcutOptions();
         } else if (preference == mForceRtlLayout) {
             writeForceRtlOptions();
         } else if (preference == mWifiDisplayCertification) {
