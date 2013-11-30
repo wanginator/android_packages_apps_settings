@@ -220,5 +220,5 @@
     <string name="navring_action_torch">Toggle torch</string>
     <string name="navring_action_google_now">Google Now</string>
     <string name="navring_choose_action_title">Choose action</string>
-
+    <string name="navring_action_power_menu">Power menu</string>
     </resources>
