@@ -74,6 +74,15 @@
         android:title="@string/style_title"
         android:key="lockscreen_style_category" >
 
+        <ListPreference
+            android:key="lockscreen_background_style"
+            android:persistent="false"
+            android:dialogTitle="@string/lockscreen_background_style_title"
+            android:summary="%s"
+            android:title="@string/lockscreen_background_style_title"
+            android:entries="@array/lockscreen_background_entries"
+            android:entryValues="@array/lockscreen_background_values" />
+
         <PreferenceScreen
             android:key="keyguard_style"
             android:fragment="com.android.settings.mahdi.LockscreenStyle"
@@ -81,5 +90,5 @@
             android:summary="@string/lockscreen_style_summary" />
 
     </PreferenceCategory>
-	    
+
 </PreferenceScreen>

@@ -1781,7 +1781,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="theme_auto_mode_lightsensor">On light condition change</string>
     <string name="theme_auto_mode_twilight">On daytime</string>
     <string name="theme_auto_switch_mode_error">Automatic light condition change mode is enabled. Manual switching is not possible.</string>
->>>>>>> parent of d6543c2... Add in Lockscreen Wallpaper in Settings
 
     <!-- Double-tap to sleep -->
     <string name="double_tap_sleep_title">Double-tap to sleep</string>
@@ -1993,5 +1992,14 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Shortcuts -->
     <string name="shortcut_picker">Actions</string>
-        
+
+    <!-- Lockscreen background -->
+    <string name="lockscreen_background">Background</string>
+    <string name="lockscreen_background_style_title">Lock screen background</string>
+    <string name="background_default">Default background</string>
+    <string name="background_wallpaper">Custom wallpaper</string>
+    <string name="background_result_successful">Background changed</string>
+    <string name="background_result_not_successful">Background not changed</string>
+    <string name="setting_lockscreen_background">Applying background</string>
+
 </resources>
