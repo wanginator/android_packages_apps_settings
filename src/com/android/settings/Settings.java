@@ -34,6 +34,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
@@ -85,6 +86,8 @@ import com.android.settings.mahdi.DisplayRotation;
 import com.android.settings.mahdi.NavbarSettings;
 import com.android.settings.mahdi.quicksettings.QuickSettingsTiles;
 import com.android.settings.mahdi.QuietHours;
+import com.android.settings.mahdi.themes.ThemeEnabler;
+import com.android.settings.mahdi.themes.ThemeSettings;
 import com.android.settings.mahdi.superuser.PolicyNativeFragment;
 import com.android.settings.nfc.AndroidBeam;
 import com.android.settings.nfc.PaymentSettings;
@@ -145,6 +148,8 @@ public class Settings extends PreferenceActivity
     private Header mParentHeader;
     private boolean mInLocalHeaderSwitch;
 
+    private int mCurrentState = 0;
+
     // Show only these settings for restricted users
     private int[] SETTINGS_FOR_RESTRICTED = {
             R.id.wireless_section,
@@ -173,7 +178,8 @@ public class Settings extends PreferenceActivity
             R.id.nfc_payment_settings,
             R.id.home_settings,
             R.id.privacy_settings_mahdi,
-            R.id.customization_settings
+            R.id.customization_settings,
+            R.id.theme_settings_slim
     };
 
     private SharedPreferences mDevelopmentPreferences;
@@ -373,15 +379,16 @@ public class Settings extends PreferenceActivity
         ProfileConfig.class.getName(),
         NavbarSettings.class.getName(),
         com.android.settings.mahdi.PrivacySettings.class.getName(),
-        com.android.settings.mahdi.superuser.PolicyNativeFragment.class.getName()       
+        com.android.settings.mahdi.superuser.PolicyNativeFragment.class.getName(),
+        ThemeSettings.class.getName()       
     };
 
     @Override
     protected boolean isValidFragment(String fragmentName) {
         // Almost all fragments are wrapped in this,
         // except for a few that have their own activities.
-        for (int i = 0; i < ENTRY_FRAGMENTS.length; i++) {
-            if (ENTRY_FRAGMENTS[i].equals(fragmentName)) return true;
+        for (String ENTRY_FRAGMENT : ENTRY_FRAGMENTS) {
+            if (ENTRY_FRAGMENT.equals(fragmentName)) return true;
         }
         return false;
     }
@@ -823,6 +830,7 @@ public class Settings extends PreferenceActivity
 
         private final WifiEnabler mWifiEnabler;
         private final BluetoothEnabler mBluetoothEnabler;
+        public static ThemeEnabler mThemeEnabler;
         private AuthenticatorHelper mAuthHelper;
         private DevicePolicyManager mDevicePolicyManager;
 	private final ProfileEnabler mProfileEnabler;
@@ -843,7 +851,8 @@ public class Settings extends PreferenceActivity
                 return HEADER_TYPE_CATEGORY;
             } else if (header.id == R.id.wifi_settings
                      || header.id == R.id.bluetooth_settings
-                     || header.id == R.id.profiles_settings) {
+                     || header.id == R.id.profiles_settings
+                     || header.id == R.id.theme_settings_slim) {
                 return HEADER_TYPE_SWITCH;
             } else if (header.id == R.id.security_settings) {
                 return HEADER_TYPE_BUTTON;
@@ -889,8 +898,9 @@ public class Settings extends PreferenceActivity
             // Switches inflated from their layouts. Must be done before adapter is set in super
             mWifiEnabler = new WifiEnabler(context, new Switch(context));
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
-            mDevicePolicyManager = dpm;
 	    mProfileEnabler = new ProfileEnabler(context, new Switch(context));
+            mThemeEnabler = new ThemeEnabler(context, new Switch(context));
+            mDevicePolicyManager = dpm;
         }
 
         @Override
@@ -963,6 +973,8 @@ public class Settings extends PreferenceActivity
                         mBluetoothEnabler.setSwitch(holder.switch_);
 		    } else if (header.id == R.id.profiles_settings) {
                         mProfileEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.theme_settings_slim) {
+                        mThemeEnabler.setSwitch(holder.switch_);
                     }
                     updateCommonHeaderView(header, holder);
                     break;
@@ -1037,12 +1049,14 @@ public class Settings extends PreferenceActivity
             mWifiEnabler.resume();
             mBluetoothEnabler.resume();
 	    mProfileEnabler.resume();
+            mThemeEnabler.resume();
         }
 
         public void pause() {
             mWifiEnabler.pause();
             mBluetoothEnabler.pause();
 	    mProfileEnabler.pause();
+            mThemeEnabler.resume();
         }
     }
 
@@ -1103,6 +1117,16 @@ public class Settings extends PreferenceActivity
         mAuthenticatorHelper.updateAuthDescriptions(this);
         mAuthenticatorHelper.onAccountsUpdated(this, accounts);
         invalidateHeaders();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.uiThemeMode != mCurrentState && HeaderAdapter.mThemeEnabler != null) {
+            mCurrentState = newConfig.uiThemeMode;
+            HeaderAdapter.mThemeEnabler.setSwitchState();
+        }
     }
 
     public static void requestHomeNotice() {
@@ -1168,6 +1192,8 @@ public class Settings extends PreferenceActivity
     public static class PaymentSettingsActivity extends Settings { /* empty */ }
     public static class PrintSettingsActivity extends Settings { /* empty */ }
     public static class PrintJobSettingsActivity extends Settings { /* empty */ }
+
+    /* Mahdi-ROM */
     public static class PowerMenuSettingsActivity extends Settings { /* empty */ }
     public static class BlacklistSettingsActivity extends Settings { /* empty */ }    
     public static class LockscreenSettingsActivity extends Settings { /* empty */ }
@@ -1180,5 +1206,6 @@ public class Settings extends PreferenceActivity
     public static class DisplayRotationSettingsActivity extends Settings { /* empty */ }
     public static class ProfilesSettingsActivity extends Settings { /* empty */ }
     public static class NavbarSettingsActivity extends Settings { /* empty */ }
-    public static class MainActivity extends Settings { /* empty */ }    
+    public static class MainActivity extends Settings { /* empty */ }
+    public static class ThemeSettingsActivity extends Settings { /* empty */ }    
 }

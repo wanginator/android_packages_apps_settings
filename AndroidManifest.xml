@@ -1927,6 +1927,24 @@
                 android:value="com.android.settings.mahdi.NavbarSettings" />
         </activity>
 
+        <!-- Pseudo-activity used to provide an intent-filter entry point to trds settings -->
+        <!-- TRDS -->
+        <activity
+            android:name=".mahdi.themes.ThemeSettings"
+            android:label="@string/theme_settings_title_slim" >
+        </activity>
+        <activity
+            android:name="Settings$ThemeSettingsActivity"
+            android:label="@string/theme_settings_title_slim" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.THEME_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.mahdi.themes.ThemeSettings" />
+        </activity>
+
         <!-- Pseudo-activity used to provide an intent-filter entry point to profiles config -->
         <activity android:name=".profiles.ProfilesSettings" />
         <activity android:name="Settings$ProfilesSettingsActivity"

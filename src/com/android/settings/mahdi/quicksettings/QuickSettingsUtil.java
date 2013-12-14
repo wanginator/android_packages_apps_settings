@@ -44,6 +44,7 @@ import static com.android.internal.util.mahdi.QSConstants.TILE_SCREENTIMEOUT;
 import static com.android.internal.util.mahdi.QSConstants.TILE_SETTINGS;
 import static com.android.internal.util.mahdi.QSConstants.TILE_SLEEP;
 import static com.android.internal.util.mahdi.QSConstants.TILE_SYNC;
+import static com.android.internal.util.mahdi.QSConstants.TILE_THEME;
 import static com.android.internal.util.mahdi.QSConstants.TILE_TORCH;
 import static com.android.internal.util.mahdi.QSConstants.TILE_USER;
 import static com.android.internal.util.mahdi.QSConstants.TILE_VOLUME;
@@ -150,6 +151,9 @@ public class QuickSettingsUtil {
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_SYNC, R.string.title_tile_sync,
                 "com.android.systemui:drawable/ic_qs_sync_on"));
+        registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_THEME, R.string.title_tile_theme,
+                "com.android.systemui:drawable/ic_qs_theme_manual"));
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_TORCH, R.string.title_tile_torch,
                 "com.android.systemui:drawable/ic_qs_torch_on"));
