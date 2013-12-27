@@ -37,9 +37,14 @@
         android:title="@string/advanced_reboot_title"
         android:summary="@string/advanced_reboot_summary" />
 
+    <CheckBoxPreference
+        android:key="enable_quickboot"
+        android:title="@string/enable_quickboot_title"
+        android:summary="@string/enable_quickboot_summary" />
+
     <CheckBoxPreference 
-        android:key="keep_screen_on" 
-        android:title="@string/keep_screen_on" 
+        android:key="keep_screen_on"
+        android:title="@string/keep_screen_on"
         android:summary="@string/keep_screen_on_summary"/>
 
     <ListPreference
@@ -68,13 +73,13 @@
             android:title="@string/enable_adb"
             android:summary="@string/enable_adb_summary"/>
 
-	<CheckBoxPreference
+        <CheckBoxPreference
             android:key="adb_notify"
             android:title="@string/adb_notify"
             android:summary="@string/adb_notify_summary"
             android:dependency="enable_adb"/>
 
-	<CheckBoxPreference
+        <CheckBoxPreference
             android:key="adb_over_network"
             android:title="@string/adb_over_network"
             android:summary="@string/adb_over_network_summary"
