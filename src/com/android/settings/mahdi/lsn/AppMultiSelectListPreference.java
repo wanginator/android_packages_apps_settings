@@ -99,7 +99,7 @@ public class AppMultiSelectListPreference extends DialogPreference {
         mValues.addAll(values);
 
         persistStringSet(values);
-    }
+    }    
 
     public void setClearValues() {
         mValues.clear();

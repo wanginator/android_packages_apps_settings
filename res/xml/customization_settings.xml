@@ -73,5 +73,11 @@
         android:title="@string/button_keys_title"
         android:summary="@string/button_keys_summary"
         android:fragment="com.android.settings.mahdi.HardwareKeys" />
+
+    <PreferenceScreen
+        android:key="interface_voice_tts"
+        android:title="@string/voice_tts_title"
+        android:summary="@string/voice_tts_summary"
+        android:fragment="com.android.settings.mahdi.TtsNotification" />
        
 </PreferenceScreen>
