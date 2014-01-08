@@ -68,6 +68,12 @@
 
 
 	<CheckBoxPreference
+            android:key="lockscreen_enable_camera"
+            android:title="@string/lockscreen_enable_camera_title"
+            android:summary="@string/lockscreen_enable_camera_summary"
+            android:persistent="false"/>
+
+        <CheckBoxPreference
             android:key="lockscreen_enable_power_menu"
             android:title="@string/lockscreen_enable_power_menu_title"
             android:summary="@string/lockscreen_enable_power_menu_summary"

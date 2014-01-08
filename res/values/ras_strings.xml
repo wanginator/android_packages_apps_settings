@@ -573,4 +573,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="wakelock_blocker_reload">Reload</string>
     <string name="wakelock_blocker_warning_title">Proceed with Caution</string>
     <string name="wakelock_blocker_warning">Blocking wakelocks have the potential to cause instability, crashes or data loss.</string>
+
+<!-- Enable camera -->
+    <string name="lockscreen_enable_camera_title">Camera widget</string>
+    <string name="lockscreen_enable_camera_summary">Swipe right to enable camera widget</string>
     </resources>
