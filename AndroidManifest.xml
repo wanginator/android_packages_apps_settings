@@ -2062,6 +2062,29 @@
                 android:resource="@id/voice_wakeup_settings" />
         </activity>
 
+        <activity
+             android:name=".mahdi.batterysaver.BatterySaverSettings"
+             android:label="@string/data_usage_enable_batterysaver" >
+        </activity>
+
+        <receiver
+            android:name="com.android.settings.mahdi.service.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.android.settings.mahdi.batterysaver.BatterySaverReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"></action>
+                <action android:name="android.intent.action.TIME_CHANGED"></action>
+                <action android:name="android.intent.action.DATE_CHANGED"></action>
+                <action android:name="android.intent.action.BATTERY_SERVICES"></action>
+                <action android:name="com.android.settings.mahdi.batterysaver.SCHEDULE_BATTERY_SAVER"/>
+            </intent-filter>
+        </receiver>
+
         <!-- Mahdi-Rom activities End -->
 
         <receiver android:name=".widget.SettingsAppWidgetProvider"
