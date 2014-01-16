@@ -214,4 +214,9 @@
     <string name="navring_action_google_now">Google Now</string>
     <string name="navring_choose_action_title">Choose action</string>
     <string name="navring_action_power_menu">Power menu</string>
-    </resources>
+
+    <!--Lockscreen See Through-->
+    <string name="see_through_title">See through</string>
+    <string name="see_through_summary">Shows the content behind your lockscreen, your data may be visible to those around you</string>
+
+</resources>
