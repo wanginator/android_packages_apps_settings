@@ -246,8 +246,6 @@
     <string name="screen_recorder_bitrate_title_5000000">5 MB/s</string>
     <string name="screen_recorder_bitrate_title_10000000">10 MB/s</string>
     <string name="screen_recorder_bitrate_title_20000000">20 MB/s</string>
-    <string name="screen_recorder_bitrate_title_50000000">50 MB/s</string>
-    <string name="screen_recorder_bitrate_title_100000000">100 MB/s</string>
     <string name="screen_recorder_bitrate_100000">100000</string>
     <string name="screen_recorder_bitrate_250000">250000</string>
     <string name="screen_recorder_bitrate_500000">500000</string>
@@ -258,7 +256,5 @@
     <string name="screen_recorder_bitrate_5000000">5000000</string>
     <string name="screen_recorder_bitrate_10000000">10000000</string>
     <string name="screen_recorder_bitrate_20000000">20000000</string>
-    <string name="screen_recorder_bitrate_50000000">50000000</string>
-    <string name="screen_recorder_bitrate_100000000">100000000</string>
 
     </resources>

@@ -224,8 +224,6 @@
         <item>@string/screen_recorder_bitrate_title_5000000</item>
         <item>@string/screen_recorder_bitrate_title_10000000</item>
         <item>@string/screen_recorder_bitrate_title_20000000</item>
-        <item>@string/screen_recorder_bitrate_title_50000000</item>
-        <item>@string/screen_recorder_bitrate_title_100000000</item>
     </string-array>
     <string-array name="screen_recorder_bitrate_values">
         <item>@string/screen_recorder_bitrate_100000</item>
@@ -238,8 +236,6 @@
         <item>@string/screen_recorder_bitrate_5000000</item>
         <item>@string/screen_recorder_bitrate_10000000</item>
         <item>@string/screen_recorder_bitrate_20000000</item>
-        <item>@string/screen_recorder_bitrate_50000000</item>
-        <item>@string/screen_recorder_bitrate_100000000</item>
     </string-array>
 
 </resources>
