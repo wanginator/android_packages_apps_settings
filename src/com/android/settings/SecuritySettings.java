@@ -75,7 +75,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String KEY_LOCK_AFTER_TIMEOUT = "lock_after_timeout";
     private static final String KEY_OWNER_INFO_SETTINGS = "owner_info_settings";
     private static final String KEY_ENABLE_WIDGETS = "keyguard_enable_widgets";
-    private static final String PREF_LOCK_SCREEN = "lock_screen_settings";
 
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
@@ -107,6 +106,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String SLIDE_LOCK_TIMEOUT_DELAY = "slide_lock_timeout_delay";
     private static final String SLIDE_LOCK_SCREENOFF_DELAY = "slide_lock_screenoff_delay";
+    private static final String KEY_VISIBLE_GESTURE = "visiblegesture";
 
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
@@ -144,6 +144,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private CheckBoxPreference mQuickUnlockScreen;
     private ListPreference mSlideLockTimeoutDelay;
     private ListPreference mSlideLockScreenOffDelay;
+    private CheckBoxPreference mVisibleGesture;
 
     public SecuritySettings() {
         super(null /* Don't ask for restrictions pin on creation. */);
@@ -203,6 +204,9 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 case DevicePolicyManager.PASSWORD_QUALITY_COMPLEX:
                     resid = R.xml.security_settings_password;
                     break;
+                case DevicePolicyManager.PASSWORD_QUALITY_GESTURE_WEAK:
+                    resid = R.xml.security_settings_gesture;
+                    break;
             }
         }
         addPreferencesFromResource(resid);
@@ -219,19 +223,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 } else {
                     ownerInfoPref.setTitle(R.string.user_info_settings_title);
                 }
-            }
-        }
-
-        if (mIsPrimary) {
-            switch (mDPM.getStorageEncryptionStatus()) {
-            case DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE:
-                // The device is currently encrypted.
-                addPreferencesFromResource(R.xml.security_settings_encrypted);
-                break;
-            case DevicePolicyManager.ENCRYPTION_STATUS_INACTIVE:
-                // This device supports encryption but isn't encrypted.
-                addPreferencesFromResource(R.xml.security_settings_unencrypted);
-                break;
             }
         }
 
@@ -260,6 +251,19 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 mSlideLockScreenOffDelay.setOnPreferenceChangeListener(this);
         }
 
+        if (mIsPrimary) {
+            switch (mDPM.getStorageEncryptionStatus()) {
+            case DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE:
+                // The device is currently encrypted.
+                addPreferencesFromResource(R.xml.security_settings_encrypted);
+                break;
+            case DevicePolicyManager.ENCRYPTION_STATUS_INACTIVE:
+                // This device supports encryption but isn't encrypted.
+                addPreferencesFromResource(R.xml.security_settings_unencrypted);
+                break;
+            }
+        }
+
         // biometric weak liveliness
         mBiometricWeakLiveliness =
                 (CheckBoxPreference) root.findPreference(KEY_BIOMETRIC_WEAK_LIVELINESS);
@@ -272,6 +276,9 @@ public class SecuritySettings extends RestrictedSettingsFragment
 
         // visible dots
         mVisibleDots = (CheckBoxPreference) root.findPreference(KEY_VISIBLE_DOTS);
+
+        // visible gesture
+        mVisibleGesture = (CheckBoxPreference) root.findPreference(KEY_VISIBLE_GESTURE);
 
         // lock instantly on power key press
         mPowerButtonInstantlyLocks = (CheckBoxPreference) root.findPreference(
@@ -286,10 +293,11 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 mLockPatternUtils.getKeyguardStoredPasswordQuality() !=
                 DevicePolicyManager.PASSWORD_QUALITY_SOMETHING) {
             if (mSecurityCategory != null && mVisiblePattern != null &&
-                    mVisibleErrorPattern != null && mVisibleDots != null) {
+                    mVisibleErrorPattern != null && mVisibleDots != null && mVisibleGesture != null) {
                 mSecurityCategory.removePreference(root.findPreference(KEY_VISIBLE_PATTERN));
                 mSecurityCategory.removePreference(root.findPreference(KEY_VISIBLE_ERROR_PATTERN));
                 mSecurityCategory.removePreference(root.findPreference(KEY_VISIBLE_DOTS));
+                mSecurityCategory.removePreference(root.findPreference(KEY_VISIBLE_GESTURE));
             }
         }
         
@@ -703,19 +711,19 @@ public class SecuritySettings extends RestrictedSettingsFragment
         if (mVisibleDots != null) {
             mVisibleDots.setChecked(lockPatternUtils.isVisibleDotsEnabled());
         }
+        if (mVisibleGesture != null) {
+            mVisibleGesture.setChecked(lockPatternUtils.isVisibleGestureEnabled());
+        }
         if (mPowerButtonInstantlyLocks != null) {
             mPowerButtonInstantlyLocks.setChecked(lockPatternUtils.getPowerButtonInstantlyLocks());
         }
-
         if (mShowPassword != null) {
             mShowPassword.setChecked(Settings.System.getInt(getContentResolver(),
                     Settings.System.TEXT_SHOW_PASSWORD, 1) != 0);
         }
-
         if (mResetCredentials != null) {
             mResetCredentials.setEnabled(!mKeyStore.isEmpty());
         }
-
         if (mEnableKeyguardWidgets != null) {
             if (!lockPatternUtils.getWidgetsEnabled()) {
                 mEnableKeyguardWidgets.setSummary(R.string.disabled);
@@ -775,6 +783,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
             lockPatternUtils.setShowErrorPath(isToggled(preference));
         } else if (KEY_VISIBLE_DOTS.equals(key)) {
             lockPatternUtils.setVisibleDotsEnabled(isToggled(preference));
+        } else if (KEY_VISIBLE_GESTURE.equals(key)) {
+            lockPatternUtils.setVisibleGestureEnabled(isToggled(preference));
         } else if (KEY_POWER_INSTANTLY_LOCKS.equals(key)) {
             lockPatternUtils.setPowerButtonInstantlyLocks(isToggled(preference));
         } else if (preference == mShowPassword) {
