@@ -238,5 +238,45 @@
         <item>@string/screen_recorder_bitrate_20000000</item>
     </string-array>
 
+    <string-array name="volume_key_cursor_control_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="recent_clear_all_button_location_entries" translatable="false">
+        <item>@string/recent_clear_all_button_location_top_left</item>
+        <item>@string/recent_clear_all_button_location_top_right</item>
+        <item>@string/recent_clear_all_button_location_bottom_left</item>
+        <item>@string/recent_clear_all_button_location_bottom_right</item>
+    </string-array>
+
+    <string-array name="recent_clear_all_button_location_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <!-- Ascending ringtone increase intervals -->
+    <string-array name="increasing_ring_interval_entries" translatable="false">
+        <item>@string/increasing_ring_interval_eachring</item>
+        <item>@string/increasing_ring_interval_half_second</item>
+        <item>@string/increasing_ring_interval_1second</item>
+        <item>@string/increasing_ring_interval_2seconds</item>
+        <item>@string/increasing_ring_interval_3seconds</item>
+        <item>@string/increasing_ring_interval_5seconds</item>
+        <item>@string/increasing_ring_interval_10seconds</item>
+    </string-array>
+
+    <integer-array name="increasing_ring_interval_values" translatable="false">
+        <item>0</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>5000</item>
+        <item>10000</item>
+    </integer-array>
 </resources>
 
