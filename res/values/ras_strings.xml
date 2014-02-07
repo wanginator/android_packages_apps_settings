@@ -226,8 +226,8 @@
     <string name="navring_action_screenrecord">Screen record</string>
 
     <!--Lockscreen See Through-->
-    <string name="see_through_title">See through</string>
-    <string name="see_through_summary">Shows the content behind your lockscreen, your data may be visible to those around you</string>
+    <string name="see_through_title">Lockscreen Blur</string>
+    <string name="see_through_summary">Blurs and displays the content behind your lockscreen, your data may be visible to those around you</string>
 
     <!-- Screen recorder -->
     <string name="screen_recorder_title">Screen recorder</string>
