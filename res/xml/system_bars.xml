@@ -54,6 +54,12 @@
         android:key="navigation_bar"
         android:title="@string/navigation_settings_category_title" >
 
+        <PreferenceScreen
+            android:key="pie_settings"
+            android:title="@string/pie_control_title"
+            android:summary="@string/pie_control_summary"
+            android:fragment="com.android.settings.mahdi.slim.PieControl" />
+
         <CheckBoxPreference
             android:key="enable_nav_bar"
             android:title="@string/navbar_enable_bar"

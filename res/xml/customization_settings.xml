@@ -34,7 +34,7 @@
     <PreferenceScreen
         android:key="quick_settings_panel"        
         android:title="@string/quick_settings_panel_title"
-        android:summary="@string/quick_settings_summary"         
+        android:summary="@string/quick_settings_summary"
         android:fragment="com.android.settings.mahdi.quicksettings.QuickSettings" />
 
     <PreferenceScreen

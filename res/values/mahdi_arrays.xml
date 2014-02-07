@@ -430,10 +430,12 @@
         <item>@string/shortcut_action_home</item>
         <item>@string/shortcut_action_kill</item>
         <item>@string/shortcut_action_lastapp</item>
+        <item>@string/shortcut_action_navbar</item>
         <item>@string/shortcut_action_notifications</item>
         <item>@string/shortcut_action_menu_big</item>
         <item>@string/shortcut_action_ime</item>
         <item>@string/shortcut_action_immersive_mode</item>
+        <item>@string/shortcut_action_pie</item>
         <item>@string/shortcut_action_power_menu</item>
         <item>@string/shortcut_action_qs</item>
         <item>@string/shortcut_action_recent</item>
@@ -457,10 +459,12 @@
         <item>**home**</item>
         <item>**kill**</item>
         <item>**lastapp**</item>
+        <item>**nav_bar**</item>
         <item>**notifications**</item>
         <item>**menu_big**</item>
         <item>**ime**</item>
         <item>**immersive_mode**</item>
+        <item>**pie**</item>
         <item>**power_menu**</item>
         <item>**quicksettings**</item>
         <item>**recents**</item>
@@ -655,10 +659,12 @@
         <item>@string/shortcut_action_home</item>
         <item>@string/shortcut_action_kill</item>
         <item>@string/shortcut_action_lastapp</item>
+        <item>@string/shortcut_action_navbar</item>
         <item>@string/shortcut_action_notifications</item>
 	<item>@string/shortcut_action_menu_big</item>
         <item>@string/shortcut_action_ime</item>
         <item>@string/shortcut_action_immersive_mode</item>
+        <item>@string/shortcut_action_pie</item>
         <item>@string/shortcut_action_power_menu</item>
         <item>@string/shortcut_action_qs</item>
         <item>@string/shortcut_action_recent</item>
@@ -677,10 +683,12 @@
         <item>**home**</item>
         <item>**kill**</item>
         <item>**lastapp**</item>
+        <item>**nav_bar**</item>
         <item>**notifications**</item>
 	<item>**menu_big**</item>
         <item>**ime**</item>
         <item>**immersive_mode**</item>
+        <item>**pie**</item>
         <item>**power_menu**</item>
         <item>**quicksettings**</item>
         <item>**recents**</item>
@@ -785,9 +793,11 @@
         <item>@string/shortcut_action_app</item>
         <item>@string/shortcut_action_kill</item>
         <item>@string/shortcut_action_lastapp</item>
+        <item>@string/shortcut_action_navbar</item>
         <item>@string/shortcut_action_notifications</item>
         <item>@string/shortcut_action_ime</item>
         <item>@string/shortcut_action_immersive_mode</item>
+        <item>@string/shortcut_action_pie</item>
         <item>@string/shortcut_action_power_menu</item>
         <item>@string/shortcut_action_qs</item>
         <item>@string/shortcut_action_ring_silent</item>
@@ -805,9 +815,11 @@
         <item>**app**</item>
         <item>**kill**</item>
         <item>**lastapp**</item>
+        <item>**nav_bar**</item>
         <item>**notifications**</item>
         <item>**ime**</item>
         <item>**immersive_mode**</item>
+        <item>**pie**</item>
         <item>**power_menu**</item>
         <item>**quicksettings**</item>
         <item>**ring_silent**</item>
