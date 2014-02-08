@@ -108,8 +108,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private CheckBoxPreference mToggleVerifyApps;
     private CheckBoxPreference mPowerButtonInstantlyLocks;
     private CheckBoxPreference mEnableKeyguardWidgets;
-    private CheckBoxPreference mSeeThrough;
-    private CheckBoxPreference mEnablePowerMenu;
 
     private Preference mNotificationAccess;
 
@@ -121,6 +119,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
     public SecuritySettings() {
         super(null /* Don't ask for restrictions pin on creation. */);
     }
+    private CheckBoxPreference mSeeThrough;
+    private CheckBoxPreference mEnablePowerMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -242,10 +242,12 @@ public class SecuritySettings extends RestrictedSettingsFragment
             }
         }
         // Enable / disable power menu on lockscreen
+
         mEnablePowerMenu = (CheckBoxPreference) findPreference(KEY_ENABLE_POWER_MENU);
-        mEnablePowerMenu.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKSCREEN_ENABLE_POWER_MENU, 1) == 1);
-        mEnablePowerMenu.setOnPreferenceChangeListener(this);
+	if (mEnablePowerMenu != null) {
+	mEnablePowerMenu.setChecked(Settings.System.getInt(getContentResolver(),
+        Settings.System.LOCKSCREEN_ENABLE_POWER_MENU, 1) == 1);
+	mEnablePowerMenu.setOnPreferenceChangeListener(this);
 
         // biometric weak liveliness
         mBiometricWeakLiveliness =
