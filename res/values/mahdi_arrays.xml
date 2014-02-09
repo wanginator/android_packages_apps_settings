@@ -438,6 +438,7 @@
         <item>@string/shortcut_action_pie</item>
         <item>@string/shortcut_action_power_menu</item>
         <item>@string/shortcut_action_qs</item>
+        <item>@string/shortcut_action_smart</item>
         <item>@string/shortcut_action_recent</item>
         <item>@string/shortcut_action_ring_silent</item>
         <item>@string/shortcut_action_ring_vib</item>
@@ -467,6 +468,7 @@
         <item>**pie**</item>
         <item>**power_menu**</item>
         <item>**quicksettings**</item>
+        <item>**smart_pulldown**</item>
         <item>**recents**</item>
         <item>**ring_silent**</item>
         <item>**ring_vib**</item>
@@ -667,6 +669,7 @@
         <item>@string/shortcut_action_pie</item>
         <item>@string/shortcut_action_power_menu</item>
         <item>@string/shortcut_action_qs</item>
+        <item>@string/shortcut_action_smart</item>
         <item>@string/shortcut_action_recent</item>
         <item>@string/shortcut_action_power</item>
         <item>@string/shortcut_action_screenshot</item>
@@ -691,6 +694,7 @@
         <item>**pie**</item>
         <item>**power_menu**</item>
         <item>**quicksettings**</item>
+        <item>**smart_pulldown**</item>
         <item>**recents**</item>
         <item>**power**</item>
         <item>**screenshot**</item>
@@ -800,6 +804,7 @@
         <item>@string/shortcut_action_pie</item>
         <item>@string/shortcut_action_power_menu</item>
         <item>@string/shortcut_action_qs</item>
+        <item>@string/shortcut_action_smart</item>
         <item>@string/shortcut_action_ring_silent</item>
         <item>@string/shortcut_action_ring_vib</item>
         <item>@string/shortcut_action_ring_vib_silent</item>
@@ -822,6 +827,7 @@
         <item>**pie**</item>
         <item>**power_menu**</item>
         <item>**quicksettings**</item>
+        <item>**smart_pulldown**</item>
         <item>**ring_silent**</item>
         <item>**ring_vib**</item>
         <item>**ring_vib_silent**</item>
@@ -831,6 +837,45 @@
         <item>**theme_switch**</item>
         <item>**torch**</item>
         <item>**null**</item>
+    </string-array>
+
+    <!-- Actions For Shortcuts -->
+    <string-array name="shortcut_action_launcher_entries">
+        <item>@string/shortcut_action_kill</item>
+        <item>@string/shortcut_action_lastapp</item>
+        <item>@string/shortcut_action_navbar</item>
+        <item>@string/shortcut_action_notifications</item>
+        <item>@string/shortcut_action_ime</item>
+        <item>@string/shortcut_action_pie</item>
+        <item>@string/shortcut_action_power_menu</item>
+        <item>@string/shortcut_action_qs</item>
+        <item>@string/shortcut_action_smart</item>
+        <item>@string/shortcut_action_recent</item>
+        <item>@string/shortcut_action_ring_silent</item>
+        <item>@string/shortcut_action_ring_vib</item>
+        <item>@string/shortcut_action_ring_vib_silent</item>
+        <item>@string/shortcut_action_power</item>
+        <item>@string/shortcut_action_assist</item>
+        <item>@string/shortcut_action_theme_switch</item>
+    </string-array>
+
+    <string-array name="shortcut_action_launcher_values" translatable="false">
+        <item>**kill**</item>
+        <item>**lastapp**</item>
+        <item>**nav_bar**</item>
+        <item>**notifications**</item>
+        <item>**ime**</item>
+        <item>**pie**</item>
+        <item>**power_menu**</item>
+        <item>**quicksettings**</item>
+        <item>**smart_pulldown**</item>
+        <item>**recents**</item>
+        <item>**ring_silent**</item>
+        <item>**ring_vib**</item>
+        <item>**ring_vib_silent**</item>
+        <item>**power**</item>
+        <item>**assist**</item>
+        <item>**theme_switch**</item>
     </string-array>
 
     <!-- Screen recorder video sizes -->
