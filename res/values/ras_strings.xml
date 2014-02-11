@@ -165,6 +165,9 @@
     <string name="navigation_bar_height_20">20dp</string>
     <string name="navigation_bar_height_0">0dp (hide)</string>
 
+    <!-- Navigation Bar Buttons Color -->
+    <string name="navbar_button_tint_title">Navigation button tint</string>
+
     <!-- Lock Screen Shortcuts -->
     <string name="lockscreen_target_info">Drag the slider to targets to assign shortcuts</string>
     <string name="lockscreen_target_title">Lockscreen slider</string>
