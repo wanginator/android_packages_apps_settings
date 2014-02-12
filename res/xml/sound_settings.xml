@@ -33,6 +33,11 @@
             android:persistent="false"
             android:streamType="ring" />
 
+        <PreferenceScreen
+            android:key="volume_steps_settings"
+            android:fragment="com.android.settings.mahdi.VolumeSteps"
+            android:title="@string/volume_steps_title" />
+
         <ListPreference
             android:key="volume_overlay"
             android:title="@string/volume_overlay_title"
