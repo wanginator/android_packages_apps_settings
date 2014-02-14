@@ -1701,6 +1701,8 @@
         <activity android:name=".rascarlo.SystemSettings" />
         <!-- BUILD TWEAKS END -->
 
+        <activity android:name=".rascarlo.lsn.LockscreenNotifications" />
+
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"
                 android:exported="false"
