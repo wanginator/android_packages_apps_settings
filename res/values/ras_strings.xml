@@ -226,7 +226,6 @@
     <string name="navring_action_google_now">Google Now</string>
     <string name="navring_choose_action_title">Choose action</string>
     <string name="navring_action_power_menu">Power menu</string>
-    <string name="navring_action_screenrecord">Screen record</string>
 
     <!--Lockscreen See Through-->
     <string name="see_through_title">Lockscreen Blur</string>
@@ -277,6 +276,21 @@
     <string name="lockscreen_enable_power_menu_title">Enable power menu</string>
     <string name="lockscreen_enable_power_menu_summary">Show power menu when screen is locked</string>
 
+
+ <!-- Power menu enable disable -->
+    <string name="power_menu_title">Power menu</string>
+    <string name="power_menu_reboot_title">Reboot menu</string>
+    <string name="power_menu_screenshot_title">Screenshot</string>
+    <string name="power_menu_screenrecord_title">Screen record</string>
+    <string name="power_menu_airplane_title">Airplane mode</string>
+    <string name="power_menu_silent_title">Sound panel</string>
+    <string name="power_menu_immersive_mode">Immersive mode</string>
+    <string name="summary_immersive_mode">%1$s</string>
+    <string name="immersive_mode_summary_status_bar">With status bar</string>
+    <string name="immersive_mode_summary_no_status_bar">Without status bar</string>
+    <string name="immersive_mode_disabled">Off</string>
+    <string name="immersive_mode_status_bar">With status bar</string>
+    <string name="immersive_mode_no_status_bar">Without status bar</string>
 
 <!-- increasing rin volume -->
  <string name="increasing_ring_title">Ascending ringtone</string>

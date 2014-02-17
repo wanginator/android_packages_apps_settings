@@ -258,5 +258,18 @@
         <item>5000</item>
         <item>10000</item>
     </integer-array>
+
+ <!-- Expanded desktop -->
+    <string-array name="immersive_mode_entries" translatable="false">
+        <item>@string/immersive_mode_disabled</item>
+        <item>@string/immersive_mode_status_bar</item>
+        <item>@string/immersive_mode_no_status_bar</item>
+      </string-array>
+
+    <string-array name="immersive_mode_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 </resources>
 
