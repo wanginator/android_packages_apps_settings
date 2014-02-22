@@ -60,4 +60,9 @@
        android:title="@string/omniswitch_category" 
        android:fragment="com.android.settings.rascarlo.OmniSwitch" />
 
+	<PreferenceScreen
+            android:key="wakelock_blocker"
+            android:fragment="com.android.settings.rascarlo.WakeLockBlocker"
+            android:title="@string/wakelock_blocker" />
+
 </PreferenceScreen>
