@@ -88,6 +88,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String KEY_NOTIFICATION_ACCESS = "manage_notification_access";
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
 
+    private static final String LOCKSCREEN_MAXIMIZE_WIDGETS = "lockscreen_maximize_widgets";
+
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
 
@@ -119,8 +121,10 @@ public class SecuritySettings extends RestrictedSettingsFragment
     public SecuritySettings() {
         super(null /* Don't ask for restrictions pin on creation. */);
     }
+
     private CheckBoxPreference mSeeThrough;
     private CheckBoxPreference mEnablePowerMenu;
+    private CheckBoxPreference mMaximizeKeyguardWidgets;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -248,6 +252,12 @@ public class SecuritySettings extends RestrictedSettingsFragment
 	mEnablePowerMenu.setChecked(Settings.System.getInt(getContentResolver(),
         Settings.System.LOCKSCREEN_ENABLE_POWER_MENU, 1) == 1);
 	mEnablePowerMenu.setOnPreferenceChangeListener(this);
+}
+        mMaximizeKeyguardWidgets = (CheckBoxPreference) root.findPreference(LOCKSCREEN_MAXIMIZE_WIDGETS);
+        if (mMaximizeKeyguardWidgets != null) {
+            mMaximizeKeyguardWidgets.setChecked(Settings.System.getInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS, 0) == 1);
+        }
 
         // biometric weak liveliness
         mBiometricWeakLiveliness =
@@ -320,6 +330,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 mEnableKeyguardWidgets.setEnabled(!disabled);
             }
         }
+
+
 
         // Show password
         mShowPassword = (CheckBoxPreference) root.findPreference(KEY_SHOW_PASSWORD);
@@ -613,6 +625,11 @@ public class SecuritySettings extends RestrictedSettingsFragment
             lockPatternUtils.setPowerButtonInstantlyLocks(isToggled(preference));
         } else if (KEY_ENABLE_WIDGETS.equals(key)) {
             lockPatternUtils.setWidgetsEnabled(mEnableKeyguardWidgets.isChecked());
+
+        } else if (preference == mMaximizeKeyguardWidgets) {
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS, isToggled(preference) ? 1 : 0);
+
         } else if (preference == mShowPassword) {
             Settings.System.putInt(getContentResolver(), Settings.System.TEXT_SHOW_PASSWORD,
                     mShowPassword.isChecked() ? 1 : 0);
