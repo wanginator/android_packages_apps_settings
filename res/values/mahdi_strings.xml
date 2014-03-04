@@ -1209,6 +1209,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="recents_panel_settings_summary">Enable a clear all button in the recents panel and more</string>
 
     <!-- Recents clear all -->
+    <string name="aosp_recents_category">AOSP Recents</string>
     <string name="show_recent_clear_all_button_title">Clear all button</string>
     <string name="show_recent_clear_all_button_summary">Show clear all button within the recent applications view</string>
     <string name="recent_clear_all_button_location_title">Clear all button position</string>
@@ -1223,6 +1224,11 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="show_recents_memory_indicator_summary">Show a memory indicator within the recent applications view</string>
     <string name="recents_memory_indicator_location_title">Memory indicator position</string>
     <string name="recents_memory_indicator_location_summary">Choose position of the memory indicator</string>
+
+    <!-- New Recents Screen -->
+    <string name="new_recents_category">Slims Recents</string>
+    <string name="new_recents_screen_title">Use new recents</string>
+    <string name="new_recents_screen_summary">Replaces the recents screen with one based on the new google cards optic.</string>
 
     <!-- Message of dialog confirming that user wants to restart their device with a new runtime -->
     <string name="custom_runtime_warning_title">Warning</string>
@@ -1738,7 +1744,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- System Bars -->
     <string name="system_bars_title">System bars</string>
     <string name="system_bars_summary">Change status and navigation bar options</string>
-
     <string name="immersive_mode_title">Immersive mode</string>
     <string name="summary_immersive_mode">%1$s</string>
     <string name="immersive_mode_summary_status_bar">With status bar</string>
