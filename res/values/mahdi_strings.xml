@@ -1608,8 +1608,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="lockscreen_see_through_summary">Shows the content behind your lockscreen, your data may be visible to those around you</string>
 
     <!-- Themes -->
-    <string name="theme_settings_title_slim">Themes &amp; Dark UI</string>
-    <string name="theme_auto_mode_title">Dark UI Switch</string>
+    <string name="theme_settings_title_slim">Themes</string>
+    <string name="theme_auto_mode_title">Dark UI</string>
     <string name="theme_auto_mode_off">Manual</string>
     <string name="theme_auto_mode_lightsensor">On light condition change</string>
     <string name="theme_auto_mode_twilight">On daytime</string>
