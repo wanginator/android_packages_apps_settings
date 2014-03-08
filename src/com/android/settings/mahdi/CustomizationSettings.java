@@ -16,12 +16,15 @@
 
 package com.android.settings.mahdi;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.view.IWindowManager;
@@ -32,22 +35,28 @@ import com.android.settings.Utils;
 
 public class CustomizationSettings extends SettingsPreferenceFragment {
 
-    private static final String TAG = "CustomizationSettings";      
+    private static final String TAG = "CustomizationSettings";
+
+    private static final String KEY_HARDWARE_KEYS = "hardware_keys";    
+
+    private PreferenceScreen mHardwareKeys;   
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.customization_settings);                
-    }    
+        addPreferencesFromResource(R.xml.customization_settings);
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
+        final ContentResolver resolver = getActivity().getContentResolver();
+        final PreferenceScreen prefScreen = getPreferenceScreen();
+        final Resources res = getResources();
 
-    @Override
-    public void onPause() {
-        super.onPause();
+        // Only show the hardware keys config on a device that does not have a navbar
+        mHardwareKeys = (PreferenceScreen) findPreference(KEY_HARDWARE_KEYS);
+        if (mHardwareKeys != null) {
+            if (!res.getBoolean(R.bool.config_has_hardware_buttons)) {
+                getPreferenceScreen().removePreference(mHardwareKeys);
+            }        
+        }
     }
 }

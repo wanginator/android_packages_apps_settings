@@ -122,6 +122,12 @@
     <PreferenceCategory
         android:title="@string/additional_options_title">
 
+        <PreferenceScreen
+            android:fragment="com.android.settings.mahdi.LockscreenButtons"
+            android:key="lockscreen_buttons"
+            android:title="@string/lockscreen_buttons_title"
+            android:summary="@string/lockscreen_buttons_summary" />
+
         <CheckBoxPreference
             android:key="hardware_keys_show_overflow"
             android:title="@string/hardware_keys_show_overflow_title"

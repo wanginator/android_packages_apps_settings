@@ -67,7 +67,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
     private static final String KEY_ADDITIONAL_OPTIONS = "options_group";
     private static final String LOCKSCREEN_SHORTCUTS_CATEGORY = "lockscreen_shortcuts_category";
-    private static final String KEY_LOCKSCREEN_BUTTONS = "lockscreen_buttons";
     private static final String PREF_LOCKSCREEN_TORCH = "lockscreen_torch";
     private static final String KEY_BATTERY_STATUS = "lockscreen_battery_status";
     private static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
@@ -157,11 +156,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             Settings.System.LOCKSCREEN_BLUR_RADIUS, 12));
         mBlurRadius.setOnPreferenceChangeListener(this);
         updateVisiblePreferences();
-
-        // Remove lockscreen button actions if device doesn't have hardware keys
-        if (!hasButtons()) {
-            generalCategory.removePreference(findPreference(KEY_LOCKSCREEN_BUTTONS));
-        }
 
         // Remove glowpad torch if device doesn't have a torch
         if (!DeviceUtils.deviceSupportsTorch(getActivity())) {

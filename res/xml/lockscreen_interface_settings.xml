@@ -68,12 +68,6 @@
             android:summary="@string/lockscreen_glowpad_torch_summary"
             android:defaultValue="false" />
 
-        <PreferenceScreen
-            android:fragment="com.android.settings.mahdi.LockscreenButtons"
-            android:key="lockscreen_buttons"
-            android:title="@string/lockscreen_buttons_title"
-            android:summary="@string/lockscreen_buttons_summary" />
-
     </PreferenceCategory>
 
     <PreferenceCategory

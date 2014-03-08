@@ -63,9 +63,9 @@
         android:fragment="com.android.settings.mahdi.aokp.AnimationInterfaceSettings" />
 
     <PreferenceScreen
-        android:key="button_settings"
-        android:title="@string/button_settings_title"
-        android:summary="@string/button_settings_summary"
-        android:fragment="com.android.settings.mahdi.ButtonSettings" />
+        android:key="hardware_keys"
+        android:title="@string/hardware_keys_title"
+        android:summary="@string/hardware_keys_summary"
+        android:fragment="com.android.settings.mahdi.HardwareKeys" />
        
 </PreferenceScreen>
