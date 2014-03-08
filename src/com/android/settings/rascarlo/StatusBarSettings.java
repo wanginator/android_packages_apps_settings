@@ -57,12 +57,14 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
     private CheckBoxPreference mStatusBarClock;
     // Quick Settings
     private ListPreference mQuickPulldown;
+    // Notification Count
+    private static final String STATUSBAR_NOTIF_COUNT = "status_bar_notif_count";
     // Network Traffic
     private ListPreference mNetTrafficState;
     private ListPreference mNetTrafficUnit;
     private ListPreference mNetTrafficPeriod;
     private CheckBoxPreference mStatusBarNetworkActivity;
-
+    private CheckBoxPreference mStatusBarNotifCount;
     private int mNetTrafficVal;
     private int MASK_UP;
     private int MASK_DOWN;
@@ -112,6 +114,10 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
                     Settings.System.STATUS_BAR_BATTERY, 0);
             mStatusBarBattery.setValue(String.valueOf(batteryStyleValue));
             mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
+
+	    // Notification Count
+ 	    mStatusBarNotifCount = (CheckBoxPreference) findPreference(STATUSBAR_NOTIF_COUNT);
+            mStatusBarNotifCount.setOnPreferenceChangeListener(this);
 
             // Network Traffic
             mNetTrafficState = (ListPreference) getPreferenceScreen().findPreference(NETWORK_TRAFFIC_STATE);
@@ -210,6 +216,11 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_AM_PM, statusBarAmPm);
             mStatusBarAmPm.setSummary(mStatusBarAmPm.getEntries()[indexAmPm]);
+            return true;
+
+	} else if (preference == mStatusBarNotifCount) {
+            Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_NOTIF_COUNT,
+                    ((CheckBoxPreference)preference).isChecked() ? 0 : 1);
             return true;
 
         } else if (preference == mNetTrafficState) {
