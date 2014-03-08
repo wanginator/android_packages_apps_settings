@@ -40,8 +40,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
     private static final String KEY_REBOOT = "power_menu_reboot";    
     private static final String KEY_PROFILES = "power_menu_profiles";
     private static final String KEY_SCREENSHOT = "power_menu_screenshot";
-private static final String KEY_SCREENRECORD = "power_menu_screenrecord";
-    private static final String KEY_IMMERSIVE_MODE = "power_menu_immersive_mode";
+    private static final String KEY_SCREENRECORD = "power_menu_screenrecord";
     private static final String KEY_AIRPLANE = "power_menu_airplane";
     private static final String KEY_SILENT = "power_menu_silent";
 
@@ -49,7 +48,6 @@ private static final String KEY_SCREENRECORD = "power_menu_screenrecord";
     private ListPreference mProfilesPref;
     private CheckBoxPreference mScreenshotPref;
     private CheckBoxPreference mScreenrecordPref;
-    ListPreference mImmersiveModePref;
     private CheckBoxPreference mAirplanePref;
     private CheckBoxPreference mSilentPref;
 
@@ -84,12 +82,6 @@ private static final String KEY_SCREENRECORD = "power_menu_screenrecord";
         mScreenrecordPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_SCREENRECORD_ENABLED, 0) == 1));
 
-        mImmersiveModePref = (ListPreference) prefSet.findPreference(KEY_IMMERSIVE_MODE);
-        mImmersiveModePref.setOnPreferenceChangeListener(this);
-        int expandedDesktopValue = Settings.System.getInt(getContentResolver(), Settings.System.GLOBAL_IMMERSIVE_MODE_STYLE, 0);
-        mImmersiveModePref.setValue(String.valueOf(expandedDesktopValue));
-        updateExpandedDesktopSummary(expandedDesktopValue);        
-
         mAirplanePref = (CheckBoxPreference) findPreference(KEY_AIRPLANE);
         mAirplanePref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_AIRPLANE_ENABLED, 1) == 1));                
@@ -100,12 +92,7 @@ private static final String KEY_SCREENRECORD = "power_menu_screenrecord";
     } 
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mImmersiveModePref) {
-            int expandedDesktopValue = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.GLOBAL_IMMERSIVE_MODE_STYLE, expandedDesktopValue);
-            updateExpandedDesktopSummary(expandedDesktopValue);
-         } else if (preference == mProfilesPref) {
+       if (preference == mProfilesPref) {
             int mProfileShow = Integer.valueOf((String) newValue);
             int index = mProfilesPref.findIndexOfValue((String) newValue);
             Settings.System.putInt(getContentResolver(),
@@ -150,26 +137,5 @@ private static final String KEY_SCREENRECORD = "power_menu_screenrecord";
         }
 
         return true;
-    }
-
-    private void updateExpandedDesktopSummary(int value) {
-        Resources res = getResources();
-
-        if (value == 0) {
-            /* expanded desktop deactivated */
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.POWER_MENU_GLOBAL_IMMERSIVE_MODE_ENABLED, 0);
-            mImmersiveModePref.setSummary(res.getString(R.string.immersive_mode_disabled));
-        } else if (value == 1) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.POWER_MENU_GLOBAL_IMMERSIVE_MODE_ENABLED, 1);
-            String statusBarPresent = res.getString(R.string.immersive_mode_summary_status_bar);
-            mImmersiveModePref.setSummary(res.getString(R.string.summary_immersive_mode, statusBarPresent));
-        } else if (value == 2) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.POWER_MENU_GLOBAL_IMMERSIVE_MODE_ENABLED, 1);
-            String statusBarPresent = res.getString(R.string.immersive_mode_summary_no_status_bar);
-            mImmersiveModePref.setSummary(res.getString(R.string.summary_immersive_mode, statusBarPresent));
-        }
     }
 }

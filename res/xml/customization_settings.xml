@@ -20,16 +20,10 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceScreen
-        android:key="button_settings"
-        android:title="@string/button_settings_title"
-        android:summary="@string/button_settings_summary"
-        android:fragment="com.android.settings.mahdi.ButtonSettings" />
-
-    <PreferenceScreen
-        android:key="status_bar"
-        android:title="@string/status_bar_title"
-        android:summary="@string/status_bar_summary"
-        android:fragment="com.android.settings.mahdi.StatusBar" />
+        android:key="system_bars"
+        android:title="@string/system_bars_title"
+        android:summary="@string/system_bars_summary"
+        android:fragment="com.android.settings.mahdi.SystemBars" />
 
     <PreferenceScreen
         android:key="quick_settings_panel"        
@@ -67,5 +61,11 @@
         android:summary="@string/interface_animation_summary"
         android:breadCrumbTitle="@string/interface_animation_title"
         android:fragment="com.android.settings.mahdi.aokp.AnimationInterfaceSettings" />
+
+    <PreferenceScreen
+        android:key="button_settings"
+        android:title="@string/button_settings_title"
+        android:summary="@string/button_settings_summary"
+        android:fragment="com.android.settings.mahdi.ButtonSettings" />
        
 </PreferenceScreen>
