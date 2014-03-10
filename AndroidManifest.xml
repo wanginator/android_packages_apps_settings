@@ -2055,12 +2055,18 @@
                 android:resource="@id/interface_animation" />
         </activity>
 
+        <activity
+             android:name=".mahdi.batterysaver.BatterySaverSettings"
+             android:label="@string/data_usage_enable_batterysaver" >
+        </activity>
+
         <receiver
             android:name="com.android.settings.mahdi.batterysaver.BatterySaverReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.TIMEZONE_CHANGED"></action>
                 <action android:name="android.intent.action.TIME_CHANGED"></action>
                 <action android:name="android.intent.action.DATE_CHANGED"></action>
+                <action android:name="android.intent.action.BATTERY_SERVICES"></action>
                 <action android:name="com.android.settings.mahdi.batterysaver.SCHEDULE_BATTERY_SAVER"/>
             </intent-filter>
         </receiver>
