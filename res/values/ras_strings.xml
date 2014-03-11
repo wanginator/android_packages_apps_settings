@@ -60,6 +60,12 @@
 
     <!-- Status bar -->
     <string name="status_bar_title">Status bar</string>
+    <!--Battery Icon selection-->
+     <string name="battery_status_icon_title">Status icon</string>
+     <string name="battery_bar">Battery bar</string>
+     <string name="battery_bar_percent">Battery bar &amp; percent</string>
+     <string name="battery_circle">Battery circle</string>
+     <string name="battery_circle_percent">Battery circle &amp; percent</string>
     <!-- Status bar clock -->
     <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_show_clock_title">Show clock</string>
