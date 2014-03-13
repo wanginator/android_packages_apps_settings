@@ -33,6 +33,8 @@ import android.view.WindowManagerGlobal;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.android.internal.util.mahdi.DeviceUtils;
+
 public class PowerMenu extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
     private static final String TAG = "PowerMenu";
@@ -41,6 +43,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
     private static final String KEY_PROFILES = "power_menu_profiles";
     private static final String KEY_SCREENSHOT = "power_menu_screenshot";
     private static final String KEY_SCREENRECORD = "power_menu_screenrecord";
+    private static final String KEY_ONTHEGO = "power_menu_onthego_enabled";
     private static final String KEY_AIRPLANE = "power_menu_airplane";
     private static final String KEY_SILENT = "power_menu_silent";
 
@@ -48,6 +51,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
     private ListPreference mProfilesPref;
     private CheckBoxPreference mScreenshotPref;
     private CheckBoxPreference mScreenrecordPref;
+    private CheckBoxPreference mOnthegoPref;
     private CheckBoxPreference mAirplanePref;
     private CheckBoxPreference mSilentPref;
 
@@ -58,6 +62,9 @@ public class PowerMenu extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.power_menu_settings);
 
         PreferenceScreen prefSet = getPreferenceScreen();
+
+        findPreference(Settings.System.POWER_MENU_ONTHEGO_ENABLED).setEnabled(
+                DeviceUtils.hasCamera(getActivity()));
 
         mRebootPref = (CheckBoxPreference) findPreference(KEY_REBOOT);
         mRebootPref.setChecked((Settings.System.getInt(getContentResolver(),
@@ -81,6 +88,10 @@ public class PowerMenu extends SettingsPreferenceFragment implements
 	mScreenrecordPref = (CheckBoxPreference) findPreference(KEY_SCREENRECORD);
         mScreenrecordPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_SCREENRECORD_ENABLED, 0) == 1));
+
+        mOnthegoPref = (CheckBoxPreference) findPreference(KEY_ONTHEGO);
+        mOnthegoPref.setChecked((Settings.System.getInt(getContentResolver(),
+                Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0) == 1));
 
         mAirplanePref = (CheckBoxPreference) findPreference(KEY_AIRPLANE);
         mAirplanePref.setChecked((Settings.System.getInt(getContentResolver(),
@@ -116,6 +127,11 @@ public class PowerMenu extends SettingsPreferenceFragment implements
             value = mScreenrecordPref.isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.POWER_MENU_SCREENRECORD_ENABLED,
+                    value ? 1 : 0);
+        } else if (preference == mOnthegoPref) {
+            value = mOnthegoPref.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.POWER_MENU_ONTHEGO_ENABLED,
                     value ? 1 : 0);      
         } else if (preference == mRebootPref) {
             value = mRebootPref.isChecked();

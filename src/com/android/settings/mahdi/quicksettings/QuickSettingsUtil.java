@@ -36,6 +36,7 @@ import static com.android.internal.util.mahdi.QSConstants.TILE_MOBILEDATA;
 import static com.android.internal.util.mahdi.QSConstants.TILE_NETWORKADB;
 import static com.android.internal.util.mahdi.QSConstants.TILE_NETWORKMODE;
 import static com.android.internal.util.mahdi.QSConstants.TILE_NFC;
+import static com.android.internal.util.mahdi.QSConstants.TILE_ONTHEGO;
 import static com.android.internal.util.mahdi.QSConstants.TILE_PROFILE;
 import static com.android.internal.util.mahdi.QSConstants.TILE_QUICKRECORD;
 import static com.android.internal.util.mahdi.QSConstants.TILE_QUIETHOURS;
@@ -181,6 +182,9 @@ public class QuickSettingsUtil {
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_MUSIC, R.string.title_tile_music,
                 "com.android.systemui:drawable/ic_qs_media_play"));
+        registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_ONTHEGO, R.string.title_tile_onthego,
+                "com.android.systemui:drawable/ic_qs_onthego"));
     }
 
     private static void registerTile(QuickSettingsUtil.TileInfo info) {
@@ -236,6 +240,7 @@ public class QuickSettingsUtil {
         // Don't show the Camera tile if the device has no cameras
         if (!QSUtils.deviceSupportsCamera()) {
             removeTile(TILE_CAMERA);
+            removeTile(TILE_ONTHEGO);
         }
     }
 
