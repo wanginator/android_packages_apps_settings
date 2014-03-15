@@ -2062,4 +2062,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- vibrate during phone calls -->
     <string name="notification_vibrate_during_calls_title">Vibrate during call</string>
     <string name="notification_vibrate_during_calls_summary">Incoming notifications will softly vibrate during phone calls</string>
+
+    <!--Notification category-->
+    <string name="notification_category">Notifications</string>
+    <!--Notification peek-->
+    <string name="notification_peek_title">Notification peek</string>
+    <string name="notification_peek_summary">Show latest notification after picking up your device</string>
 </resources>

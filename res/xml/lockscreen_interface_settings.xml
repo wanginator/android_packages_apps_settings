@@ -32,14 +32,6 @@
             android:key="lockscreen_modlock_enabled"
             android:title="@string/lockscreen_enable_modlock_title" />
 
-	<com.android.settings.mahdi.lsn.LockscreenNotificationsPreference
-            android:key="lockscreen_notifications"
-            android:defaultValue="false"
-            android:fragment="com.android.settings.mahdi.lsn.LockscreenNotifications"
-            android:title="@string/lockscreen_notifications"
-            android:summary="@string/lockscreen_notifications_summary"
-            android:widgetLayout="@layout/listview_embedded_switchpreference" />
-
         <ListPreference
             android:key="lockscreen_battery_status"
             android:persistent="false"
@@ -54,6 +46,25 @@
             android:title="@string/battery_around_lockscreen_ring"
       	    android:summary="@string/battery_around_lockscreen_ring_summary"
             android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="notification_category"
+        android:title="@string/notification_category" >
+
+        <com.android.settings.mahdi.lsn.LockscreenNotificationsPreference
+            android:key="lockscreen_notifications"
+            android:defaultValue="false"
+            android:fragment="com.android.settings.mahdi.lsn.LockscreenNotifications"
+            android:title="@string/lockscreen_notifications"
+            android:summary="@string/lockscreen_notifications_summary"
+            android:widgetLayout="@layout/listview_embedded_switchpreference" />
+
+        <com.android.settings.mahdi.SystemSettingCheckBoxPreference
+            android:key="peek_state"
+            android:title="@string/notification_peek_title"
+            android:summary="@string/notification_peek_summary" />
 
     </PreferenceCategory>
 
