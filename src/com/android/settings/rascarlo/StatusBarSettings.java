@@ -25,7 +25,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements OnP
 
     // General
     private static String STATUS_BAR_GENERAL_CATEGORY = "status_bar_general_category";
-    // Brightness control
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
  // Double-tap to sleep
     private static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
@@ -35,9 +34,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements OnP
     private static final String NETWORK_TRAFFIC_PERIOD = "network_traffic_period";
 	// Network Stats
 private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_activity";
-    // Status bar battery style
-    private static final String STATUS_BAR_BATTERY = "status_bar_battery";
-    // Native battery percentage
     private static final String STATUS_BAR_NATIVE_BATTERY_PERCENTAGE = "status_bar_native_battery_percentage";
     // Clock
     private static final String STATUS_BAR_CLOCK = "status_bar_show_clock";
@@ -48,11 +44,7 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
 
     // General
     private PreferenceCategory mStatusBarGeneralCategory;
-    // Status bar battery style
-    private ListPreference mStatusBarBattery;
-    // Native battery percentage
     private ListPreference mStatusBarNativeBatteryPercentage;
-    // Brightness control
     private CheckBoxPreference mStatusBarBrightnessControl;
     // Double-tap to sleep
     private CheckBoxPreference mStatusBarDoubleTapSleepGesture;
@@ -92,7 +84,6 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
             // only show on phones
             if (!Utils.isPhone(getActivity())) {
                 mStatusBarGeneralCategory.removePreference(mStatusBarBrightnessControl);
-                getPreferenceScreen().removePreference((PreferenceCategory) findPreference(STATUS_BAR_GENERAL_CATEGORY));
             } else {
                 // Status bar brightness control
                 mStatusBarBrightnessControl.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(), 
@@ -111,14 +102,13 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
             mStatusBarDoubleTapSleepGesture = (CheckBoxPreference) getPreferenceScreen().findPreference(DOUBLE_TAP_SLEEP_GESTURE);
             mStatusBarDoubleTapSleepGesture.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.DOUBLE_TAP_SLEEP_GESTURE, 0) == 1));
-
-            // Status bar battery style
-            mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY);
-            mStatusBarBattery.setOnPreferenceChangeListener(this);
-            int batteryStyleValue = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_BATTERY, 0);
-            mStatusBarBattery.setValue(String.valueOf(batteryStyleValue));
-            mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
+            // Native battery percentage
+            mStatusBarNativeBatteryPercentage = (ListPreference) getPreferenceScreen().findPreference(STATUS_BAR_NATIVE_BATTERY_PERCENTAGE);
+            mStatusBarNativeBatteryPercentage.setOnPreferenceChangeListener(this);
+            int statusBarNativeBatteryPercentageValue = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_NATIVE_BATTERY_PERCENTAGE, 0);
+            mStatusBarNativeBatteryPercentage.setValue(String.valueOf(statusBarNativeBatteryPercentageValue));
+            mStatusBarNativeBatteryPercentage.setSummary(mStatusBarNativeBatteryPercentage.getEntry());
 
 	    // Notification Count
  	    mStatusBarNotifCount = (CheckBoxPreference) findPreference(STATUSBAR_NOTIF_COUNT);
@@ -205,13 +195,13 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
 
-        if (preference == mStatusBarBattery) {
-            int batteryStyleValue = Integer.valueOf((String) objValue);
-            int batteryStyleIndex = mStatusBarBattery.findIndexOfValue((String) objValue);
+        if (preference == mStatusBarNativeBatteryPercentage) {
+            int statusBarNativeBatteryPercentageValue = Integer.valueOf((String) objValue);
+            int statusBarNativeBatteryPercentageIndex = mStatusBarNativeBatteryPercentage.findIndexOfValue((String) objValue);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_BATTERY, batteryStyleValue);
-            mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[batteryStyleIndex]);
-            updateStatusBarNativeBatteryPercentage();
+                    Settings.System.STATUS_BAR_NATIVE_BATTERY_PERCENTAGE, statusBarNativeBatteryPercentageValue);
+            mStatusBarNativeBatteryPercentage.setSummary(mStatusBarNativeBatteryPercentage
+                    .getEntries()[statusBarNativeBatteryPercentageIndex]);
             return true;
 
         } else if (preference == mStatusBarAmPm) {
@@ -313,14 +303,5 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
             return true;
         }
         return false;
-    }
-
-    private void updateStatusBarNativeBatteryPercentage() {
-        if (Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.STATUS_BAR_BATTERY, 0) == 0) {
-            mStatusBarNativeBatteryPercentage.setEnabled(true);
-        } else {
-            mStatusBarNativeBatteryPercentage.setEnabled(false);
-        }
     }
 }
