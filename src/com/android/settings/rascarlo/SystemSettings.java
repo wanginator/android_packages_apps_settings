@@ -30,6 +30,9 @@ public class SystemSettings extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
 
     private PreferenceScreen mNotificationPulse;
+    private static final String KEY_LED_SETTINGS = "led_settings";
+
+    private PreferenceScreen mLedSettings;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

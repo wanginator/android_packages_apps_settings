@@ -2,17 +2,6 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- generic enabled disabled -->
-    <string-array name="enabled_disable_entries" translatable="false">
-        <item>@string/disabled_string</item>
-        <item>@string/enabled_string</item>
-    </string-array>
-
-    <string-array name="enabled_disabled_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-    </string-array>
-
     <!-- Volume Overlay options. -->
     <string-array name="volume_overlay_entries">
         <item>Single</item>

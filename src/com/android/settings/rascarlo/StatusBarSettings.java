@@ -25,6 +25,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements OnP
 
     // General
     private static String STATUS_BAR_GENERAL_CATEGORY = "status_bar_general_category";
+    // Brightness control
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
  // Double-tap to sleep
     private static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
@@ -34,7 +35,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements OnP
     private static final String NETWORK_TRAFFIC_PERIOD = "network_traffic_period";
 	// Network Stats
 private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_activity";
-    private static final String STATUS_BAR_NATIVE_BATTERY_PERCENTAGE = "status_bar_native_battery_percentage";
     // Clock
     private static final String STATUS_BAR_CLOCK = "status_bar_show_clock";
     private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
@@ -44,7 +44,7 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
 
     // General
     private PreferenceCategory mStatusBarGeneralCategory;
-    private ListPreference mStatusBarNativeBatteryPercentage;
+    // Brightness control
     private CheckBoxPreference mStatusBarBrightnessControl;
     // Double-tap to sleep
     private CheckBoxPreference mStatusBarDoubleTapSleepGesture;
@@ -102,13 +102,6 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
             mStatusBarDoubleTapSleepGesture = (CheckBoxPreference) getPreferenceScreen().findPreference(DOUBLE_TAP_SLEEP_GESTURE);
             mStatusBarDoubleTapSleepGesture.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.DOUBLE_TAP_SLEEP_GESTURE, 0) == 1));
-            // Native battery percentage
-            mStatusBarNativeBatteryPercentage = (ListPreference) getPreferenceScreen().findPreference(STATUS_BAR_NATIVE_BATTERY_PERCENTAGE);
-            mStatusBarNativeBatteryPercentage.setOnPreferenceChangeListener(this);
-            int statusBarNativeBatteryPercentageValue = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_NATIVE_BATTERY_PERCENTAGE, 0);
-            mStatusBarNativeBatteryPercentage.setValue(String.valueOf(statusBarNativeBatteryPercentageValue));
-            mStatusBarNativeBatteryPercentage.setSummary(mStatusBarNativeBatteryPercentage.getEntry());
 
 	    // Notification Count
  	    mStatusBarNotifCount = (CheckBoxPreference) findPreference(STATUSBAR_NOTIF_COUNT);
@@ -195,16 +188,9 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
 
-        if (preference == mStatusBarNativeBatteryPercentage) {
-            int statusBarNativeBatteryPercentageValue = Integer.valueOf((String) objValue);
-            int statusBarNativeBatteryPercentageIndex = mStatusBarNativeBatteryPercentage.findIndexOfValue((String) objValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_NATIVE_BATTERY_PERCENTAGE, statusBarNativeBatteryPercentageValue);
-            mStatusBarNativeBatteryPercentage.setSummary(mStatusBarNativeBatteryPercentage
-                    .getEntries()[statusBarNativeBatteryPercentageIndex]);
-            return true;
+	ContentResolver resolver = getActivity().getContentResolver();
 
-        } else if (preference == mStatusBarAmPm) {
+       if (preference == mStatusBarAmPm) {
             int statusBarAmPm = Integer.valueOf((String) objValue);
             int indexAmPm = mStatusBarAmPm.findIndexOfValue((String) objValue);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
@@ -305,3 +291,4 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
         return false;
     }
 }
+

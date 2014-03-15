@@ -33,11 +33,11 @@
     <string name="kill_app_longpress_back">Kill app back button</string>
     <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back key</string>
     
-    <!-- BUILD TWEAKS  -->
-    <!-- rastakat Settings  -->
+    <!-- BUILD TWEAKS -->
+    <!-- rastakat Settings -->
     <!-- Settings main menu category heading -->
     <string name="header_category_interface">RASTAKAT</string>
-    <!-- System Interface settings  -->
+    <!-- System Interface settings -->
     <string name="system_settings_title">Build Tweaks</string>
     <string name="system_interface_title">Build Tweaks</string>
     
@@ -58,23 +58,19 @@
     <string name="volbtn_music_controls_title">Volume rocker music controls</string>
     <string name="volbtn_music_controls_summary">When screen off, long-pressing the volume rocker will seek music tracks</string>
 
-    <!-- Status bar  -->
+    <!-- Status bar -->
     <string name="status_bar_title">Status bar</string>
-
-    <!-- Statusbar native battery percent -->
-    <string name="status_bar_native_battery_percentage">Native battery percentage</string>
     <!-- Status bar clock -->
     <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_show_clock_title">Show clock</string>
     <string name="status_bar_am_pm_title">AM/PM style</string>
     <string name="status_bar_am_pm_info">24-hour clock must be disabled</string>
-    <!-- Quick settings -->
+    <!-- Status bar quick settings -->
     <string name="status_bar_quick_settings_category">Quick settings</string>
     <string name="quick_pulldown_title">Quick pulldown</string>
     <string name="quick_pulldown_off">Off</string>
     <string name="quick_pulldown_left">Left</string>
     <string name="quick_pulldown_right">Right</string>
-    
     <!-- Status bar brightness control -->
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
@@ -86,7 +82,7 @@
     <string name="safe_headset_volume_title">Safe headset volume</string>
     <string name="safe_headset_volume_summary">Prevent loud volume levels when headset is first plugged in</string>
 
-    <!--  Plug-in prompt -->
+    <!-- Plug-in prompt -->
     <string name="plug_in_prompt_settings_title">Plug-in prompt</string>
 
     <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
@@ -339,7 +335,7 @@
 
  <!-- Screen-On Notification Light -->
     <string name="screen_on_notification_led_title">Screen-On Notification Light</string>
-    <string name="screen_on_notification_led_summary">Enable Notification Light even when screen is on</string> 
+    <string name="screen_on_notification_led_summary">Enable Notification Light even when screen is on</string>
 
 <!-- omni switch recents -->
     <string name="omniswitch_category">OmniSwitch</string>
