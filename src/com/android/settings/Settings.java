@@ -106,8 +106,6 @@ import com.android.settings.profiles.ProfileConfig;
 import com.android.settings.profiles.ProfilesSettings;
 import com.android.settings.profiles.ProfileEnabler;
 
-import com.brewcrewfoo.performance.activities.MainActivity;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -370,7 +368,6 @@ public class Settings extends PreferenceActivity
         QuietHours.class.getName(),
         CustomizationSettings.class.getName(),
         DisplayRotation.class.getName(),
-        com.brewcrewfoo.performance.activities.MainActivity.class.getName(),
         HomeSettings.class.getName(),
         ProfilesSettings.class.getName(),
         ProfileConfig.class.getName(),
@@ -641,12 +638,18 @@ public class Settings extends PreferenceActivity
                 if (!showDev) {
                     target.remove(i);
                 }
-	    } else if (id == R.id.performance_controls) {
-                if (!showDev) {
-                    target.remove(i);
-                }
             } else if (id == R.id.account_add) {
                 if (um.hasUserRestriction(UserManager.DISALLOW_MODIFY_ACCOUNTS)) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.performance_controls) {
+                // Embedding into Settings only if app exists (user could manually remove it)
+                boolean supported = false;
+                try {
+                    supported = (getPackageManager().getPackageInfo("com.dsht.kerneltweaker", 0).versionCode >= 18);
+                } catch (PackageManager.NameNotFoundException e) {
+                }
+                if (!supported) {
                     target.remove(i);
                 }
             }
@@ -1186,6 +1189,5 @@ public class Settings extends PreferenceActivity
     public static class DisplayRotationSettingsActivity extends Settings { /* empty */ }
     public static class ProfilesSettingsActivity extends Settings { /* empty */ }
     public static class NavbarSettingsActivity extends Settings { /* empty */ }
-    public static class MainActivity extends Settings { /* empty */ }
     public static class ThemeSettingsActivity extends Settings { /* empty */ }    
 }
