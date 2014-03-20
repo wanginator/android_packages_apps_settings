@@ -48,9 +48,13 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.android.internal.util.mahdi.DeviceUtils;
@@ -63,16 +67,10 @@ import com.android.internal.widget.LockPatternUtils;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import java.io.File;
-import java.io.IOException;
 import android.util.Log;
-import android.view.Display;
-import android.view.View;
-import android.provider.MediaStore;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Toast;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -81,48 +79,41 @@ public class LockscreenStyle extends SettingsPreferenceFragment
 
     private static final String TAG = "LockscreenStyle";
 
-    private static final String KEY_LOCKSCREEN_COLORIZE_ICON =
-            "lockscreen_colorize_icon";
-    private static final String KEY_LOCKSCREEN_LOCK_ICON =
-            "lockscreen_lock_icon";
-    private static final String KEY_LOCKSCREEN_FRAME_COLOR =
-            "lockscreen_frame_color";
-    private static final String KEY_LOCKSCREEN_LOCK_COLOR =
-            "lockscreen_lock_color";
-    private static final String KEY_LOCKSCREEN_DOTS_COLOR =
-            "lockscreen_dots_color";
-
     private static final String KEY_SEE_TRHOUGH = "see_through";
     private static final String KEY_BLUR_BEHIND = "blur_behind";
     private static final String KEY_BLUR_RADIUS = "blur_radius";
-
+    private static final String LOCKSCREEN_BACKGROUND_CATEGORY = "lockscreen_background_category";
     private static final String LOCKSCREEN_BACKGROUND = "lockscreen_background";
-    private static final String WALLPAPER_NAME = "lockscreen_wallpaper";
     private static final String LOCKSCREEN_BACKGROUND_STYLE = "lockscreen_background_style";
     private static final String LOCKSCREEN_BACKGROUND_COLOR_FILL = "lockscreen_background_color_fill";
+    private static final String WALLPAPER_NAME = "lockscreen_wallpaper";
+    private static final String KEY_LOCKSCREEN_COLORIZE_ICON = "lockscreen_colorize_icon";
+    private static final String KEY_LOCKSCREEN_LOCK_ICON = "lockscreen_lock_icon";
+    private static final String KEY_LOCKSCREEN_FRAME_COLOR = "lockscreen_frame_color";
+    private static final String KEY_LOCKSCREEN_LOCK_COLOR = "lockscreen_lock_color";
+    private static final String KEY_LOCKSCREEN_DOTS_COLOR = "lockscreen_dots_color";
 
     private static final int REQUEST_PICK_WALLPAPER = 201;
     private static final int COLOR_FILL = 0;
     private static final int CUSTOM_IMAGE = 1;
     private static final int DEFAULT = 2;
 
-    private ColorPickerPreference mLockColorFill;
-    private ListPreference mLockBackground;
-
+    private CheckBoxPreference mSeeThrough;
+    private CheckBoxPreference mBlurBehind;
+    private SeekBarPreference mBlurRadius;
     private PreferenceCategory mLockscreenBackground;
+    private ListPreference mLockBackground;
     private File wallpaperImage;
     private File wallpaperTemporary;
-
-    private String mDefault;
+    private ColorPickerPreference mLockColorFill;
 
     private CheckBoxPreference mColorizeCustom;
     private ColorPickerPreference mFrameColor;
     private ColorPickerPreference mLockColor;
     private ColorPickerPreference mDotsColor;
-    private CheckBoxPreference mSeeThrough;
-    private CheckBoxPreference mBlurBehind;
-    private SeekBarPreference mBlurRadius;
     private ListPreference mLockIcon;
+
+    private String mDefault;
 
     private boolean mCheckPreferences;
 
@@ -151,6 +142,33 @@ public class LockscreenStyle extends SettingsPreferenceFragment
 
         // Set to string so we don't have to create multiple objects of it
         mDefault = getResources().getString(R.string.default_string);
+
+        mSeeThrough = (CheckBoxPreference) findPreference(KEY_SEE_TRHOUGH);
+
+        mBlurBehind = (CheckBoxPreference) findPreference(KEY_BLUR_BEHIND);
+        mBlurBehind.setChecked(Settings.System.getInt(getContentResolver(), 
+            Settings.System.LOCKSCREEN_BLUR_BEHIND, 0) == 1);
+        mBlurBehind.setEnabled(mSeeThrough.isChecked());
+
+        mBlurRadius = (SeekBarPreference) findPreference(KEY_BLUR_RADIUS);
+        mBlurRadius.setProgress(Settings.System.getInt(getContentResolver(), 
+            Settings.System.LOCKSCREEN_BLUR_RADIUS, 1));
+        mBlurRadius.setOnPreferenceChangeListener(this);
+        mBlurRadius.setEnabled(mBlurBehind.isChecked() && mBlurBehind.isEnabled());
+
+        mLockscreenBackground = (PreferenceCategory) findPreference(LOCKSCREEN_BACKGROUND);
+
+        mLockBackground = (ListPreference) findPreference(LOCKSCREEN_BACKGROUND_STYLE);
+        mLockBackground.setOnPreferenceChangeListener(this);
+        mLockBackground.setValue(Integer.toString(Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKSCREEN_BACKGROUND_STYLE, 2)));
+        mLockBackground.setSummary(mLockBackground.getEntry());
+
+        mLockColorFill = (ColorPickerPreference) findPreference(LOCKSCREEN_BACKGROUND_COLOR_FILL);
+        mLockColorFill.setOnPreferenceChangeListener(this);
+        mLockColorFill.setSummary(ColorPickerPreference.convertToARGB(
+                Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKSCREEN_BACKGROUND_COLOR, 0x00000000)));
 
         mLockImage = new File(getActivity().getFilesDir() + "/lock_icon.tmp");
 
@@ -207,33 +225,6 @@ public class LockscreenStyle extends SettingsPreferenceFragment
         if (DeviceUtils.isTablet(getActivity())) {
             mLockColor.setEnabled(!dotsDisabled);
         }
-
-        mSeeThrough = (CheckBoxPreference) findPreference(KEY_SEE_TRHOUGH);
-
-        mBlurBehind = (CheckBoxPreference) findPreference(KEY_BLUR_BEHIND);
-        mBlurBehind.setChecked(Settings.System.getInt(getContentResolver(), 
-            Settings.System.LOCKSCREEN_BLUR_BEHIND, 0) == 1);
-        mBlurBehind.setEnabled(mSeeThrough.isChecked());
-
-        mBlurRadius = (SeekBarPreference) findPreference(KEY_BLUR_RADIUS);
-        mBlurRadius.setProgress(Settings.System.getInt(getContentResolver(), 
-            Settings.System.LOCKSCREEN_BLUR_RADIUS, 1));
-        mBlurRadius.setOnPreferenceChangeListener(this);
-        mBlurRadius.setEnabled(mBlurBehind.isChecked() && mBlurBehind.isEnabled());
-
-        mLockscreenBackground = (PreferenceCategory) findPreference(LOCKSCREEN_BACKGROUND);
-
-        mLockBackground = (ListPreference) findPreference(LOCKSCREEN_BACKGROUND_STYLE);
-        mLockBackground.setOnPreferenceChangeListener(this);
-        mLockBackground.setValue(Integer.toString(Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKSCREEN_BACKGROUND_STYLE, 2)));
-        mLockBackground.setSummary(mLockBackground.getEntry());
-
-        mLockColorFill = (ColorPickerPreference) findPreference(LOCKSCREEN_BACKGROUND_COLOR_FILL);
-        mLockColorFill.setOnPreferenceChangeListener(this);
-        mLockColorFill.setSummary(ColorPickerPreference.convertToARGB(
-                Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKSCREEN_BACKGROUND_COLOR, 0x00000000)));
 
         updateVisiblePreferences();
         updateLockSummary();
@@ -329,14 +320,15 @@ public class LockscreenStyle extends SettingsPreferenceFragment
         } else if (preference == mLockBackground) {
             int index = mLockBackground.findIndexOfValue(String.valueOf(newValue));
             preference.setSummary(mLockBackground.getEntries()[index]);
-            return handleBackgroundSelection(index);
+            handleBackgroundSelection(index);
+            return true;
         } else if (preference == mLockColorFill) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
-            int color = ColorPickerPreference.convertToColorInt(hex);
+            int value = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_BACKGROUND_COLOR, color);
+                    Settings.System.LOCKSCREEN_BACKGROUND_COLOR, value);
             return true;
         }
         return false;
@@ -347,6 +339,31 @@ public class LockscreenStyle extends SettingsPreferenceFragment
             Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_BLUR_RADIUS, 0);
         } else {
             return;
+        }
+    }
+
+    public static class DeviceAdminLockscreenReceiver extends DeviceAdminReceiver {}
+
+    private void updateVisiblePreferences() {
+        int visible = Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKSCREEN_BACKGROUND_STYLE, 2);
+
+        if (visible == 0) {
+            mLockColorFill.setEnabled(true);
+        } else {
+            mLockColorFill.setEnabled(false);
+        }
+        if (visible != 2) {
+            mBlurBehind.setEnabled(false);
+            mBlurRadius.setEnabled(false);
+        } else {
+            mBlurBehind.setEnabled(true);
+            mBlurRadius.setEnabled(true);
+        }
+        if (visible != 1) {
+            mSeeThrough.setEnabled(true);
+        } else {
+            mSeeThrough.setEnabled(false);
         }
     }
 
@@ -475,37 +492,6 @@ public class LockscreenStyle extends SettingsPreferenceFragment
         }
     }
 
-    public static class DeviceAdminLockscreenReceiver extends DeviceAdminReceiver {}
-
-    private void updateVisiblePreferences() {
-        int visible = Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKSCREEN_BACKGROUND_STYLE, 2);
-
-        if (visible == 0) {
-            mLockColorFill.setEnabled(true);
-        } else {
-            mLockColorFill.setEnabled(false);
-        }
-        if (visible != 2) {
-            mBlurBehind.setEnabled(false);
-            mBlurRadius.setEnabled(false);
-        } else {
-            mBlurBehind.setEnabled(true);
-            mBlurRadius.setEnabled(true);
-        }
-        if (visible != 1) {
-            mSeeThrough.setEnabled(true);
-        } else {
-            mSeeThrough.setEnabled(false);
-        }
-    }
-
-    private Uri getLockscreenExternalUri() {
-        File dir = getActivity().getExternalCacheDir();
-        File wallpaper = new File(dir, WALLPAPER_NAME);
-        return Uri.fromFile(wallpaper);
-    }
-
     private boolean handleBackgroundSelection(int index) {
         if (index == COLOR_FILL) {
             Settings.System.putInt(getContentResolver(),
@@ -550,49 +536,13 @@ public class LockscreenStyle extends SettingsPreferenceFragment
         return false;
     }
 
+    private Uri getLockscreenExternalUri() {
+        File dir = getActivity().getExternalCacheDir();
+        File wallpaper = new File(dir, WALLPAPER_NAME);
+        return Uri.fromFile(wallpaper);
+    }
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_PICK_WALLPAPER) {
-            FileOutputStream wallpaperStream = null;
-            try {
-                wallpaperStream = getActivity().openFileOutput(WALLPAPER_NAME,
-                        Context.MODE_WORLD_READABLE);
-
-            } catch (FileNotFoundException e) {
-                return; // NOOOOO
-            }
-            Uri selectedImageUri = getLockscreenExternalUri();
-            Bitmap bitmap;
-            if (data != null) {
-                Uri mUri = data.getData();
-                try {
-                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),
-                            mUri);
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, wallpaperStream);
-
-                    Toast.makeText(getActivity(), getResources().getString(R.string.
-                            background_result_successful), Toast.LENGTH_LONG).show();
-                    Settings.System.putInt(getContentResolver(),
-                            Settings.System.LOCKSCREEN_BACKGROUND_STYLE, 1);
-                    updateVisiblePreferences();
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                try {
-                    bitmap = BitmapFactory.decodeFile(selectedImageUri.getPath());
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, wallpaperStream);
-                } catch (NullPointerException npe) {
-                    Log.e(TAG, "SeletedImageUri was null.");
-                    Toast.makeText(getActivity(), getResources().getString(R.string.
-                            background_result_not_successful), Toast.LENGTH_LONG).show();
-                    super.onActivityResult(requestCode, resultCode, data);
-                    return;
-                }
-            }
-        }
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == REQUEST_PICK_LOCK_ICON) {
 
@@ -614,6 +564,48 @@ public class LockscreenStyle extends SettingsPreferenceFragment
                         Settings.Secure.LOCKSCREEN_LOCK_ICON, path);
 
                 mColorizeCustom.setEnabled(path != null);
+            } else if (requestCode == REQUEST_PICK_WALLPAPER) {
+                FileOutputStream wallpaperStream = null;
+                try {
+                    wallpaperStream = getActivity().openFileOutput(WALLPAPER_NAME,
+                            Context.MODE_WORLD_READABLE);
+
+                } catch (FileNotFoundException e) {
+                    return; // NOOOOO
+                }
+                Uri selectedImageUri = getLockscreenExternalUri();
+                Bitmap bitmap;
+                if (data != null) {
+                    Uri mUri = data.getData();
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),
+                                mUri);
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, wallpaperStream);
+
+                        Toast.makeText(getActivity(), getResources().getString(R.string.
+                                background_result_successful), Toast.LENGTH_LONG).show();
+                        Settings.System.putInt(getContentResolver(),
+                                Settings.System.LOCKSCREEN_BACKGROUND_STYLE, 1);
+                        updateVisiblePreferences();
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        bitmap = BitmapFactory.decodeFile(selectedImageUri.getPath());
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, wallpaperStream);
+                    } catch (NullPointerException npe) {
+                        Log.e(TAG, "SeletedImageUri was null.");
+                        Toast.makeText(getActivity(), getResources().getString(R.string.
+                                background_result_not_successful), Toast.LENGTH_LONG).show();
+                        super.onActivityResult(requestCode, resultCode, data);
+                        return;
+                    }
+                }
+
             }
         } else {
             if (mLockImage.exists()) {
