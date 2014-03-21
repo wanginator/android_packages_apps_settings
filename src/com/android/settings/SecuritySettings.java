@@ -70,6 +70,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String KEY_SEE_THROUGH = "see_through";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String KEY_ENABLE_POWER_MENU = "lockscreen_enable_power_menu";
+    private static final String KEY_DISABLE_FRAME =
+            "lockscreen_disable_frame";
 
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
@@ -110,7 +112,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private CheckBoxPreference mToggleVerifyApps;
     private CheckBoxPreference mPowerButtonInstantlyLocks;
     private CheckBoxPreference mEnableKeyguardWidgets;
-
+    private CheckBoxPreference mDisableFrame;
     private Preference mNotificationAccess;
 
     private boolean mIsPrimary;
@@ -258,6 +260,11 @@ public class SecuritySettings extends RestrictedSettingsFragment
             mMaximizeKeyguardWidgets.setChecked(Settings.System.getInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS, 0) == 1);
         }
+
+	 mDisableFrame = (CheckBoxPreference) findPreference(KEY_DISABLE_FRAME);
+        mDisableFrame.setChecked(Settings.System.getInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_WIDGET_FRAME_ENABLED, 0) == 1);
+        mDisableFrame.setOnPreferenceChangeListener(this);
 
         // biometric weak liveliness
         mBiometricWeakLiveliness =
@@ -686,6 +693,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
+	boolean newValue = (Boolean) value;
         if (preference == mLockAfter) {
             int timeout = Integer.parseInt((String) value);
             try {
@@ -695,8 +703,11 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 Log.e("SecuritySettings", "could not persist lockAfter timeout setting", e);
             }
             updateLockAfterPreferenceSummary();
+	 } else if (preference == mDisableFrame) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_WIDGET_FRAME_ENABLED, newValue ? 1 : 0);
+            return true;
         } else if (preference == mEnablePowerMenu) {
-            boolean newValue = (Boolean) value;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_ENABLE_POWER_MENU, newValue ? 1 : 0);
         }

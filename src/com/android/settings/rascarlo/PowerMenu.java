@@ -91,7 +91,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
         updateExpandedDesktopSummary(expandedDesktopValue);
     }
 
- public boolean onPreferenceChange(Preference preference, Object newValue) {
+ 	public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mImmersiveModePref) {
             int expandedDesktopValue = Integer.valueOf((String) newValue);
             Settings.System.putInt(getContentResolver(),
