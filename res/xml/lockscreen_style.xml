@@ -17,52 +17,11 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/lockscreen_style_title" >
 
-     <PreferenceCategory
-         android:title="@string/lockscreen_background"/>
-
-        <CheckBoxPreference
-            android:key="see_through"
-            android:title="@string/lockscreen_see_through_title"
-            android:summary="@string/lockscreen_see_through_summary"
-            android:defaultValue="false" />
-
-        <CheckBoxPreference
-            android:key="blur_behind"
-            android:title="@string/blur_behind_title"
-            android:summary="@string/blur_behind_summary"
-            android:defaultValue="false"
-            android:dependency="see_through" />
-
-        <SeekBarPreference
-            android:key="blur_radius"
-            android:title="@string/blur_radius_title"
-            android:summary="@string/blur_radius_summary"
-            android:max="25"
-            android:defaultValue="1"
-            android:dependency="blur_behind" />
-
-        <ListPreference
-            android:key="lockscreen_background_style"
-            android:persistent="false"
-            android:dialogTitle="@string/lockscreen_background_style_title"
-            android:title="@string/lockscreen_background_style_title"
-            android:entries="@array/lockscreen_background_entries"
-            android:entryValues="@array/lockscreen_background_values" />
-        
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="lockscreen_background_color_fill"
-            android:title="@string/background_color_fill_title"
-            android:defaultValue="0xff000000"
-            alphaSlider="true" />
-
-    <PreferenceCategory
-        android:title="@string/lockscreen_theme_title"/>
-
         <ListPreference
             android:key="lockscreen_lock_icon"
             android:title="@string/lockscreen_icon_title"
             android:entries="@array/lock_icon_entries"
-            android:entryValues="@array/lock_icon_values"/>
+            android:entryValues="@array/lock_icon_values" />
 
         <CheckBoxPreference
             android:key="lockscreen_colorize_icon"
