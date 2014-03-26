@@ -266,8 +266,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 findPreference(DEBUG_DEBUGGING_CATEGORY_KEY);
 
         mEnableAdb = findAndInitCheckboxPref(ENABLE_ADB);
-	mAdbNotify = findAndInitCheckboxPref(ADB_NOTIFY);
-	mAdbOverNetwork = findAndInitCheckboxPref(ADB_TCPIP);
+        mAdbNotify = findAndInitCheckboxPref(ADB_NOTIFY);
+        mAdbOverNetwork = findAndInitCheckboxPref(ADB_TCPIP);
         mClearAdbKeys = findPreference(CLEAR_ADB_KEYS);
         if (!SystemProperties.getBoolean("ro.adb.secure", false)) {
             if (debugDebuggingCategory != null) {
@@ -275,7 +275,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             }
         }
         mEnableTerminal = findAndInitCheckboxPref(ENABLE_TERMINAL);
-        if (!isPackageInstalled(getActivity(), TERMINAL_APP_PACKAGE)) {
+        if (!Utils.isPackageInstalled(getActivity(), TERMINAL_APP_PACKAGE)) {
             debugDebuggingCategory.removePreference(mEnableTerminal);
             mEnableTerminal = null;
         }
@@ -287,16 +287,16 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mAllowMockLocation = findAndInitCheckboxPref(ALLOW_MOCK_LOCATION);
         mPassword = (PreferenceScreen) findPreference(LOCAL_BACKUP_PASSWORD);
         mAllPrefs.add(mPassword);
-	mAdvancedReboot = findAndInitCheckboxPref(ADVANCED_REBOOT_KEY);
-	mDevelopmentShortcut = findAndInitCheckboxPref(DEVELOPMENT_SHORTCUT_KEY);
+        mAdvancedReboot = findAndInitCheckboxPref(ADVANCED_REBOOT_KEY);
+        mDevelopmentShortcut = findAndInitCheckboxPref(DEVELOPMENT_SHORTCUT_KEY);
 
         if (!android.os.Process.myUserHandle().equals(UserHandle.OWNER)) {
             disableForUser(mEnableAdb);
             disableForUser(mClearAdbKeys);
             disableForUser(mEnableTerminal);
             disableForUser(mPassword);
-	    disableForUser(mAdvancedReboot);
-	    disableForUser(mDevelopmentShortcut);
+            disableForUser(mAdvancedReboot);
+            disableForUser(mDevelopmentShortcut);
         }
 
         mDebugAppPref = findPreference(DEBUG_APP_KEY);
@@ -521,7 +521,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                     context.getPackageManager().getApplicationEnabledSetting(TERMINAL_APP_PACKAGE)
                     == PackageManager.COMPONENT_ENABLED_STATE_ENABLED);
         }
-	mAdbNotify.setChecked(Settings.Secure.getInt(cr,
+        mAdbNotify.setChecked(Settings.Secure.getInt(cr,
                 Settings.Secure.ADB_NOTIFY, 1) != 0);
         updateCheckBox(mBugreportInPower, Settings.Secure.getInt(cr,
                 Settings.Secure.BUGREPORT_IN_POWER_MENU, 0) != 0);
@@ -529,7 +529,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 Settings.Global.STAY_ON_WHILE_PLUGGED_IN, 0) != 0);
         updateCheckBox(mBtHciSnoopLog, Settings.Secure.getInt(cr,
                 Settings.Secure.BLUETOOTH_HCI_LOG, 0) != 0);
-	updateAdbOverNetwork();
+        updateAdbOverNetwork();
         updateCheckBox(mAllowMockLocation, Settings.Secure.getInt(cr,
                 Settings.Secure.ALLOW_MOCK_LOCATION, 0) != 0);
         updateRuntimeValue();
@@ -560,8 +560,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateBugreportOptions();
         updateForceRtlOptions();
         updateWifiDisplayCertificationOptions();
-	updateAdvancedRebootOptions();
-	updateDevelopmentShortcutOptions();
+        updateAdvancedRebootOptions();
+        updateDevelopmentShortcutOptions();
     }
 
     private void resetAdvancedRebootOptions() {
@@ -614,7 +614,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 Log.e(TAG, "wifiManager, getConnectionInfo()", e);
             }
         }
- 
+
         if (wifiInfo != null) {
             String hostAddress = NetworkUtils.intToInetAddress(
                     wifiInfo.getIpAddress()).getHostAddress();
@@ -634,8 +634,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             }
         }
         resetDebuggerOptions();
-	resetAdvancedRebootOptions();
-	resetDevelopmentShortcutOptions();
+        resetAdvancedRebootOptions();
+        resetDevelopmentShortcutOptions();
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
         writeAnimationScaleOption(2, mAnimatorDurationScale, null);
@@ -1413,9 +1413,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeShowHwLayersUpdatesOptions();
         } else if (preference == mDebugLayout) {
             writeDebugLayoutOptions();
-	} else if (preference == mAdvancedReboot) {
+        } else if (preference == mAdvancedReboot) {
             writeAdvancedRebootOptions();
-	} else if (preference == mDevelopmentShortcut) {
+        } else if (preference == mDevelopmentShortcut) {
             writeDevelopmentShortcutOptions();
         } else if (preference == mForceRtlLayout) {
             writeForceRtlOptions();
@@ -1554,7 +1554,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             if (which == DialogInterface.BUTTON_POSITIVE) {
                 Settings.Secure.putInt(getActivity().getContentResolver(),
                         Settings.Secure.ADB_PORT, 5555);
-	    }
+            }
         } else if (dialog == mAdbKeysDialog) {
             if (which == DialogInterface.BUTTON_POSITIVE) {
                 try {
@@ -1584,7 +1584,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             }
             mAdbDialog = null;
 
-	} else if (dialog == mAdbTcpDialog) {
+        } else if (dialog == mAdbTcpDialog) {
             updateAdbOverNetwork();
             mAdbTcpDialog = null;
 
@@ -1633,14 +1633,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 }
             }
             return null;
-        }
-    }
-
-    private static boolean isPackageInstalled(Context context, String packageName) {
-        try {
-            return context.getPackageManager().getPackageInfo(packageName, 0) != null;
-        } catch (NameNotFoundException e) {
-            return false;
         }
     }
 }

@@ -42,6 +42,8 @@ public class LockscreenWidgets extends SettingsPreferenceFragment
 
     private static final String TAG = "LockscreenWidgets";
 
+    private static final String KEY_LOCK_CLOCK = "lock_clock";
+
     private static final String KEY_ENABLE_WIDGETS =
             "lockscreen_enable_widgets";
     private static final String KEY_LOCKSCREEN_CAMERA_WIDGET =
@@ -68,6 +70,11 @@ public class LockscreenWidgets extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.lockscreen_widgets);
 
         PreferenceScreen prefSet = getPreferenceScreen();
+
+        // Only add if device has LockClock installed
+        if (!Utils.isPackageInstalled(getActivity(), "com.cyanogenmod.lockclock")) {
+            prefSet.removePreference(findPreference(KEY_LOCK_CLOCK));
+        }
 
         mEnableWidgets = (CheckBoxPreference) findPreference(KEY_ENABLE_WIDGETS);
         final boolean enabled = new LockPatternUtils(getActivity()).getWidgetsEnabled();

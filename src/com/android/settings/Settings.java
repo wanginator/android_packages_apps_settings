@@ -93,18 +93,19 @@ import com.android.settings.nfc.PaymentSettings;
 import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintServiceSettingsFragment;
 import com.android.settings.print.PrintSettingsFragment;
+import com.android.settings.profiles.AppGroupConfig;
+import com.android.settings.profiles.ProfileConfig;
+import com.android.settings.profiles.ProfilesSettings;
+import com.android.settings.profiles.ProfileEnabler;
 import com.android.settings.tts.TextToSpeechSettings;
 import com.android.settings.users.UserSettings;
+import com.android.settings.voicewakeup.VoiceWakeupEnabler;
 import com.android.settings.vpn2.VpnSettings;
 import com.android.settings.wfd.WifiDisplaySettings;
 import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.WifiEnabler;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
-import com.android.settings.profiles.AppGroupConfig;
-import com.android.settings.profiles.ProfileConfig;
-import com.android.settings.profiles.ProfilesSettings;
-import com.android.settings.profiles.ProfileEnabler;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -133,6 +134,8 @@ public class Settings extends PreferenceActivity
 
     private static final String SAVE_KEY_CURRENT_HEADER = "com.android.settings.CURRENT_HEADER";
     private static final String SAVE_KEY_PARENT_HEADER = "com.android.settings.PARENT_HEADER";
+
+    private static final String VOICE_WAKEUP_PACKAGE_NAME = "com.cyanogenmod.voicewakeup";
 
     static final int DIALOG_ONLY_ONE_HOME = 1;
 
@@ -545,7 +548,7 @@ public class Settings extends PreferenceActivity
                 BlacklistSettings.class.getName().equals(fragmentName) ||
                 BluetoothSettings.class.getName().equals(fragmentName) ||
                 DreamSettings.class.getName().equals(fragmentName) ||
-		ProfilesSettings.class.getName().equals(fragmentName) ||
+                ProfilesSettings.class.getName().equals(fragmentName) ||
                 ProfileConfig.class.getName().equals(fragmentName) ||
                 AppGroupConfig.class.getName().equals(fragmentName) ||
                 LocationSettings.class.getName().equals(fragmentName) ||
@@ -651,6 +654,10 @@ public class Settings extends PreferenceActivity
                 }
                 if (!supported) {
                     target.remove(i);
+                }
+            } else if (id == R.id.voice_wakeup_settings) {
+                if(!Utils.isPackageInstalled(this, VOICE_WAKEUP_PACKAGE_NAME)) {
+                    target.remove(header);
                 }
             }
 
@@ -830,9 +837,10 @@ public class Settings extends PreferenceActivity
 
         private final WifiEnabler mWifiEnabler;
         private final BluetoothEnabler mBluetoothEnabler;
+        private final ProfileEnabler mProfileEnabler;
+        private final VoiceWakeupEnabler mVoiceWakeupEnabler;
         private AuthenticatorHelper mAuthHelper;
         private DevicePolicyManager mDevicePolicyManager;
-	private final ProfileEnabler mProfileEnabler;
 
         private static class HeaderViewHolder {
             ImageView icon;
@@ -849,8 +857,9 @@ public class Settings extends PreferenceActivity
             if (header.fragment == null && header.intent == null) {
                 return HEADER_TYPE_CATEGORY;
             } else if (header.id == R.id.wifi_settings
-                     || header.id == R.id.bluetooth_settings
-                     || header.id == R.id.profiles_settings) {
+                    || header.id == R.id.bluetooth_settings
+                    || header.id == R.id.profiles_settings
+                    || header.id == R.id.voice_wakeup_settings) {
                 return HEADER_TYPE_SWITCH;
             } else if (header.id == R.id.security_settings) {
                 return HEADER_TYPE_BUTTON;
@@ -896,7 +905,8 @@ public class Settings extends PreferenceActivity
             // Switches inflated from their layouts. Must be done before adapter is set in super
             mWifiEnabler = new WifiEnabler(context, new Switch(context));
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
-	    mProfileEnabler = new ProfileEnabler(context, new Switch(context));
+            mProfileEnabler = new ProfileEnabler(context, new Switch(context));
+            mVoiceWakeupEnabler = new VoiceWakeupEnabler(context, new Switch(context));
             mDevicePolicyManager = dpm;
         }
 
@@ -968,8 +978,10 @@ public class Settings extends PreferenceActivity
                         mWifiEnabler.setSwitch(holder.switch_);
                     } else if (header.id == R.id.bluetooth_settings) {
                         mBluetoothEnabler.setSwitch(holder.switch_);
-		    } else if (header.id == R.id.profiles_settings) {
+                    } else if (header.id == R.id.profiles_settings) {
                         mProfileEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.voice_wakeup_settings) {
+                        mVoiceWakeupEnabler.setSwitch(holder.switch_);
                     }
                     updateCommonHeaderView(header, holder);
                     break;
@@ -1044,12 +1056,14 @@ public class Settings extends PreferenceActivity
             mWifiEnabler.resume();
             mBluetoothEnabler.resume();
             mProfileEnabler.resume();
+            mVoiceWakeupEnabler.resume();
         }
 
         public void pause() {
             mWifiEnabler.pause();
             mBluetoothEnabler.pause();
             mProfileEnabler.pause();
+            mVoiceWakeupEnabler.pause();
         }
     }
 
@@ -1190,5 +1204,6 @@ public class Settings extends PreferenceActivity
     public static class ProfilesSettingsActivity extends Settings { /* empty */ }
     public static class NavbarSettingsActivity extends Settings { /* empty */ }
     public static class ThemeSettingsActivity extends Settings { /* empty */ }
-    public static class RamBarActivity extends Settings { /* empty */ }    
+    public static class RamBarActivity extends Settings { /* empty */ }
+    public static class VoiceWakeupSettingsActivity extends Settings { /* empty */ }    
 }
