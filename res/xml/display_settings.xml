@@ -27,11 +27,6 @@
                 android:title="@string/wallpaper_settings_title"
                 android:fragment="com.android.settings.WallpaperTypeSettings" />
 
-        <PreferenceScreen
-                android:key="screen_recorder"
-                android:title="@string/screen_recorder_title"
-                android:fragment="com.android.settings.chameleonos.ScreenRecorderSettings" />
-
         <CheckBoxPreference
             android:key="accelerometer"
             android:title="@string/accelerometer_title"/>
@@ -66,11 +61,4 @@
                 android:key="wifi_display"
                 android:title="@string/wifi_display_settings_title"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
-
-     <PreferenceScreen
-        android:key="lockscreen_notifications"
-        android:fragment="com.android.settings.rascarlo.lsn.LockscreenNotifications"
-        android:title="@string/lockscreen_notifications"
-        android:summary="@string/lockscreen_notifications_summary"/>
-
 </PreferenceScreen>

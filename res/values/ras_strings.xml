@@ -71,6 +71,7 @@
  <!-- Status bar | Clock -->
     <string name="status_bar_clock">Clock and date</string>
     <string name="status_bar_clock_title">Clock and date style</string>
+    <string name="status_bar_clock_summary">Change Clock and Date Settings</string>
     <string name="clock_title_enable">Alignment</string>
     <string name="clock_enabled">Enabled</string>
     <string name="clock_disabled">Disabled</string>
@@ -114,8 +115,11 @@
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
     <string name="status_bar_toggle_info">Automatic brightness must be disabled</string>
-    <!-- Status bar double-tap to sleep -->
-    <string name="status_bar_double_tap_to_sleep_title">Double-tap to sleep</string>
+
+<!-- Status bar double-tap to sleep -->
+   <!-- Double-tap to sleep -->
+   <string name="status_bar_double_tap_to_sleep_title">Double-tap to sleep</string>
+    <string name="status_bar_double_tap_sleep_status_bar_summary">Double tap anywhere on status bar or glowpad</string>
 
     <!-- Safe headset volume restore checkbox -->
     <string name="safe_headset_volume_title">Safe headset volume</string>
@@ -267,7 +271,8 @@
     <string name="see_through_summary">Blurs and displays the content behind your lockscreen, your data may be visible to those around you</string>
 
     <!-- Network traffic -->
-    <string name="network_traffic_title">Network traffic</string>
+    <string name="network_traffic_title">Network traffic meter</string>
+    <string name="network_traffic_summary">Enables the network speed to appear in the Statusbar</string>
     <string name="show_network_traffic_state">Status bar traffic monitor</string>
     <string name="show_network_traffic_unit">Display unit</string>
     <string name="show_network_traffic_frequency">Update interval</string>
@@ -286,7 +291,7 @@
     <string name="show_activity_indicators_on_status_bar_title">Network activity indicator</string>
     <string name="show_activity_indicators_on_status_bar_summary">Show network activity in statusbar</string>
 
-<!-- Color Picker -->
+	<!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
     <string name="press_color_to_apply">Press on color below to apply</string>
     <string name="arrow_right">→</string>
@@ -296,14 +301,14 @@
     <string name="set">Set</string>
     <string name="color_default">Default</string>
 
-    <!-- Screen recorder -->
+	<!-- Screen recorder -->
     <string name="screen_recorder_title">Screen recorder</string>
     <string name="screen_recorder_summary">Adjust screen recorder settings</string>
     <string name="screen_recorder_video_dimensions_title">Video size</string>
     <string name="screen_recorder_video_bitrate_title">Bitrate</string>
     <string name="screen_recorder_record_audio_title">Record audio</string>
     <string name="screen_recorder_record_audio_summary">Record audio from the microphone</string>
-    <!-- video sizes -->
+	<!-- video sizes -->
     <string name="screen_recorder_size_240x400">240x400</string>
     <string name="screen_recorder_size_360x640">360x640</string>
     <string name="screen_recorder_size_480x800">480x800</string>
@@ -311,7 +316,7 @@
     <string name="screen_recorder_size_540x960">540x960</string>
     <string name="screen_recorder_size_600x1024">600x1024</string>
     <string name="screen_recorder_size_720x1280">720x1280</string>
-    <!-- frame rates -->
+	<!-- frame rates -->
     <string name="screen_recorder_bitrate_title_100000">100 kB/s</string>
     <string name="screen_recorder_bitrate_title_250000">250 kB/s</string>
     <string name="screen_recorder_bitrate_title_500000">500 kB/s</string>
@@ -333,53 +338,54 @@
     <string name="screen_recorder_bitrate_10000000">10000000</string>
     <string name="screen_recorder_bitrate_20000000">20000000</string>
 
- <!--Quick unlock -->
-    <string name="unlock_quick_unlock_control_title">Quick unlock</string>
-    <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
+ 	<!--Quick unlock -->
+	<string name="unlock_quick_unlock_control_title">Quick unlock</string>
+    	<string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
+        <string name="lockscreen_widget_frame_title">Disable widget frames</string>
+        <string name="lockscreen_widget_frame_summary">Disable widget background frames</string>
 
-    <string name="lockscreen_widget_frame_title">Disable widget frames</string>
-    <string name="lockscreen_widget_frame_summary">Disable widget background frames</string>
+	<!-- Enable power menu -->
+    	<string name="lockscreen_enable_power_menu_title">Enable power menu</string>
+    	<string name="lockscreen_enable_power_menu_summary">Show power menu when screen is locked</string>
 
-<!-- Enable power menu -->
-    <string name="lockscreen_enable_power_menu_title">Enable power menu</string>
-    <string name="lockscreen_enable_power_menu_summary">Show power menu when screen is locked</string>
+	<!-- Power menu enable disable -->
+	<string name="power_menu_title">Lockscreen</string>
+	<string name="category_power_menu_title">Power Menu Settings</string>
+	<string name="power_menu_reboot_title">Reboot menu</string>
+	<string name="power_menu_screenshot_title">Screenshot</string>
+	<string name="power_menu_screenrecord_title">Screen record</string>
+	<string name="power_menu_airplane_title">Airplane mode</string>
+	<string name="power_menu_silent_title">Sound panel</string>
+	<string name="power_menu_immersive_mode">Immersive mode</string>
+	<string name="summary_immersive_mode">%1$s</string>
+	<string name="immersive_mode_summary_status_bar">With status bar</string>
+	<string name="immersive_mode_summary_no_status_bar">Without status bar</string>
+   	<string name="immersive_mode_disabled">Off</string>
+ 	<string name="immersive_mode_status_bar">With status bar</string>
+   	<string name="immersive_mode_no_status_bar">Without status bar</string>
 
- <!-- Power menu enable disable -->
-    <string name="power_menu_title">Power menu</string>
-    <string name="power_menu_reboot_title">Reboot menu</string>
-    <string name="power_menu_screenshot_title">Screenshot</string>
-    <string name="power_menu_screenrecord_title">Screen record</string>
-    <string name="power_menu_airplane_title">Airplane mode</string>
-    <string name="power_menu_silent_title">Sound panel</string>
-    <string name="power_menu_immersive_mode">Immersive mode</string>
-    <string name="summary_immersive_mode">%1$s</string>
-    <string name="immersive_mode_summary_status_bar">With status bar</string>
-    <string name="immersive_mode_summary_no_status_bar">Without status bar</string>
-    <string name="immersive_mode_disabled">Off</string>
-    <string name="immersive_mode_status_bar">With status bar</string>
-    <string name="immersive_mode_no_status_bar">Without status bar</string>
+	<!-- increasing ring volume -->
+	<string name="increasing_ring_title">Ascending ringtone</string>
+	<!-- Sound settings screen, the caption of the checkbox for making incoming calls increase in volume -->
+	<string name="checkbox_increasing_ring">Enable</string>
+	<!-- Sound settings screen, the title of the volume bar to adjust the minimum increasing ring volume -->
+        <string name="increasing_ring_min_volume_title">Ringing start volume</string>
+       <string name="increasing_ring_volume_notice">Notice:\nAs the start volume is set higher than the ringer volume, the ring tone will be played using the ringer volume.</string>
+       <string name="increasing_ring_interval_title">Increase interval</string>
+       <string name="increasing_ring_interval_eachring">On each ring</string>
+       <string name="increasing_ring_interval_half_second">0.5 seconds</string>
+       <string name="increasing_ring_interval_1second">1 second</string>
+       <string name="increasing_ring_interval_2seconds">2 seconds</string>
+       <string name="increasing_ring_interval_3seconds">3 seconds</string>
+       <string name="increasing_ring_interval_5seconds">5 seconds</string>
+       <string name="increasing_ring_interval_10seconds">10 seconds</string>
 
-<!-- increasing ring volume -->
- <string name="increasing_ring_title">Ascending ringtone</string>
-    <!-- Sound settings screen, the caption of the checkbox for making incoming calls increase in volume -->
-    <string name="checkbox_increasing_ring">Enable</string>
-    <!-- Sound settings screen, the title of the volume bar to adjust the minimum increasing ring volume -->
-    <string name="increasing_ring_min_volume_title">Ringing start volume</string>
-    <string name="increasing_ring_volume_notice">Notice:\nAs the start volume is set higher than the ringer volume, the ring tone will be played using the ringer volume.</string>
-    <string name="increasing_ring_interval_title">Increase interval</string>
-    <string name="increasing_ring_interval_eachring">On each ring</string>
-    <string name="increasing_ring_interval_half_second">0.5 seconds</string>
-    <string name="increasing_ring_interval_1second">1 second</string>
-    <string name="increasing_ring_interval_2seconds">2 seconds</string>
-    <string name="increasing_ring_interval_3seconds">3 seconds</string>
-    <string name="increasing_ring_interval_5seconds">5 seconds</string>
-    <string name="increasing_ring_interval_10seconds">10 seconds</string>
+	<!-- Screen-On Notification Light -->
+	<string name="screen_on_notification_led_title">Screen-On Notification Light</string>
+	<string name="screen_on_notification_led_summary">Enable Notification Light even when screen is on</string>
 
- <!-- Screen-On Notification Light -->
-    <string name="screen_on_notification_led_title">Screen-On Notification Light</string>
-    <string name="screen_on_notification_led_summary">Enable Notification Light even when screen is on</string>
-
-<!-- omni switch recents -->
+    <!-- omni switch recents -->
+    <string name="system_category">System</string>
     <string name="omniswitch_category">OmniSwitch</string>
     <string name="recents_use_omniswitch_title">Use for recents</string>
     <string name="recents_use_omniswitch_summary">Use OmniSwitch instead of default recents view</string>
@@ -398,18 +404,6 @@
     <!-- Lockscreen see through -->
     <string name="lockscreen_see_through_title">See through</string>
     <string name="lockscreen_see_through_summary">Shows the content behind your lockscreen, your data may be visible to those around you</string>
-
-    <!-- Double-tap to sleep -->
-    <string name="double_tap_sleep_title">Double-tap to sleep</string>
-    <string name="double_tap_sleep_secure_lockscreen_category">Secure lockscreen</string>
-    <string name="status_bar_double_tap_sleep_status_bar_title">Status bar</string>
-    <string name="status_bar_double_tap_sleep_status_bar_summary">Double tap anywhere on the status bar</string>
-    <string name="status_bar_double_tap_sleep_glowpad_title">Glow pad</string>
-    <string name="status_bar_double_tap_sleep_glowpad_summary">Double tap the glow pad</string>
-    <string name="status_bar_double_tap_sleep_pin_password_title">Pin and Password</string>
-    <string name="status_bar_double_tap_sleep_pin_password_summary">Double tap the text entry view</string>
-    <string name="status_bar_double_tap_sleep_pattern_title">Pattern</string>
-    <string name="status_bar_double_tap_sleep_pattern_summary">Double tap anywhere on the pattern view</string>
 
     <!-- Basic Numbers -->
     <string name="two">Two</string>

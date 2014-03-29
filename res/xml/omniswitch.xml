@@ -14,6 +14,10 @@ limitations under the License.
  <PreferenceScreen
      xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <PreferenceCategory
+        android:key="omniswitch_category"
+        android:title="@string/omniswitch_category">
+
     <CheckBoxPreference
             android:key="recents_use_omniswitch"
             android:title="@string/recents_use_omniswitch_title"
@@ -25,5 +29,5 @@ limitations under the License.
             android:title="@string/omniswitch_start_settings_title"
             android:summary="@string/omniswitch_start_settings_summary"
             android:persistent="false" />
-
+    </PreferenceCategory>
  </PreferenceScreen>

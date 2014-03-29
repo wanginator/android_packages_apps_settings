@@ -9,11 +9,11 @@
         android:key="navigation_bar_buttons_layout"
         android:title="@string/navigation_bar_buttons_layout_title" />
 
- <net.margaritov.preference.colorpicker.ColorPickerPreference
-        android:key="navbar_button_tint"
-        android:title="@string/navbar_button_tint_title"
-        android:defaultValue="#ffffff" />
-    
+    <PreferenceScreen
+        android:fragment="com.android.settings.rascarlo.NavRing"
+        android:key="navigation_ring"
+        android:title="@string/navigation_ring_title" />
+
     <ListPreference
         android:key="navigation_bar_height"
         android:dialogTitle="@string/navigation_bar_height"
@@ -22,4 +22,9 @@
         android:entryValues="@array/navigation_bar_height_values"
         android:defaultValue="48"
         android:persistent="false" />
+
+ <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="navbar_button_tint"
+        android:title="@string/navbar_button_tint_title"
+        android:defaultValue="#ffffff" />
 </PreferenceScreen>
