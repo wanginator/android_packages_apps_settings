@@ -1795,4 +1795,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Notification drawer brightness slider -->
     <string name="brightness_slider_title">Brightness slider</string>
     <string name="brightness_slider_summary">enable a brightness slider in the notification drawer</string>
+
+    <!-- Voice+ -->
+    <string name="voice_plus_title">Voice+</string>
+    <string name="voice_plus_summary">Enable all apps to send SMS messages through Google Voice</string>
 </resources>
