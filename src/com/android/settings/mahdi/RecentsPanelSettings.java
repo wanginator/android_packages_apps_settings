@@ -47,16 +47,12 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
     private static final String RECENT_PANEL_SCALE = "recent_panel_scale";
     private static final String RECENT_MENU_CLEAR_ALL = "recent_menu_clear_all";
     private static final String RECENT_MENU_CLEAR_ALL_LOCATION = "recent_menu_clear_all_location";
-    private static final String SHOW_RECENTS_MEMORY_INDICATOR = "show_recents_memory_indicator";
-    private static final String RECENTS_MEMORY_INDICATOR_LOCATION = "recents_memory_indicator_location";
 
     private CheckBoxPreference mRecentsCustom;
     private CheckBoxPreference mRecentPanelLeftyMode;
     private ListPreference mRecentPanelScale;
     private CheckBoxPreference mRecentClearAll;
     private ListPreference mRecentClearAllPosition;
-    private CheckBoxPreference mShowRecentsMemoryIndicator;
-    private ListPreference mRecentsMemoryIndicatorPosition;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,20 +88,6 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
             mRecentClearAllPosition.setValue(recentClearAllPosition);
         }
         mRecentClearAllPosition.setOnPreferenceChangeListener(this);
-
-        mShowRecentsMemoryIndicator = (CheckBoxPreference)
-                prefSet.findPreference(SHOW_RECENTS_MEMORY_INDICATOR);
-        mShowRecentsMemoryIndicator.setChecked(Settings.System.getInt(resolver,
-                Settings.System.SHOW_RECENTS_MEMORY_INDICATOR, 0) == 1);
-        mShowRecentsMemoryIndicator.setOnPreferenceChangeListener(this);
-        mRecentsMemoryIndicatorPosition = (ListPreference) prefSet
-                .findPreference(RECENTS_MEMORY_INDICATOR_LOCATION);
-        String recentsMemoryIndicatorPosition = Settings.System.getString(
-                resolver, Settings.System.RECENTS_MEMORY_INDICATOR_LOCATION);
-        if (recentsMemoryIndicatorPosition != null) {
-            mRecentsMemoryIndicatorPosition.setValue(recentsMemoryIndicatorPosition);
-        }
-        mRecentsMemoryIndicatorPosition.setOnPreferenceChangeListener(this);
     }
 
     private void updatePreference() {
@@ -136,16 +118,6 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         } else if (preference == mRecentClearAllPosition) {
             String value = (String) newValue;
             Settings.System.putString(resolver, Settings.System.CLEAR_RECENTS_BUTTON_LOCATION, value);
-            return true;
-        } else if (preference == mShowRecentsMemoryIndicator) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(
-                    resolver, Settings.System.SHOW_RECENTS_MEMORY_INDICATOR, value ? 1 : 0);
-            return true;
-        } else if (preference == mRecentsMemoryIndicatorPosition) {
-            String value = (String) newValue;
-            Settings.System.putString(
-                    resolver, Settings.System.RECENTS_MEMORY_INDICATOR_LOCATION, value);
             return true;
         } else if (preference == mRecentsCustom) { // Enable||disable Slim Recent
             Settings.System.putBoolean(resolver,
