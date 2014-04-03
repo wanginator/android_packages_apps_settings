@@ -199,22 +199,6 @@
             android:action="android.settings.ADD_ACCOUNT_SETTINGS"/>
     </header>
 
-    <!-- Custom Settings -->
-    <header android:title="@string/custom_settings_category" />
-
-    <!-- Themes & DarkUI -->
-    <header
-        android:id="@+id/theme_settings_slim"
-        android:fragment="com.android.settings.mahdi.themes.ThemeSettings"
-        android:icon="@drawable/ic_settings_themes"
-        android:title="@string/theme_settings_title_slim" />
-
-    <!-- Customization -->
-    <header
-        android:id="@+id/customization_settings"
-        android:fragment="com.android.settings.mahdi.CustomizationSettings"
-        android:title="@string/customization_settings_title" />
-
     <!-- SYSTEM -->
     <header android:id="@+id/system_section"
         android:title="@string/header_category_system" />
@@ -239,6 +223,13 @@
         android:fragment="com.android.settings.print.PrintSettingsFragment"
         android:icon="@*android:drawable/ic_print"
         android:title="@string/print_settings" />
+
+    <!-- Customization -->
+    <header
+        android:id="@+id/customization_settings"
+        android:fragment="com.android.settings.mahdi.CustomizationSettings"
+        android:icon="@drawable/ic_settings_mahdi"
+        android:title="@string/customization_settings_title" />
 
     <!-- Performance Controls -->
     <header

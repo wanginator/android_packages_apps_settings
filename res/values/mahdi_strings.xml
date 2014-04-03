@@ -14,11 +14,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Custom settings  -->
-    <string name="custom_settings_category">Custom</string>
-
     <!-- Customization Interface settings  -->
-    <string name="customization_settings_title">More...</string>
+    <string name="customization_settings_title">Customization</string>
 
     <!-- About phone screen,  Mod Version -->
     <string name="mod_version">Mahdi Rom version</string>
@@ -286,7 +283,7 @@
     <string name="select_contact">Select contact</string>
 
     <!-- Performance Control -->
-    <string name="performance_settings">Performance</string>
+    <string name="performance_settings">Kernel settings</string>
 
     <!-- Sound settings -->
     <string name="volume_category">Volume</string>
@@ -1277,7 +1274,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Themes settings  -->
     <string name="themes_settings_title">Themes</string>
-    <string name="themes_settings_summary">Change themes with T-Mobiles theme engine</string>
+    <string name="themes_settings_summary">Change themes with T-Mobiles theme engine or switch to DarkUI</string>
 
     <!-- Notification drawer background -->
     <string name="notification_style_title">Style</string>    
