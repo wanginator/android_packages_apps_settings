@@ -13,12 +13,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">    
-    <!-- Custom settings  -->
-    <string name="custom_settings_category">Personalización</string>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Customization Interface settings  -->
-    <string name="customization_settings_title">Más...</string>
+    <string name="customization_settings_title">Personalización</string>
 
     <!-- About phone screen,  Mod Version -->
     <string name="mod_version">Versión Mahdi Rom</string>
@@ -828,7 +826,6 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="group_applications">Aplicaciones</string>
     <string name="select_custom_app_title">Seleccionar aplicación personalizada</string>
     <string name="shortcuts_color_title">Color de icono de acceso directo</string>
-    <string name="shortcuts_color_summary">Colorea el icono de acceso directo</string>
     <string name="shortcuts_color_mode_title">Modo de color de icono</string>
     <string name="shortcuts_color_mode_summary">Cambiar el modo de color del icono de acceso directo</string>
 
@@ -941,6 +938,7 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="quiet_hours_auto_sms_null">[Mensaje automático] Me pondré en contacto en cuanto pueda.</string>
     <string name="quiet_hours_auto_disabled">Desactivado</string>
     <string name="quiet_hours_auto_enabled">Todo números</string>
+    <string name="quiet_hours_auto_starred">Solo contactos favoritos</string>
     <string name="quiet_hours_auto_contacts">Solo contactos</string>
     <string name="quiet_hours_bypass_group">Omitir horas silencio</string>
     <string name="quiet_hours_sms_code_null">[Alarma]</string>
@@ -1214,12 +1212,6 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="recent_clear_all_button_location_top_right">Arriba a la derecha</string>
     <string name="recent_clear_all_button_location_bottom_left">Abajo a la izquierda</string>
     <string name="recent_clear_all_button_location_bottom_right">Abajo a la derecha</string>
-
-    <!-- Memory Indicator -->
-    <string name="show_recents_memory_indicator_title">Indicador de memoria</string>
-    <string name="show_recents_memory_indicator_summary">Muestra un indicador de memoria dentro de la vista reciente de las aplicaciones</string>
-    <string name="recents_memory_indicator_location_title">Posición del indicador de memoria</string>
-    <string name="recents_memory_indicator_location_summary">Elija la posición del indicador de memoria</string>
 
     <!-- New Recents Screen -->
     <string name="new_recents_category">Slim Recientes</string>
@@ -1706,20 +1698,6 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <!-- Lockscreen see through -->
     <string name="lockscreen_see_through_title">Ver a través de</string>
     <string name="lockscreen_see_through_summary">Muestra el contenido de detrás de la pantalla de bloqueo, sus datos pueden ser visibles a los que le rodean</string>
-    <string name="blur_behind_title">Fondo Blur Lockscreen</string>
-    <string name="blur_behind_summary">Vea a través de pantalla de bloqueo con efecto de desenfoque</string>
-    <string name="blur_radius_title">Blur Radio</string>
-    <string name="blur_radius_summary">Ajuste el radio de desenfoque para el efecto borroso</string>
-    <!-- Lockscreen background -->
-    <string name="lockscreen_background">Fondo</string>
-    <string name="lockscreen_background_style_title">Tipo de fondo personalizado</string>
-    <string name="background_color_fill_title">Color de fondo</string>
-    <string name="background_default">Wallpaper por defecto</string>
-    <string name="background_color_fill">Color de relleno</string>
-    <string name="background_wallpaper">Wallpaper personal</string>
-    <string name="transparency">Transparencia de fondo</string>
-    <string name="background_result_successful">Fondo cambiado</string>
-    <string name="background_result_not_successful">Fondo no cambiado</string>
     <!-- Lockscreen style settings -->
     <string name="lockscreen_style_reset_message">¿Reestablecer todos los colores de pantalla de bloqueo?</string>
     <string name="lockscreen_icon_title">Icono de bloqueo</string>
@@ -1729,13 +1707,16 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="lockscreen_colorize_handle_summary">El color del bloqueo se ajustará a la imagen personalizada</string>
     <string name="lockscreen_style_title">Ajustes de estilo</string>
     <string name="lockscreen_style_summary">Cambiar el fondo, elija un lockring personal y más</string>
-    <string name="lockscreen_theme_title">Estilo de tema</string>
     <string name="lockscreen_frame_color_title">Color del marco</string>
     <string name="lockscreen_frame_color_summary">Color del widget y marco de desbloqueo</string>
     <string name="lockscreen_lock_color_title">Color de bloqueo</string>
     <string name="lockscreen_lock_color_summary">Colores del bloqueo</string>
     <string name="lockscreen_dots_color_title">Color de puntos</string>
     <string name="lockscreen_dots_color_summary">Colores de puntos</string>
+
+    <!-- Lockscreen Wallpaper -->
+    <string name="lockscreen_wallpaper_title">Fondo pantalla de bloqueo</string>
+    <string name="lockscreen_wallpaper_summary">Puede elegir diferentes wallpapers para su pantalla de bloqueo</string>
 
     <!-- Themes -->
     <string name="theme_settings_title_slim">Temas</string>
@@ -1776,5 +1757,40 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <!-- On-The-Go -->
     <string name="power_menu_onthego_title">Modo On-The-Go</string>
     <string name="title_tile_onthego">On-The-Go</string>
+
+    <!-- Swap volume buttons -->
+    <string name="swap_volume_buttons_title">Reorientar botones de volumen</string>
+    <string name="swap_volume_buttons_summary">Intercambiar botones de volumen cuando se gira la pantalla</string>
+	
+    <!-- Recents Ram Bar -->
+    <string name="ram_bar_title">Barra RAM recientes</string>
+    <string name="ram_bar_summary">Ver o cambiar la configuración de la barra de RAM</string>
+    <string name="ram_bar_note_title">Nota</string>
+    <string name="ram_bar_note_summary">Esta barra muestra la memoria RAM Android de utilización real. Tenga en cuenta que tiene aplicaciones en caché que ayuda a su dispositivo a abrir las apps mucho más rápido. Para más explicaciones sobre cómo Android gestiona memoria (RAM), compruebe el menú de ayuda.</string>
+    <string name="ram_bar_mode_title">Modo Barra RAM recientes</string>
+    <string name="ram_bar_mode_dialog_title">Mostrar en Barra RAM recientes</string>
+    <string name="ram_bar_none">Ninguno</string>
+    <string name="ram_bar_apps">Aplicaciones</string>
+    <string name="ram_bar_cache">Aplicaciones y cache</string>
+    <string name="ram_bar_other">Aplicaciones, cache y otros</string>
+    <string name="ram_bar_style_cat">Estilo Barra RAM recientes</string>
+    <string name="ram_bar_color_app_mem_color">Color Aplicaciones RAM</string>
+    <string name="ram_bar_color_cache_mem_color">Color Cache RAM</string>
+    <string name="ram_bar_color_total_mem_color">Color Otros RAM</string>
+    <string name="ram_bar_color_enabled">Activado</string>
+    <string name="ram_bar_color_disabled">Desactivado</string>
+    <string name="ram_bar_button_help">Ayuda</string>
+    <string name="ram_bar_button_reset">Restablecer colores</string>
+    <string name="ram_bar_reset">Restablecer</string>
+    <string name="ram_bar_reset_message">¿Restablecer estilo Barra RAM predeterminada?</string>
+
+    <!-- Disable FC Notifications -->
+    <string name="disable_fc_notifications_title">Desactivar notificaciones de FC</string>
+    <string name="disable_fc_notifications_summary">Esto ocultará todas la notificaciones de FC</string>
+
+    <!-- Notification drawer brightness slider -->
+    <string name="brightness_slider_title">Regulador de brillo</string>
+    <string name="brightness_slider_summary">Permitir un control deslizante de brillo en el cajón de notificaciones</string>
+
 </resources>
 
