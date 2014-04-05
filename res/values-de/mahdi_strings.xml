@@ -14,11 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Custom settings -->
-    <string name="custom_settings_category">Individualisierung</string>
-
     <!-- Customization Interface settings -->
-    <string name="customization_settings_title">Mehr...</string>
+    <string name="customization_settings_title">Individualisierung</string>
 
     <!-- About phone screen, Mod Version -->
     <string name="mod_version">Mahdi Rom Version</string>
@@ -913,6 +910,9 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="quiet_hours_enabled">Ruhige Stunden aktivieren</string>
     <string name="quiet_hours_enabled_on">Ruhige Stunden sind aktiviert</string>
     <string name="quiet_hours_enabled_off">Ruhige Stunden sind deaktiviert</string>
+    <string name="quiet_hours_auto_title">Automatischer Modus</string>
+    <string name="quiet_hours_auto_silent">Ruhige Stunden werden aktiviert, wenn der Klingelton stumm geschaltet wird</string>
+    <string name="quiet_hours_auto_vibrate">Ruhige Stunden werden aktiviert, wenn die Vibration eingeschaltet oder der Ton auf Stumm geschaltet wurde</string>
     <string name="quiet_hours_start">Start der Ruhigen Stunden</string>
     <string name="quiet_hours_start_summary">Wann die Ruhigen Stunden aktiviert werden sollen</string>
     <string name="quiet_hours_end">Ende der Ruhigen Stunden</string>
@@ -943,6 +943,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="quiet_hours_auto_disabled">Deaktiviert</string>
     <string name="quiet_hours_auto_enabled">Alle Nummern</string>
     <string name="quiet_hours_auto_contacts">Nur Kontakte</string>
+    <string name="quiet_hours_auto_starred">Nur Favoriten</string>
     <string name="quiet_hours_bypass_group">Ausnahmen</string>
     <string name="quiet_hours_sms_code_null">[Alarm]</string>
     <string name="quiet_hours_sms_bypass_title">Erlaubte SMS</string>
@@ -985,8 +986,8 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="show_activity_indicators_on_status_bar_summary">Darstellung der Netzwerkaktivität im Empfangs- bzw. WLAN-Symbol in der Statusleiste</string>
 
     <!-- Screen recorder -->
-    <string name="screen_recorder_title">Bildschirm Rekorder</string>
-    <string name="screen_recorder_summary">Bildschirm Rekorder Einstellungen</string>
+    <string name="screen_recorder_title">Bildschirmrekorder</string>
+    <string name="screen_recorder_summary">Bildschirmrekorder Einstellungen</string>
     <string name="screen_recorder_video_dimensions_title">Auflösung</string>
     <string name="screen_recorder_video_bitrate_title">Bitrate</string>
     <string name="screen_recorder_record_audio_title">Ton aufnehmen</string>
@@ -1215,15 +1216,9 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="recent_clear_all_button_location_bottom_left">Unten Links</string>
     <string name="recent_clear_all_button_location_bottom_right">Unten Rechts</string>
 
-    <!-- Memory Indicator -->
-    <string name="show_recents_memory_indicator_title">Speicherindikator</string>
-    <string name="show_recents_memory_indicator_summary">Fügt dem Anwendungsverlauf einen Speicherindikator hinzu</string>
-    <string name="recents_memory_indicator_location_title">Position des Speicherindikators</string>
-    <string name="recents_memory_indicator_location_summary">Position des Speicherindikators wählen</string>
-
     <!-- New Recents Screen -->
     <string name="new_recents_category">Alternativer Anwendungsverlauf</string>
-    <string name="new_recents_screen_title">Alternativen Anwendungsverlauf der SlimRom benutzen</string>
+    <string name="new_recents_screen_title">Slim Anwendungsverlauf aktivieren</string>
     <string name="new_recents_screen_summary">Ersetzt den Bildschirm des Anwendungsverlaufs mit einer auf Grundlage der neuen Google-Karten-Optik basierenden Alternative.</string>
     <string name="recent_panel_scale_title">Platzbedarf</string>
     <string name="recent_panel_scale_summary">Feldgröße in Prozent.</string>
@@ -1388,7 +1383,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="app_ops_summaries_bluetooth_change">Bluetooth ändern</string>
     <string name="app_ops_summaries_data_change">Mobile Daten ändern</string>
     <string name="app_ops_summaries_alarm_wakeup">Ruhezustand ändern</string>
-    <string name="app_ops_summaries_send_mms">MMS senden</string>   
+    <string name="app_ops_summaries_send_mms">MMS senden</string>
     <string name="app_ops_summaries_read_mms">MMS schreiben</string>
     <string name="app_ops_summaries_write_mms">MMS schreiben</string>
     <string name="app_ops_summaries_auto_start">Autostart</string>
@@ -1399,9 +1394,9 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="app_ops_labels_modify_contacts">Kontakte ändern</string>
     <string name="app_ops_labels_read_call_log">Anrufliste lesen</string>
     <string name="app_ops_labels_modify_call_log">Anrufliste ändern</string>	
-    <string name="app_ops_labels_read_calendar">Kalender lesen</string>   
-    <string name="app_ops_labels_modify_calendar">Kalender ändern</string>   
-    <string name="app_ops_labels_notification_toast">Benachrichtigung posten</string>  
+    <string name="app_ops_labels_read_calendar">Kalender lesen</string>
+    <string name="app_ops_labels_modify_calendar">Kalender ändern</string>
+    <string name="app_ops_labels_notification_toast">Benachrichtigung posten</string>
     <string name="app_ops_labels_call_phone">Telefonieren</string>
     <string name="app_ops_labels_read_sms_db">SMS/MMS DB lesen</string>
     <string name="app_ops_labels_write_sms_db">SMS/MMS DB schreiben</string>
@@ -1434,7 +1429,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="app_ops_labels_read_mms">MMS lesen</string>
     <string name="app_ops_labels_write_mms">MMS schreiben</string>
     <string name="app_ops_labels_auto_start">Autostart</string>
-	
+
     <!-- App ops categories -->
     <string name="app_ops_categories_location">Standort</string>
     <string name="app_ops_categories_personal">Persönlich</string>	
@@ -1650,7 +1645,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="pref_battery_saver_screen_off_title">Bei ausgeschaltetem Bildschirm</string>
     <string name="pref_battery_saver_screen_off_summary">Aktiviert den Energiesparmodus bei ausgeschaltetem Bildschirm</string>
     <string name="pref_battery_saver_ignore_locked_title">Ignorieren wenn gesperrt</string>
-    <string name="pref_battery_saver_ignore_locked_summary">Beim Einschalten des Bildschirms den Energiespar-Modus erst nach dem Entsperren der Display-Sperre deaktivieren</string>
+    <string name="pref_battery_saver_ignore_locked_summary">Beim Einschalten des Bildschirms den Energiesparmodus erst nach dem Entsperren der Display-Sperre deaktivieren</string>
     <string name="pref_battery_saver_mode_change_delay_title">Umschaltverzögerung</string>
     <string name="pref_battery_saver_mode_change_delay_summary">Verzögerung des Umschaltens in Sekunden</string>
     <string name="pref_battery_saver_battery_title">Bei schwachem Akku</string>
@@ -1706,20 +1701,6 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <!-- Lockscreen see through -->
     <string name="lockscreen_see_through_title">Hindurchsehen</string>
     <string name="lockscreen_see_through_summary">Zeigt den Bildschirminhalt hinter dem Sperrbildschirm, Daten können dadurch für Dritte sichtbar sein</string>
-    <string name="blur_behind_title">Unscharfer Hintergrund</string>
-    <string name="blur_behind_summary">Durchsichtiger Hintergrund mit Unschärfe-Effekt</string>
-    <string name="blur_radius_title">Unschärfe-Radius</string>
-    <string name="blur_radius_summary">Radius des Unschärfe-Effekts festlegen</string>
-    <!-- Lockscreen background -->
-    <string name="lockscreen_background">Hintergrund</string>
-    <string name="lockscreen_background_style_title">Benutzerdefiniertes Hintergrundbild festlegen</string>
-    <string name="background_color_fill_title">Farbe</string>
-    <string name="background_default">Standard Hintergrundbild</string>
-    <string name="background_color_fill">Farbfüllung</string>
-    <string name="background_wallpaper">Benutzerdefiniertes Hintergrundbild</string>
-    <string name="transparency">Hintergrundtransparenz</string>
-    <string name="background_result_successful">Hintergrund geändert</string>
-    <string name="background_result_not_successful">Hintergrund nicht geändert</string>
     <!-- Lockscreen style settings -->
     <string name="lockscreen_style_reset_message">Alle Farben zurücksetzen?</string>
     <string name="lockscreen_icon_title">Entsperrsymbol</string>
@@ -1728,8 +1709,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="lockscreen_colorize_handle_title">Farbwahl</string>
     <string name="lockscreen_colorize_handle_summary">Anpassen des ausgewählten Entsperrsysmbols</string>
     <string name="lockscreen_style_title">Optik-Einstellungen</string>
-    <string name="lockscreen_style_summary">Konfiguration von Hintergrund, Entsperrsymbol und mehr</string>
-    <string name="lockscreen_theme_title">Aussehen</string>
+    <string name="lockscreen_style_summary">Konfiguration des Entsperrsymbols und mehr</string>
     <string name="lockscreen_frame_color_title">Rahmenfarbe</string>
     <string name="lockscreen_frame_color_summary">Farbe des Widgets und des Entsperrrahmens</string>
     <string name="lockscreen_lock_color_title">Verschlussfarbe</string>
@@ -1744,6 +1724,10 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="theme_auto_mode_lightsensor">Bei Änderung der Lichtverhältnisse</string>
     <string name="theme_auto_mode_twilight">Tageszeitabhängig</string>
     <string name="theme_auto_switch_mode_error">Automatischer Änderungsmodus durch Lichtverhältnisse aktiviert. Manuelles Umschalten nicht möglich.</string>
+
+    <!-- Lockscreen Wallpaper -->
+    <string name="lockscreen_wallpaper_title">Sperrbildschirmhintergrund</string>
+    <string name="lockscreen_wallpaper_summary">Eigenes Hintergrundbild für den Sperrbilschirm einstellen</string>
 
     <!-- Double-tap to sleep -->
     <string name="double_tap_sleep_title">Double-Tap-Schlafmodus</string>
@@ -1776,4 +1760,39 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <!-- On-The-Go -->
     <string name="power_menu_onthego_title">On-The-Go-Modus</string>
     <string name="title_tile_onthego">On-The-Go</string>
+
+    <!-- Swap volume buttons -->
+    <string name="swap_volume_buttons_title">Ausrichting der Lautstärke-Tasten</string>
+    <string name="swap_volume_buttons_summary">Vertauschen der Lautstärke-Tasten wenn der Bildschirm gedreht wird</string>
+
+    <!-- Recents Ram Bar -->
+    <string name="ram_bar_title">Anwendungsverlauf-RAM-Leiste</string>
+    <string name="ram_bar_summary">Konfiguartion der RAM-Leiste</string>
+    <string name="ram_bar_note_title">Hinweis</string>
+    <string name="ram_bar_note_summary">Die RAM-Leiste zeigt die aktuelle Android-Speicherauslastung (RAM). Bitte beachten, dass die zwischengespeicherten Apps viel schneller geöffnet werden können. Weitere Erklärungen, wie das Android RAM Management funktioniert, finden sich Hilfe-Menü.</string>
+    <string name="ram_bar_mode_title">Modus</string>
+    <string name="ram_bar_mode_dialog_title">Anzeige der RAM-Leiste</string>
+    <string name="ram_bar_none">Nichts</string>
+    <string name="ram_bar_apps">Anwendungen</string>
+    <string name="ram_bar_cache">Anwendungen und Cache</string>
+    <string name="ram_bar_other">Anwendungen, Cache und Sonstiges</string>
+    <string name="ram_bar_style_cat">Optik</string>
+    <string name="ram_bar_color_app_mem_color">Farbe Anwendungen</string>
+    <string name="ram_bar_color_cache_mem_color">Farbe Cache</string>
+    <string name="ram_bar_color_total_mem_color">Farbe Sonstiges</string>
+    <string name="ram_bar_color_enabled">Aktiviert</string>
+    <string name="ram_bar_color_disabled">Deaktiviert</string>
+    <string name="ram_bar_button_help">Hilfe</string>
+    <string name="ram_bar_button_reset">Farben zurücksetzen</string>
+    <string name="ram_bar_reset">Zurücksetzen</string>
+    <string name="ram_bar_reset_message">RAM-Leiste auf Standardeinstellungen zurücksetzen?</string>
+
+    <!-- Disable FC Notifications -->
+    <string name="disable_fc_notifications_title">FC Hinweise deaktivieren</string>
+    <string name="disable_fc_notifications_summary">Alle App Fehler-Meldungen verbergen</string>
+
+    <!-- Notification drawer brightness slider -->
+    <string name="brightness_slider_title">Helligkeitsregler</string>
+    <string name="brightness_slider_summary">Anzeigen eines Helligkeitsreglers in der Benachrichtigungsanzeige</string>
 </resources>
+
