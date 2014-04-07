@@ -62,18 +62,19 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
     private static final String TAG = "LockscreenInterface";
 
-    private static final String KEY_ADDITIONAL_OPTIONS = "options_group";
-    private static final String LOCKSCREEN_SHORTCUTS_CATEGORY = "lockscreen_shortcuts_category";
-    private static final String PREF_LOCKSCREEN_TORCH = "lockscreen_glowpad_torch";
+    private static final String LOCKSCREEN_GENERAL_CATEGORY = "lockscreen_general_category";
+    private static final String KEY_LOCKSCREEN_MODLOCK_ENABLED = "lockscreen_modlock_enabled";
     private static final String KEY_BATTERY_STATUS = "lockscreen_battery_status";
     private static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
+    private static final String LOCKSCREEN_SHORTCUTS_CATEGORY = "lockscreen_shortcuts_category";
+    private static final String PREF_LOCKSCREEN_TORCH = "lockscreen_glowpad_torch";
     private static final String LOCKSCREEN_BACKGROUND_STYLE = "lockscreen_background_style";
 
     private static final String LOCKSCREEN_WALLPAPER_TEMP_NAME = ".lockwallpaper";
 
     private static final int REQUEST_PICK_WALLPAPER = 201;
         
-    private PreferenceCategory mAdditionalOptions;
+    private CheckBoxPreference mEnableModLock;
     private ListPreference mBatteryStatus;
     private CheckBoxPreference mLockRingBattery;
     private CheckBoxPreference mGlowpadTorch;
@@ -108,14 +109,28 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
         // Find categories
         PreferenceCategory generalCategory = (PreferenceCategory)
+                findPreference(LOCKSCREEN_GENERAL_CATEGORY);
+        PreferenceCategory generalCategory = (PreferenceCategory)
                 findPreference(LOCKSCREEN_SHORTCUTS_CATEGORY);
-        mAdditionalOptions = (PreferenceCategory) 
-                prefs.findPreference(KEY_ADDITIONAL_OPTIONS);
+
+        mEnableModLock = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_MODLOCK_ENABLED);
+        if (mEnableModLock != null) {
+            mEnableModLock.setOnPreferenceChangeListener(this);
+        }
 
         mBatteryStatus = (ListPreference) findPreference(KEY_BATTERY_STATUS);
         if (mBatteryStatus != null) {
             mBatteryStatus.setOnPreferenceChangeListener(this);
-        }                
+        }
+        
+        // Update battery status
+        if (mBatteryStatus != null) {
+            ContentResolver cr = getActivity().getContentResolver();
+            int batteryStatus = Settings.System.getInt(cr,
+                    Settings.System.LOCKSCREEN_BATTERY_VISIBILITY, 0);
+            mBatteryStatus.setValueIndex(batteryStatus);
+            mBatteryStatus.setSummary(mBatteryStatus.getEntries()[batteryStatus]);
+        }
 
         mLockRingBattery = (CheckBoxPreference)findPreference(BATTERY_AROUND_LOCKSCREEN_RING);
         mLockRingBattery.setChecked(Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
@@ -129,15 +144,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             lockscreen_shortcuts_category.removePreference(mGlowpadTorch);
         }
 
-        // Update battery status
-        if (mBatteryStatus != null) {
-            ContentResolver cr = getActivity().getContentResolver();
-            int batteryStatus = Settings.System.getInt(cr,
-                    Settings.System.LOCKSCREEN_BATTERY_VISIBILITY, 0);
-            mBatteryStatus.setValueIndex(batteryStatus);
-            mBatteryStatus.setSummary(mBatteryStatus.getEntries()[batteryStatus]);
-        }
-
         mLockBackground = (ListPreference) findPreference(LOCKSCREEN_BACKGROUND_STYLE);
         mLockBackground.setOnPreferenceChangeListener(this);
 
@@ -146,6 +152,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 
         final int unsecureUnlockMethod = Settings.Secure.getInt(getActivity().getContentResolver(),
                 Settings.Secure.LOCKSCREEN_UNSECURE_USED, 1);
+
+        if (mEnableModLock != null) {
+            generalCategory.removePreference(mEnableModLock);
+            mEnableModLock = null;
+        }
 
         //setup custom lockscreen customize view
         if ((unsecureUnlockMethod != 1)
@@ -159,6 +170,14 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
+
+        // Update mod lockscreen status
+        if (mEnableModLock != null) {
+            ContentResolver cr = getActivity().getContentResolver();
+            boolean checked = Settings.System.getInt(
+                    cr, Settings.System.LOCKSCREEN_MODLOCK_ENABLED, 1) == 1;
+            mEnableModLock.setChecked(checked);
+        }
         createCustomLockscreenView();
         updateBackgroundPreference();
     }
@@ -204,6 +223,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         } else if (preference == mLockBackground) {
             int index = mLockBackground.findIndexOfValue((String) objValue);
             handleBackgroundSelection(index);
+            return true;
+        } else if (preference == mEnableModLock) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(cr, Settings.System.LOCKSCREEN_MODLOCK_ENABLED,
+                    value ? 1 : 0);
             return true;
         }
         return false;

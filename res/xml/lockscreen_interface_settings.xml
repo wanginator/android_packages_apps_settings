@@ -28,6 +28,10 @@
         android:title="@string/title_general"
         android:key="lockscreen_general_category" >
 
+        <CheckBoxPreference
+            android:key="lockscreen_modlock_enabled"
+            android:title="@string/lockscreen_enable_modlock_title" />
+
 	<PreferenceScreen
             android:key="lockscreen_notifications"
             android:fragment="com.android.settings.mahdi.lsn.LockscreenNotifications"

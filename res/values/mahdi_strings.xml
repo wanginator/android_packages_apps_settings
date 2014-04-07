@@ -2001,5 +2001,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="background_result_successful">Background changed</string>
     <string name="background_result_not_successful">Background not changed</string>
     <string name="setting_lockscreen_background">Applying background</string>
+    <!-- Custom lockscreen -->
+    <string name="lockscreen_enable_modlock_title">Custom lock screen</string>
 
 </resources>
