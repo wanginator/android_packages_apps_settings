@@ -27,6 +27,12 @@
                 android:title="@string/wallpaper_settings_title"
                 android:fragment="com.android.settings.WallpaperTypeSettings" />
 
+       <PreferenceScreen
+                android:key="screen_recorder"
+                android:title="@string/screen_recorder_title"
+                android:fragment="com.android.settings.chameleonos.ScreenRecorderSettings" />
+
+
         <CheckBoxPreference
             android:key="accelerometer"
             android:title="@string/accelerometer_title"/>
@@ -61,4 +67,9 @@
                 android:key="wifi_display"
                 android:title="@string/wifi_display_settings_title"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
+
+       <PreferenceScreen
+        android:fragment="com.android.settings.rascarlo.PlugInPromptSettings"
+        android:key="plug_in_prompt_settings"
+        android:title="@string/plug_in_prompt_settings_title" />
 </PreferenceScreen>

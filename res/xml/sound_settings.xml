@@ -62,6 +62,11 @@
          android:title="@string/vibrate_when_ringing_title"
          android:persistent="false" />
 
+    <PreferenceScreen
+        android:fragment="com.android.settings.rascarlo.VolumeRocker"
+        android:key="volume_rocker_settings"
+        android:title="@string/volume_rocker_category_title" />
+
     <PreferenceCategory
             android:title="@string/sound_category_system_title"/>
 
