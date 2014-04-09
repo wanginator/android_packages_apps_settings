@@ -20,4 +20,3 @@ limitations under the License.
     android:layout_height="match_parent"
     android:focusable="false" >
 </Switch>
-
