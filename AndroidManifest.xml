@@ -2049,6 +2049,7 @@
                 android:value="com.android.settings.mahdi.RamBar" />
         </activity>
 
+        <activity android:name=".voicewakeup.VoiceWakeupSettings" />
         <activity android:name="Settings$VoiceWakeupSettingsActivity"
                 android:label="@string/voice_wakeup_settings_title"
                 android:taskAffinity=""
