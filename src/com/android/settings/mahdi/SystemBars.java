@@ -16,6 +16,7 @@
 
 package com.android.settings.mahdi;
 
+import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.os.RemoteException;
 import android.os.Bundle;
@@ -39,10 +40,27 @@ public class SystemBars extends SettingsPreferenceFragment implements
     private static final String TAG = "SystemBars";
 
     private static final String KEY_STATUS_BAR = "status_bar";
+    private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
+    private static final String STATUS_BAR_BATTERY = "status_bar_battery";
+    private static final String STATUS_BAR_BATTERY_SHOW_PERCENT = "status_bar_battery_show_percent";
+    private static final String STATUS_BAR_STYLE_HIDDEN = "4";
+    private static final String STATUS_BAR_STYLE_TEXT = "6";
     private static final String KEY_NAVIGATION_BAR = "navigation_bar";
+    private static final String ENABLE_NAVIGATION_BAR = "enable_nav_bar";
+    private static final String PREF_BUTTON = "navbar_button_settings";
+    private static final String PREF_RING = "navbar_targets_settings";
+    private static final String PREF_STYLE_DIMEN = "navbar_style_dimen_settings";
     private static final String KEY_IMMERSIVE_MODE = "immersive_mode";
 
-    private ListPreference mImmersiveModePref;
+    PreferenceScreen mClockStyle;
+    ListPreference mStatusBarBattery;
+    SystemSettingCheckBoxPreference mStatusBarBatteryShowPercent;
+    CheckBoxPreference mEnableNavigationBar;
+    CheckBoxPreference mNavigationBarCanMove;
+    PreferenceScreen mButtonPreference;
+    PreferenceScreen mRingPreference;
+    PreferenceScreen mStyleDimenPreference;
+    ListPreference mImmersiveModePref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,16 +69,63 @@ public class SystemBars extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.system_bars);
 
         PreferenceScreen prefSet = getPreferenceScreen();
+        ContentResolver resolver = getActivity().getContentResolver(); 
+
+        mClockStyle = (PreferenceScreen) prefSet.findPreference(KEY_STATUS_BAR_CLOCK);
+        if (mClockStyle != null) {
+            updateClockStyleDescription();
+        }
+
+        mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY);
+        mStatusBarBatteryShowPercent =
+                (SystemSettingCheckBoxPreference) findPreference(STATUS_BAR_BATTERY_SHOW_PERCENT);
+
+        mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY);
+
+        int batteryStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BATTERY, 0);
+        mStatusBarBattery.setValue(String.valueOf(batteryStyle));
+        mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
+        mStatusBarBattery.setOnPreferenceChangeListener(this);
+
+        mButtonPreference = (PreferenceScreen) findPreference(PREF_BUTTON);
+        mRingPreference = (PreferenceScreen) findPreference(PREF_RING);
+        mStyleDimenPreference = (PreferenceScreen) findPreference(PREF_STYLE_DIMEN);
+
+        boolean hasNavBarByDefault = getResources().getBoolean(
+                com.android.internal.R.bool.config_showNavigationBar);
+        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_SHOW, hasNavBarByDefault ? 1 : 0) == 1;
+        mEnableNavigationBar = (CheckBoxPreference) findPreference(ENABLE_NAVIGATION_BAR);
+        mEnableNavigationBar.setChecked(enableNavigationBar);
+        mEnableNavigationBar.setOnPreferenceChangeListener(this);
+        updateNavbarPreferences(enableNavigationBar);
 
         mImmersiveModePref = (ListPreference) prefSet.findPreference(KEY_IMMERSIVE_MODE);
         mImmersiveModePref.setOnPreferenceChangeListener(this);
         int immersiveModeValue = Settings.System.getInt(getContentResolver(), Settings.System.GLOBAL_IMMERSIVE_MODE_STYLE, 0);
         mImmersiveModePref.setValue(String.valueOf(immersiveModeValue));
-        updateImmersiveModeSummary(immersiveModeValue);
+        updateImmersiveModeSummary(immersiveModeValue);        
+    }
+
+    private void updateNavbarPreferences(boolean show) {
+        mButtonPreference.setEnabled(show);
+        mRingPreference.setEnabled(show);
+        mStyleDimenPreference.setEnabled(show);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mImmersiveModePref) {
+        if (preference == mStatusBarBattery) {
+            int batteryStyle = Integer.valueOf((String) newValue);
+            int index = mStatusBarBattery.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getContentResolver(), Settings.System.STATUS_BAR_BATTERY, batteryStyle);
+            mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
+        } else if (preference == mEnableNavigationBar) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_SHOW,
+                    ((Boolean) newValue) ? 1 : 0);
+            updateNavbarPreferences((Boolean) newValue);
+            return true;
+        } else if (preference == mImmersiveModePref) {
             int immersiveModeValue = Integer.valueOf((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.GLOBAL_IMMERSIVE_MODE_STYLE, immersiveModeValue);
@@ -68,7 +133,28 @@ public class SystemBars extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
-    }        
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateClockStyleDescription();
+    }
+
+    private void updateClockStyleDescription() {
+        if (Settings.System.getInt(getContentResolver(),
+               Settings.System.STATUS_BAR_CLOCK, 1) == 1) {
+            mClockStyle.setSummary(getString(R.string.enabled));
+        } else {
+            mClockStyle.setSummary(getString(R.string.disabled));
+         }
+    }
+
+    private void enableStatusBarBatteryDependents(String value) {
+        boolean enabled = !(value.equals(STATUS_BAR_STYLE_TEXT)
+                || value.equals(STATUS_BAR_STYLE_HIDDEN));
+        mStatusBarBatteryShowPercent.setEnabled(enabled);
+    }
 
     private void updateImmersiveModeSummary(int value) {
         Resources res = getResources();
