@@ -236,7 +236,7 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
     private boolean getBit(int intNumber, int intMask) {
         return (intNumber & intMask) == intMask;
     }
-
+    @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         boolean value;
         if (preference == mStatusBarBrightnessControl) {
@@ -251,7 +251,7 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
                     Settings.System.DOUBLE_TAP_SLEEP_GESTURE, value ? 1: 0);
             return true;
         }
-        return false;
+		return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 }
 

@@ -27,10 +27,16 @@
     </PreferenceCategory>
 
     <PreferenceScreen
-            android:fragment="com.android.settings.rascarlo.BatteryIconStyle"
+	    android:fragment="com.android.settings.rascarlo.BatteryIconStyle"
             android:key="battery_style_pref"
             android:title="@string/battery_icon_title"
 	    android:summary="@string/battery_icon_summary" />
+    
+    <PreferenceScreen 
+        android:fragment="com.android.settings.rascarlo.StatusBarClockStyle"
+        android:key="clock_style_pref"
+        android:summary="@string/status_bar_clock_summary"
+        android:title="@string/status_bar_clock" />
 
    <PreferenceScreen
             android:key="category_network_traffic"
