@@ -714,6 +714,8 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="adb_over_network_warning">WARNUNG:\n\nWenn ADB über Netzwerk eingeschaltet wird, ist das Gerät anfällig für das Eindringen Fremder aus allen verbundenen Netzwerken - auch Mobilfunknetzwerken.\n\nEine Verbindung sollte nur mit einem vertrauenswürdigen Netzwerk hergestellt werden.\n\nTrotzdem aktivieren?</string>
 
     <!-- Button shorcut actions -->
+    <string name="shortcut_action_navbar">Navigationsleiste</string>
+    <string name="shortcut_action_pie">Pie Steuerung</string>
     <string name="shortcut_action_app">App</string>
     <string name="shortcut_action_home">Home</string>
     <string name="shortcut_action_back">Zurück</string>
@@ -756,8 +758,9 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="shortcut_action_help_button">Eintrag</string>
     <string name="shortcut_action_help_icon">, Auswahl der Symbole öffnet die Konfigurationsoptionen</string>
     <string name="shortcut_action_help_main">Um einen %1$s hinzuzufügen wähle das Hinzufügensymbol. Wenn ein %1$s hinzugefügt wurde, kann durch verschieben des Positionssymbols dessen Plazierung angepasst werden. %2$s\n\nUm einen %1$s, zu entfernen diesen einfach nach links oder rechts raus wischen.\n\nUm die Standardwerte wieder herzustellen benutze das Zurücksetzen-Symbol.</string>
-    <string name="shortcut_action_help_delete_last_entry">Das Entfernen des letzten %1$s aus der Liste wird Funktion deaktivieren.</string>
+    <string name="shortcut_action_help_delete_last_entry">Löschen aller %1$s deaktiviert die Funktion.</string>
     <string name="shortcut_action_help">Hilfe</string>
+    <string name="shortcut_action_help_pie_second_layer_delete_last_entry">Löschen aller %1$s aus der Liste deaktiviert den zweiten Pie-Layer vollständig.</string>
 
     <string name="icon_picker_type">Symbol auswählen:</string>
     <string name="icon_default">Standard</string>
@@ -1594,7 +1597,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="progressbar_linear">Linear</string>
     <string name="progressbar_acceleratedecelerate">BeschleunigtVerzögert</string>
     <string name="progressbar_decelerate">Verzögert</string>
-    <string name="progressbar_reset_message">Reset progress bar style to default?</string>
+    <string name="progressbar_reset_message">Standardeinstellungen wieder herstellen?</string>
     <string name="ram_bar_button_reset">Farben zurücksetzen</string>
     <string name="ram_bar_reset">Zurücksetzen</string>
 
@@ -1917,4 +1920,51 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="time_quarter_to">Viertel vor</string>
     <string name="time_ten_to">Zehn vor</string>
     <string name="time_five_to">Fünf vor</string>
-</resources>
+	
+    <!-- Pie Control -->
+    <string name="pie_control_title">Pie Steuerung</string>
+    <string name="pie_control_summary">Pie aktivieren</string>
+    <string name="pie_control_size">Größe der Steuerung</string>
+    <string name="pie_control_trigger_positions">Trigger-Optionen</string>
+    <string name="pie_control_trigger_left">Trigger am linken Bildschirmrand</string>
+    <string name="pie_control_trigger_bottom">Trigger am unteren Bildschirmrand</string>
+    <string name="pie_control_trigger_right">Trigger am rechten Bildschirmrand</string>
+    <string name="pie_control_trigger_top">Trigger am oberen Bildschirmrand</string>
+    <string name="pie_control_trigger_top_summary">Nur das Navigationsfeld wird oben angezeigt</string>
+    <string name="pie_button_style">Tastenlayout</string>
+    <string name="pie_button_color_title">Farbe der Tasten</string>
+    <string name="pie_button_alpha_title">Transparenz der Tasten</string>
+    <string name="pie_button_outline_color_title">Konturfarbe der Tasten</string>
+    <string name="pie_button_pressed_color_title">Farbe bei gedrückter Taste</string>
+    <string name="pie_button_long_pressed_color_title">Farbe bei langem Druck auf die Taste</string>
+    <string name="pie_button_pressed_alpha_title">Transparenz bei langem Druck auf die Taste</string>
+    <string name="pie_icon_style">Layout der Tastensymbole</string>
+    <string name="pie_icon_color_title">Farbe der Tastensymbole</string>
+    <string name="pie_icon_color_mode_title">Farbmodus der Tastensymbole</string>
+    <string name="pie_icon_color_mode_dialog_title">Farbänderung</string>
+    <string name="pie_icon_color_mode_summary">Farbmodus der Tastensymbole ändern</string>
+    <string name="pie_trigger_note_title">Hinweis</string>
+    <string name="pie_trigger_note_summary">Um Konflikte mit Status- oder Navigationsleiste zu vermeiden werden die Trigger an den Rändern automatisch abgeschaltet wenn eine oder beide der Leisten sichtbar sind.</string>
+    <string name="pie_background_color_title">Hintergrundfarbe</string>
+    <string name="pie_snap_color_title">Fangpunkt Farbe</string>
+    <string name="pie_text_color_title">Textfarbe</string>
+    <string name="pie_background_alpha_title">Hintergrund Transparenz</string>
+    <string name="pie_mirror_right_title">Rechten Pie spiegeln</string>
+    <string name="pie_mirror_right_summary">Rechten Pie horizontal spiegeln</string>
+    <string name="pie_style">Layout und Größe</string>
+    <string name="pie_style_title">Layout</string>
+    <string name="pie_dimens_title">Größe</string>
+    <string name="pie_show_snap_title">Zeige Fangpunkte</string>
+    <string name="pie_show_snap_summary">Zeige Fangpunkte um den Rand des Triggers dynamisch zu verändern</string>
+    <string name="pie_show_text_title">Status und Uhr anzeigen</string>
+    <string name="pie_show_text_summary">Telefoninformationen, Zeit und Datum anzeigen</string>
+    <string name="pie_show_background_title">Hintergrund anzeigen</string>
+    <string name="pie_show_background_summary">Hintergrund in Pie aktivieren</string>
+    <string name="pie_button">Schaltfläche</string>
+    <string name="pie_button_second_layer">Zweite Schaltflächenebene</string>
+    <string name="pie_button_second_layer_summary">Änderung der Sekundärschaltfläche</string>
+    <string name="pie_button_style_summary">Pie Schaltflächendesign ändern</string>
+    <string name="pie_style_reset_message">Alle Designeinstellungen zürücksetzen?</string>
+    <string name="pie_disable_ime_triggers_title">Reduziere Schaltflächengröße auf der Tastaur</string>
+    <string name="pie_disable_ime_triggers_summary">Reduziert linke und rechte Schaltflächengröße wenn die Tastatur aktiviert ist</string>
+</resources> 
