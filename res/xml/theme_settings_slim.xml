@@ -24,14 +24,4 @@
         android:title="@string/theme_auto_mode_title"
         android:dialogTitle="@string/theme_auto_mode_title" />
 
-    <PreferenceScreen
-        android:id="@+id/themes_settings"
-        android:title="@string/themes_settings_title"
-        android:summary="@string/themes_engine_summary">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.tmobile.themechooser"
-            android:targetClass="com.tmobile.themechooser.ThemeChooser" />
-    </PreferenceScreen>
-
 </PreferenceScreen>

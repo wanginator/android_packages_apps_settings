@@ -231,6 +231,14 @@
         android:icon="@*android:drawable/ic_print"
         android:title="@string/print_settings" />
 
+    <!-- Themes -->
+    <header
+        android:id="@+id/theme_settings"
+        android:title="@string/themes_settings_title"
+        android:breadCrumbTitle="@string/themes_settings_title"
+        android:fragment="com.android.settings.ThemeSettings"
+        android:icon="@drawable/prd_ic_themepacks" />
+
     <!-- Customization -->
     <header
         android:id="@+id/customization_settings"
