@@ -39,7 +39,8 @@
     <string name="disabled">Desactivado</string>
     <string name="add">Añadir</string>
     <string name="reset_message">¿Reestablecer todas las entradas por defecto?</string>
-    <string name="style_title">Estilo</string>  
+    <string name="style_title">Estilo</string>
+    <string name="more_title">Más...</string>
 
     <!-- Display settings screen, notification light settings -->
     <string name="display_category_light_options_title">Opciones de LED</string>
@@ -284,7 +285,7 @@
     <string name="select_contact">Seleccionar contacto</string>
 
     <!-- Performance Control -->
-    <string name="performance_settings">Rendimiento</string>
+    <string name="performance_settings">Configuración de Kernel</string>
 
     <!-- Sound settings -->
     <string name="volume_category">Volumen</string>
@@ -712,6 +713,8 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="adb_over_network_warning">ADVERTENCIA: Cuando ADB sobre la red está activada, el teléfono está abierto para las intrusiones en todas las redes conectadas, incluyendo la red de datos!\n\nSólo utilizar esta función cuando está conectado en redes de confianza.\n\n¿Quiere activar esta función?</string>
 
     <!-- Button shorcut actions -->
+    <string name="shortcut_action_navbar">Barra de navegación</string>
+    <string name="shortcut_action_pie">Controles Pie</string>
     <string name="shortcut_action_app">Aplicación personalizada</string>
     <string name="shortcut_action_home">Inicio</string>
     <string name="shortcut_action_back">Retroceso</string>
@@ -756,6 +759,7 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="shortcut_action_help_main">Para agregar %1$s, selecciona el icono Añadir. Una vez que %1$s es añadido, selecciona la fila que cambiará%2$s\n\nPara borrar %1$s, desliza la fila horizontalmente a la izquierda o derecha.  Reordenar %1$s en la lista arrastrando verticalmente hacia la izquierda.\n\nPara restablecer los valores predeterminados seleccione icono reset.</string>
     <string name="shortcut_action_help_delete_last_entry">La eliminación de todos los %1$s en la lista desactivara la función.</string>
     <string name="shortcut_action_help">Ayuda</string>
+    <string name="shortcut_action_help_pie_second_layer_delete_last_entry">Eliminación de %1$s en la lista descativará la segunda capa de Pie por completo.</string>
 
     <string name="icon_picker_type">Selecciona tipo de icono:</string>
     <string name="icon_default">Predeterminado</string>
@@ -826,6 +830,7 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="group_applications">Aplicaciones</string>
     <string name="select_custom_app_title">Seleccionar aplicación personalizada</string>
     <string name="shortcuts_color_title">Color de icono de acceso directo</string>
+    <string name="shortcuts_color_summary">Colorea el icono de acceso directo</string>
     <string name="shortcuts_color_mode_title">Modo de color de icono</string>
     <string name="shortcuts_color_mode_summary">Cambiar el modo de color del icono de acceso directo</string>
 
@@ -833,7 +838,7 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="notification_drawer_title">Panel de notificaciones</string>
     <string name="notification_drawer_summary">Añade accesos directos, activa cinta de accesos de configuración rápida y más</string>
     <string name="notification_shortcuts_settings_title">Accesos directos</string>
-    <string name="notification_shortcuts_settings_summary">Añadir accesos directos al panel de notificaciones</string>
+    <string name="notification_shortcuts_settings_summary">Añadir accesos directos a la parte inferior del cajón de notificación</string>
 
     <!-- Notification hide labels -->
     <string name="notification_hide_labels_title">Ocultar etiqueta de notificación</string>
@@ -884,8 +889,11 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="navbar_can_move">Mostrar modo horizontal</string>
     <string name="navbar_can_move_summary">Mostrar barra de navegación en modo horizontal abajo</string>
     <string name="navbar_style_dimen_title">Dimensiones</string>
+    <string name="navbar_style_dimen_summary">Ver o cambiar la dimensión de la barra de navegación</string>
     <string name="navbar_button_title">Botones</string>
+    <string name="navigation_button_summary">Ver o cambiar ajustes de botones de la barra de navegación</string>
     <string name="navbar_targets_title">Bordes de anillo</string>
+    <string name="navbar_targets_summary">Ver o cambiar ajustes de anillo de la barra de navegación</string>
     <string name="navbar_cat">Barra de navegación</string>
     <string name="navbar_dimensions_reset_message">¿Restablecer todas las entradas de las dimensiones por defecto?</string>
    
@@ -908,6 +916,9 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="quiet_hours_enabled">Activa horas de silencio</string>
     <string name="quiet_hours_enabled_on">Las horas de silencio se harán cumplir</string>
     <string name="quiet_hours_enabled_off">Notificaciones funcionarán con normalidad</string>
+    <string name="quiet_hours_auto_title">Modo Follow ringer</string>
+    <string name="quiet_hours_auto_silent">Horas de silencio se activarán cuando tono es seleccionado en silencio</string>
+    <string name="quiet_hours_auto_vibrate">Horas de silencio se activarán cuando tono es seleccionado en silencio  o vibración</string>
     <string name="quiet_hours_start">Comienzo horas de silencio</string>
     <string name="quiet_hours_start_summary">Cuándo comenzaran las horas de silencio</string>
     <string name="quiet_hours_end">Fin horas de silencio</string>
@@ -938,8 +949,8 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="quiet_hours_auto_sms_null">[Mensaje automático] Me pondré en contacto en cuanto pueda.</string>
     <string name="quiet_hours_auto_disabled">Desactivado</string>
     <string name="quiet_hours_auto_enabled">Todo números</string>
-    <string name="quiet_hours_auto_starred">Solo contactos favoritos</string>
     <string name="quiet_hours_auto_contacts">Solo contactos</string>
+    <string name="quiet_hours_auto_starred">Solo contactos favoritos</string>
     <string name="quiet_hours_bypass_group">Omitir horas silencio</string>
     <string name="quiet_hours_sms_code_null">[Alarma]</string>
     <string name="quiet_hours_sms_bypass_title">Omitir mensaje de texto</string>
@@ -1270,7 +1281,16 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
 
     <!-- Themes settings  -->
     <string name="themes_settings_title">Temas</string>
-    <string name="themes_settings_summary">Cambia temas con T-Mobiles theme engine</string>
+    <string name="themes_settings_summary">Cambia temas con T-Mobiles theme engine o seleccione DarkUI</string>
+    <string name="themes_engine_summary">Change themes with T-Mobiles theme engine</string>
+	
+    <!-- DarkUI -->
+    <string name="theme_auto_mode_title">Dark-UI</string>
+    <string name="theme_auto_mode_off">Manual</string>
+    <string name="theme_auto_mode_lightsensor">Cambio según condiciones de luz</string>
+    <string name="theme_auto_mode_twilight">En día</string>
+    <string name="theme_auto_switch_mode_error">Modo de cambio automático de la condición de luz está activada. Cambio manual no es posible</string>
+
 
     <!-- Notification drawer background -->
     <string name="notification_style_title">Estilo</string>    
@@ -1624,6 +1644,7 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="data_usage_enable_batterysaver">Ahorro de batería</string>
 
     <!-- Battery saver mode -->
+    <string name="unit_sec">seg</string>
     <string name="network_lte">LTE (recomendado)</string>
     <string name="network_4G">4G (recomendado)</string>
     <string name="network_3G_only">3G sólo</string>
@@ -1637,6 +1658,7 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="battery_saver_summary">Elija los modos de ahorro de energía para los datos móviles y conexiones WiFi</string>
     <string name="pref_battery_saver_enable_title">Ahorro de batería</string>
     <string name="pref_battery_saver_enable_summary">Esto gestionará automáticamente el uso de la batería del dispositivo y el interruptor de la red para el modo de ahorro de energía definida por el usuario o el modo normal en función de los datos móviles y estados de conexión Wi-Fi</string>
+    <string name="pref_battery_saver_enable_no_mobiledata_summary">Este gestionará automáticamente el uso de la batería del dispositivo al definido por el usuario</string>
     <string name="pref_battery_saver_normal_mode_title">Modo de red normal</string>
     <string name="pref_battery_saver_power_saving_mode_title">Modo de red de ahorro de energía</string>
     <string name="pref_battery_saver_screen_off_title">Cuando la pantalla se apaga</string>
@@ -1649,15 +1671,41 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="pref_battery_saver_battery_summary">Activar el modo de ahorro de energía cuando la batería es baja</string>
     <string name="pref_battery_saver_mode_battery_level_title">Nivel de batería</string>
     <string name="pref_battery_saver_mode_battery_level_summary">Cambie al modo de ahorro de energía en: </string>
-    <string name="pref_battery_saver_data_title">Desactivar datos móviles</string>
-    <string name="pref_battery_saver_data_summary">Desactivar conexión de datos móviles cuando el ahorro de energía esté activa</string>
-    <string name="pref_battery_saver_enable_no_mobiledata_summary">Este gestionará automáticamente el uso de la batería del dispositivo al definido por el usuario </string>
+    <string name="pref_battery_saver_bluetooth_title">Desactivar bluetooth</string>
+    <string name="pref_battery_saver_bluetooth_summary">Desactivar conexión bluetooth cuando ahorro de energía esté activado</string>
+    <string name="pref_battery_saver_data_title">Desactivar datos móvil</string>
+    <string name="pref_battery_saver_data_summary">Desactivar datos móvil cuando ahorro de energía esté activado</string>
+    <string name="pref_battery_saver_location_title">Desactivar gps</string>
+    <string name="pref_battery_saver_location_summary">Desactivar conexión gps cuando ahorro de energía esté activado</string>
     <string name="pref_battery_saver_wifi_title">Desactivar Wi-Fi</string>
-    <string name="pref_battery_saver_wifi_summary">Desactivar conexión wifi cuando el ahorro de energía activado</string>
+    <string name="pref_battery_saver_wifi_summary">Desactivar conexión wifi cuando el ahorro de energía esté activado</string>
+    <string name="pref_battery_saver_led_title">Desactivar LED</string>
+    <string name="pref_battery_saver_led_summary">Desactivar notificación LED cuando ahorro de energía esté activada</string>
+    <string name="pref_battery_saver_vibrate_title">Desactivar vibración</string>
+    <string name="pref_battery_saver_vibrate_summary">Desactivar vibración cuando modo de ahorro de energía esté activada</string>
+    <string name="pref_battery_saver_brightness_title">Modo brillo</string>
+    <string name="pref_battery_saver_brightness_summary">Activar cambio de nivel de brillo cuando la batería es baja</string>
+    <string name="pref_battery_saver_mode_brightness_level_title">Nivel de brillo</string>
+    <string name="pref_battery_saver_mode_brightness_level_summary">Cambio del nivel de brillo cuando el ahorro de energía esté activado</string>
+    <string name="pref_battery_saver_cpu_title">CPU Modo de ahorro de energía</string>
+    <string name="pref_battery_saver_cpu_summary">Esto cambiará automáticamente la frecuencia máxima de la CPU en el modo de ahorro de energía definida por el usuario</string>
+    <string name="battery_saver_mode_current_speed">Velocidad actual: </string>
+    <string name="battery_saver_mode_current_max">Máxima velocidad: </string>
+    <string name="battery_saver_mode_cpu_info_list_header">Estado Core</string>
+    <string name="battery_saver_mode_cpu_speed_header">Límite core</string>
+    <string name="battery_saver_mode_core_offline">Offline</string>
+    <string name="battery_saver_mode_core">Core</string>
+    <string name="battery_saver_cpu_mode_title">Activar el modo de ahorro de energía de la CPU</string>
+    <string name="pref_battery_saver_cpu_warning_title">Atención:</string>
+    <string name="pref_battery_saver_cpu_warning_summary">nunca podemos garantizar que esto funcionará en el dispositivo</string>
     <string name="pref_battery_saver_network_title">Cambio de red inteligente</string>
     <string name="pref_battery_saver_network_summary">Permitir el cambio de la red para el modo normal con el intervalo de tiempo específico después de apagar la pantalla y el modo de ahorro de energía activada</string>
     <string name="pref_battery_saver_nosignal_title">Señal de red inteligente</string>
     <string name="pref_battery_saver_nosignal_summary">Activar el modo Avión cuando no hay señal de red a los 5 minutos</string>
+    <string name="pref_battery_saver_sync_title">Desactivar sync</string>
+    <string name="pref_battery_saver_sync_summary">Desactivar conexiones sync cuando ahorro de energía esté activado</string>
+    <string name="pref_battery_saver_killall_title">Matar todas las tareas</string>
+    <string name="pref_battery_saver_killall_summary">Permitir matar tareas cuando ahorro de energía esté activado</string>
     <string name="pref_battery_saver_toast_title">Mostrar toast</string>
     <string name="pref_battery_saver_toast_summary">Deje que se muestre mensaje de aviso emergente cuando ahorro de bateria cambie la configuración del dispositivo</string>
     <string name="battery_saver_battery_title">Opciones de batería</string>
@@ -1717,14 +1765,6 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <!-- Lockscreen Wallpaper -->
     <string name="lockscreen_wallpaper_title">Fondo pantalla de bloqueo</string>
     <string name="lockscreen_wallpaper_summary">Puede elegir diferentes wallpapers para su pantalla de bloqueo</string>
-
-    <!-- Themes -->
-    <string name="theme_settings_title_slim">Temas</string>
-    <string name="theme_auto_mode_title">Dark UI</string>
-    <string name="theme_auto_mode_off">Manual</string>
-    <string name="theme_auto_mode_lightsensor">Cambio según condiciones de luz</string>
-    <string name="theme_auto_mode_twilight">En día</string>
-    <string name="theme_auto_switch_mode_error">Modo de cambio automático de la condición de luz está activada. Cambio manual no es posible.</string>
 
     <!-- Double-tap to sleep -->
     <string name="double_tap_sleep_title">Pulse dos veces para apagar</string>
@@ -1792,5 +1832,146 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="brightness_slider_title">Regulador de brillo</string>
     <string name="brightness_slider_summary">Permitir un control deslizante de brillo en el cajón de notificaciones</string>
 
+    <!-- Voice+ -->
+    <string name="voice_plus_title">Voice+</string>
+    <string name="voice_plus_summary">Habilitar todas las aplicaciones para enviar mensajes SMS a través de Google Voice</string>
+
+    <!-- Voice Wakeup -->
+    <string name="voice_wakeup_settings_title">Activación voz</string>
+    <string name="voice_wakeup_retrain_title">Entrenar voz</string>
+    <string name="voice_wakeup_activity_title">Lanzar actividad</string>
+    <string name="voice_wakeup_default_activity">Google Now</string>
+
+    <!-- Driving mode -->
+    <!-- require add space in the end of string -->
+    <string name="voice_tts_new_call">Llamada entrante de </string>
+    <!-- require add space in the end of string -->
+    <string name="voice_tts_new_sms">Nuevo mensaje de texto de </string>
+    <!-- require add space in the end of string -->
+    <string name="voice_tts_new_notif">Nueva notificación de </string>
+    <string name="voice_tts_title">Modo coche</string>
+    <string name="voice_tts_summary">Activa el modo de conducción y luego elija lo que desea hablar mientras se conduce</string>
+    <string name="tts_settings_reset_message">¿Restablecer todos los ajustes a los valores predeterminados?</string>
+    <string name="voice_tts_notification_title">Modo coche</string>
+    <string name="voice_tts_notification_summary_on">Activar el modo de conducción</string>
+    <string name="voice_tts_notification_summary_off">Desactivar el modo de conducción</string>
+    <string name="voice_tts_volume_title">Volumen</string>
+    <string name="voice_tts_volume_summary">Ajuste de volumen para hablar</string>
+    <string name="voice_tts_call_title">Llamada entrante</string>
+    <string name="voice_tts_call_summary">Activar/desactivar hablar para llamadas entrantes</string>
+    <string name="voice_tts_sms_title">Nuevo mensaje</string>
+    <string name="voice_tts_sms_summary">Activar/desactivar hablar para nuevos mensajes</string>
+    <string name="voice_tts_sms_read_title">Leer un mensaje nuevo</string>
+    <string name="voice_tts_sms_read_summary">Activar/desactivar hablar para leer nuevos mensajes</string>
+    <string name="voice_tts_charge_full_title">Indicador de batería llena</string>
+    <string name="voice_tts_charge_full_summary">Activar/desactivar hablar para batería completamente cargada</string>
+    <string name="voice_tts_charge_on_title">Conectar el cargador</string>
+    <string name="voice_tts_charge_on_summary">Activar/desactivar hablar para la carga conectada</string>
+    <string name="voice_tts_charge_off_title">Desconectar el cargador</string>
+    <string name="voice_tts_charge_off_summary">Activar/desactivar hablar para la carga desconectada</string>
+    <string name="voice_tts_clock_title">Reloj</string>
+    <string name="voice_tts_clock_summary">Activar/desactivar hablar para el reloj después de pantalla encendida</string>
+    <string name="voice_tts_date_title">Fecha</string>
+    <string name="voice_tts_date_summary">Activar/desactivar hablar para fecha después de pantalla encendida</string>
+    <string name="voice_tts_notif_title">Notificación</string>
+    <string name="voice_tts_notif_summary">Activar/desactivar hablar para nueva notificación</string>
+    <string name="voice_tts_notif_read_title">Leer nuevas notificaciones</string>
+    <string name="voice_tts_notif_read_summary">Activar/desactivar hablar para leer nuevos mensajes de notificaciones</string>
+    <string name="voice_tts_whitelist_title">Aplicaciones incluidas</string>
+    <string name="voice_tts_whitelist_summary">Qué aplicaciones le permite hablar de nuevas notificaciones</string>
+    <string name="voice_tts_music_title">Pista de Música</string>
+    <string name="voice_tts_music_summary">Activar/desactivar hablar para nombre de la canción</string>
+    <string name="voice_tts_annoy_notif_title">Frecuencia de notificación hablada</string>
+    <string name="voice_tts_annoy_notif_summary">Limite la notificación hablada de cada aplicación para reproducir sólo una vez por cada período de tiempo establecido</string>
+    <string name="voice_tts_annoy_notif_default">Comportamiento por defecto </string>
+    <string name="voice_tts_annoy_notif_3s">3 seg</string>
+    <string name="voice_tts_annoy_notif_5s">5 seg</string>
+    <string name="voice_tts_annoy_notif_10s">10 seg</string>
+    <string name="voice_tts_annoy_notif_15s">15 seg</string>
+    <string name="voice_tts_annoy_notif_30s">30 seg</string>
+    <string name="voice_tts_annoy_notif_45s">45 seg</string>
+    <string name="voice_tts_annoy_notif_1m">1 min</string>
+    <string name="voice_tts_annoy_notif_2m">2 min</string>
+    <string name="voice_tts_annoy_notif_5m">5 min</string>
+    <string name="voice_tts_charge_full">Batería completamente cargada</string>
+    <string name="voice_tts_charge_on">Inicio de carga</string>
+    <string name="voice_tts_charge_off">Carga detenida</string>
+    <string name="voice_tts_time">Tiempo</string>
+    <string name="voice_tts_date">Fecha</string>
+    <string name="voice_tts_music">Reproduciendo ahora</string>
+    <string name="voice_tts_engine_started">Modo coche listo</string>
+    <string name="unknown_tts">Desconocido</string>
+    <string name="unknown_number_tts">Número desconocido</string>
+    <string name="time_one">Uno</string>
+    <string name="time_two">Dos</string>
+    <string name="time_three">Tres</string>
+    <string name="time_four">Cuatro</string>
+    <string name="time_five">Cinco</string>
+    <string name="time_six">Seis</string>
+    <string name="time_seven">Siete</string>
+    <string name="time_eight">Ocho</string>
+    <string name="time_nine">Nueve</string>
+    <string name="time_ten">Diez</string>
+    <string name="time_eleven">Once</string>
+    <string name="time_twelve">Doce</string>
+    <string name="time_oclock">en punto</string>
+    <string name="time_five_past">y cinco</string>
+    <string name="time_ten_past">y diez</string>
+    <string name="time_quarter_past">y cuarto</string>
+    <string name="time_twenty_past">y veinte</string>
+    <string name="time_twenty_five_past">y veinticinco</string>
+    <string name="time_half_past">y media</string>
+    <string name="time_twenty_five_to">Menos veinticinco</string>
+    <string name="time_twenty_to">Menos veinte</string>
+    <string name="time_quarter_to">Menos cuarto</string>
+    <string name="time_ten_to">Menos diez</string>
+    <string name="time_five_to">Menos cinco</string>
+
+    <!-- Pie Control -->
+    <string name="pie_control_title">Pie de navegación</string>
+    <string name="pie_control_summary">Habilitar controles pie para ayudar a navegar mientras se utiliza el modo de inmersión</string>
+    <string name="pie_control_size">Tamaño de Navegación </string>
+    <string name="pie_control_trigger_positions">Opciones de Pie</string>
+    <string name="pie_control_trigger_left">Borde de la pantalla izquierda</string>
+    <string name="pie_control_trigger_bottom">Borde de la pantalla inferior</string>
+    <string name="pie_control_trigger_right">Borde de la pantalla derecha</string>
+    <string name="pie_control_trigger_top">Borde de la pantalla superior</string>
+    <string name="pie_control_trigger_top_summary">Pie arriba no muestra el estado y la información de reloj</string>
+    <string name="pie_button_style">Estilo de botones</string>
+    <string name="pie_button_color_title">Color de botones</string>
+    <string name="pie_button_alpha_title">Transparencia de botones</string>
+    <string name="pie_button_outline_color_title">Color linea de botón</string>
+    <string name="pie_button_pressed_color_title">Color botón presionado</string>
+    <string name="pie_button_long_pressed_color_title">Color botón pulsación larga</string>
+    <string name="pie_button_pressed_alpha_title">Transparencia botón presionado</string>
+    <string name="pie_icon_style">Estilo icono de botón</string>
+    <string name="pie_icon_color_title">Color icono de botón</string>
+    <string name="pie_icon_color_mode_title">Modo color icono de botón</string>
+    <string name="pie_icon_color_mode_dialog_title">Colorear</string>
+    <string name="pie_icon_color_mode_summary">Cambie el modo de color del icono del botón</string>
+    <string name="pie_trigger_note_title">Nota</string>
+    <string name="pie_trigger_note_summary">Para evitar conflictos con la barra de estado o barra de navegación, los factores desencadenantes de estos bordes se desactivan automáticamente si uno o ambos están disponibles</string>
+    <string name="pie_background_color_title">Color de fondo</string>
+    <string name="pie_snap_color_title">Color punto de ajuste</string>
+    <string name="pie_text_color_title">Color de texto</string>
+    <string name="pie_background_alpha_title">Transparencia de fondo</string>
+    <string name="pie_mirror_right_title">Pie espejo derecho</string>
+    <string name="pie_mirror_right_summary">Pie espejo derecho en eje horizontal</string>
+    <string name="pie_style">Estilo y dimensión</string>
+    <string name="pie_style_title">Estilo</string>
+    <string name="pie_dimens_title">Dimensión</string>
+    <string name="pie_show_snap_title">Mostrar puntos de ajuste</string>
+    <string name="pie_show_snap_summary">Mostrar puntos de ajuste para cambiar la inclinación de disparo de forma dinámica</string>
+    <string name="pie_show_text_title">Mostrar estado y el reloj</string>
+    <string name="pie_show_text_summary">Muestra la información de estado del teléfono , la hora y la fecha</string>
+    <string name="pie_show_background_title">Mostrar fondo</string>
+    <string name="pie_show_background_summary">Activar pantalla de fondo Pie</string>
+    <string name="pie_button">Botones</string>
+    <string name="pie_button_second_layer">Botones segunda capa</string>
+    <string name="pie_button_second_layer_summary">Cambiar botones segunda capa</string>
+    <string name="pie_button_style_summary">Cambiar estilo de botón Pie</string>
+    <string name="pie_style_reset_message">¿Restablecer entradas estilo por defecto?</string>
+    <string name="pie_disable_ime_triggers_title">Reducir el tamaño de Pie en el teclado</string>
+    <string name="pie_disable_ime_triggers_summary">Reduce el tamaño Pie izquierdo y derecho si el teclado está activo</string>  
 </resources>
 
