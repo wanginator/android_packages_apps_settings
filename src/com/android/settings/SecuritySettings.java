@@ -21,7 +21,6 @@ import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
 
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.ActivityManagerNative;
 import android.app.AlertDialog;
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
@@ -30,9 +29,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.UserInfo;
-import android.hardware.Camera;
 import android.os.Bundle;
-import android.os.RemoteException;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.preference.CheckBoxPreference;
@@ -70,12 +67,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String KEY_LOCK_AFTER_TIMEOUT = "lock_after_timeout";
     private static final String KEY_OWNER_INFO_SETTINGS = "owner_info_settings";
     private static final String KEY_ENABLE_WIDGETS = "keyguard_enable_widgets";
-    private static final String KEY_SEE_THROUGH = "see_through";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
-    private static final String KEY_ENABLE_POWER_MENU = "lockscreen_enable_power_menu";
-    private static final String KEY_DISABLE_FRAME =
-            "lockscreen_disable_frame";
-
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_LIVELINESS_OFF = 125;
@@ -92,8 +84,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String KEY_CREDENTIALS_MANAGER = "credentials_management";
     private static final String KEY_NOTIFICATION_ACCESS = "manage_notification_access";
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
+
     private static final String LOCKSCREEN_MAXIMIZE_WIDGETS = "lockscreen_maximize_widgets";
-    private static final String KEY_ENABLE_CAMERA = "lockscreen_enable_camera";
 
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
@@ -115,9 +107,9 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private CheckBoxPreference mToggleVerifyApps;
     private CheckBoxPreference mPowerButtonInstantlyLocks;
     private CheckBoxPreference mEnableKeyguardWidgets;
-    private CheckBoxPreference mDisableFrame;
-    private CheckBoxPreference mEnableCameraWidget;
+
     private Preference mNotificationAccess;
+
     private boolean mIsPrimary;
 
     // Quick-unlock Addition   
@@ -126,9 +118,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
     public SecuritySettings() {
         super(null /* Don't ask for restrictions pin on creation. */);
     }
-
-    private CheckBoxPreference mSeeThrough;
-    private CheckBoxPreference mEnablePowerMenu;
     private CheckBoxPreference mMaximizeKeyguardWidgets;
 
     @Override
@@ -220,13 +209,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
             updateLockAfterPreferenceSummary();
         }
 
-	// lockscreen see through
-        mSeeThrough = (CheckBoxPreference) root.findPreference(KEY_SEE_THROUGH);
-        if (mSeeThrough != null) {
-            mSeeThrough.setChecked(Settings.System.getInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
-        }
-
         // Enable or disable keyguard widget checkbox based on DPM state
         mEnableKeyguardWidgets = (CheckBoxPreference) root.findPreference(KEY_ENABLE_WIDGETS);
         if (mEnableKeyguardWidgets != null) {
@@ -250,54 +232,11 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 mEnableKeyguardWidgets.setEnabled(!disabled);
             }
         }
-        // Enable / disable power menu on lockscreen
-
-        mEnablePowerMenu = (CheckBoxPreference) findPreference(KEY_ENABLE_POWER_MENU);
-	if (mEnablePowerMenu != null) {
-	mEnablePowerMenu.setChecked(Settings.System.getInt(getContentResolver(),
-        Settings.System.LOCKSCREEN_ENABLE_POWER_MENU, 1) == 1);
-	mEnablePowerMenu.setOnPreferenceChangeListener(this);
-}
         mMaximizeKeyguardWidgets = (CheckBoxPreference) root.findPreference(LOCKSCREEN_MAXIMIZE_WIDGETS);
         if (mMaximizeKeyguardWidgets != null) {
             mMaximizeKeyguardWidgets.setChecked(Settings.System.getInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS, 0) == 1);
         }
-
-	 mDisableFrame = (CheckBoxPreference) findPreference(KEY_DISABLE_FRAME);
-        mDisableFrame.setChecked(Settings.System.getInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_WIDGET_FRAME_ENABLED, 0) == 1);
-        mDisableFrame.setOnPreferenceChangeListener(this);
-
-        // Enable / disable camera widget on lockscreen
-        mEnableCameraWidget = (CheckBoxPreference) findPreference(KEY_ENABLE_CAMERA);
-
-        // Enable or disable camera widget settings based on device
-        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA) ||
-                Camera.getNumberOfCameras() == 0) {
-            PreferenceGroup securityCategory = (PreferenceGroup)
-                    root.findPreference(KEY_SECURITY_CATEGORY);
-            securityCategory.removePreference(root.findPreference(KEY_ENABLE_CAMERA));
-        } else if (isCameraDisabledByDpm()) {
-            mEnableCameraWidget.setEnabled(false);
-        } else {
-            mEnableCameraWidget.setChecked(Settings.System.getInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_ENABLE_CAMERA, 1) == 1);
-            mEnableCameraWidget.setOnPreferenceChangeListener(this);
-        }
-
-        // Enable / disable power menu on lockscreen
-        mEnablePowerMenu = (CheckBoxPreference) findPreference(KEY_ENABLE_POWER_MENU);
-        mEnablePowerMenu.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKSCREEN_ENABLE_POWER_MENU, 1) == 1);
-        mEnablePowerMenu.setOnPreferenceChangeListener(this);
-
-        // Lockscreen Blur
-        mSeeThrough = (CheckBoxPreference) findPreference(KEY_SEE_THROUGH);
-        mSeeThrough.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
-        mSeeThrough.setOnPreferenceChangeListener(this);
-
         // biometric weak liveliness
         mBiometricWeakLiveliness =
                 (CheckBoxPreference) root.findPreference(KEY_BIOMETRIC_WEAK_LIVELINESS);
@@ -679,9 +618,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
             } else {
                 setNonMarketAppsAllowed(false);
             }
-	} else if (preference == mSeeThrough) {
-            Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH,
-                    mSeeThrough.isChecked() ? 1 : 0);
         } else if (KEY_TOGGLE_VERIFY_APPLICATIONS.equals(key)) {
             Settings.Global.putInt(getContentResolver(), Settings.Global.PACKAGE_VERIFIER_ENABLE,
                     mToggleVerifyApps.isChecked() ? 1 : 0);
@@ -725,7 +661,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
-	boolean newValue = (Boolean) value;
         if (preference == mLockAfter) {
             int timeout = Integer.parseInt((String) value);
             try {
@@ -735,35 +670,8 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 Log.e("SecuritySettings", "could not persist lockAfter timeout setting", e);
             }
             updateLockAfterPreferenceSummary();
-	 } else if (preference == mDisableFrame) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_WIDGET_FRAME_ENABLED, newValue ? 1 : 0);
-            return true;
-        } else if (preference == mEnablePowerMenu) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_ENABLE_POWER_MENU, newValue ? 1 : 0);
-        } else if (preference == mEnableCameraWidget) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_ENABLE_CAMERA, newValue ? 1 : 0);
         }
         return true;
-    }
-
-    private boolean isCameraDisabledByDpm() {
-        final DevicePolicyManager dpm =
-                (DevicePolicyManager) this.getSystemService(Context.DEVICE_POLICY_SERVICE);
-        if (dpm != null) {
-            try {
-                final int userId = ActivityManagerNative.getDefault().getCurrentUser().id;
-                final int disabledFlags = dpm.getKeyguardDisabledFeatures(null, userId);
-                final  boolean disabledBecauseKeyguardSecure =
-                        (disabledFlags & DevicePolicyManager.KEYGUARD_DISABLE_SECURE_CAMERA) != 0;
-                return dpm.getCameraDisabled(null) || disabledBecauseKeyguardSecure;
-            } catch (RemoteException e) {
-                Log.e(TAG, "Can't get userId", e);
-            }
-        }
-        return false;
     }
 
     @Override

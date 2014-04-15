@@ -19,33 +19,39 @@
     android:title="@string/power_menu_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-<PreferenceScreen
+	<PreferenceScreen
         android:fragment="com.android.settings.rascarlo.LockscreenTargets"
         android:key="lockscreen_targets"
         android:title="@string/lockscreen_target_title" />
 
-<PreferenceScreen
-    android:title="@string/category_power_menu_title"
-    android:key="category_power_menu">
+	<PreferenceScreen
+	android:title="@string/category_power_menu_title"
+	android:key="category_power_menu">
 
-    <CheckBoxPreference
+	<CheckBoxPreference
+        android:key="lockscreen_enable_power_menu"
+        android:title="@string/lockscreen_enable_power_menu_title"
+        android:summary="@string/lockscreen_enable_power_menu_summary"
+        android:persistent="false" />
+
+	<CheckBoxPreference
         android:key="power_menu_reboot"
         android:title="@string/power_menu_reboot_title"
         android:defaultValue="true" />
 
-    <CheckBoxPreference
+	<CheckBoxPreference
         android:key="power_menu_screenshot"
         android:title="@string/power_menu_screenshot_title"
         android:defaultValue="false" />
 
-    <ListPreference
+	<ListPreference
         android:key="power_menu_immersive_mode"
         android:title="@string/power_menu_immersive_mode"
         android:entries="@array/immersive_mode_entries"
         android:entryValues="@array/immersive_mode_values"
         android:persistent="false" />
 
-   <CheckBoxPreference
+	<CheckBoxPreference
         android:key="power_menu_screenrecord"
         android:title="@string/power_menu_screenrecord_title"
         android:defaultValue="false" />
@@ -72,4 +78,10 @@
         android:fragment="com.android.settings.rascarlo.lsn.LockscreenNotifications"
         android:title="@string/lockscreen_notifications"
         android:summary="@string/lockscreen_notifications_summary"/>
+
+	<CheckBoxPreference
+            android:key="see_through"
+            android:title="@string/see_through_title"
+            android:summary="@string/see_through_summary" />
+
 </PreferenceScreen>

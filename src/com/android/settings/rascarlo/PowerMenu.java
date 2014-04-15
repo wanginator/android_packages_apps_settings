@@ -42,6 +42,8 @@ public class PowerMenu extends SettingsPreferenceFragment implements
     private static final String KEY_SILENT = "power_menu_silent";
     private static final String KEY_SCREENRECORD = "power_menu_screenrecord";
     private static final String POWER_MENU_ONTHEGO_ENABLED = "power_menu_onthego_enabled";
+    private static final String KEY_ENABLE_POWER_MENU = "lockscreen_enable_power_menu";
+    private static final String KEY_SEE_THROUGH = "see_through";
 
     private CheckBoxPreference mRebootPref;
     private CheckBoxPreference mScreenshotPref;
@@ -50,6 +52,8 @@ public class PowerMenu extends SettingsPreferenceFragment implements
     private CheckBoxPreference mSilentPref;
     private CheckBoxPreference mScreenrecordPref;
     private CheckBoxPreference mOnTheGoPowerMenu;
+    private CheckBoxPreference mEnablePowerMenu;
+    private CheckBoxPreference mSeeThrough;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +86,20 @@ public class PowerMenu extends SettingsPreferenceFragment implements
         mOnTheGoPowerMenu.setChecked((Settings.System.getInt(getContentResolver(),
         Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0) == 1));
         mOnTheGoPowerMenu.setOnPreferenceChangeListener(this);
+	
+	// lockscreen see through
+        mSeeThrough = (CheckBoxPreference) prefSet.findPreference(KEY_SEE_THROUGH);
+        if (mSeeThrough != null) {
+            mSeeThrough.setChecked(Settings.System.getInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
+        }
 
+	mEnablePowerMenu = (CheckBoxPreference) findPreference(KEY_ENABLE_POWER_MENU);
+	if (mEnablePowerMenu != null) {
+	mEnablePowerMenu.setChecked(Settings.System.getInt(getContentResolver(),
+        Settings.System.LOCKSCREEN_ENABLE_POWER_MENU, 1) == 1);
+	mEnablePowerMenu.setOnPreferenceChangeListener(this);
+	}
 
         mImmersiveModePref = (ListPreference) prefSet.findPreference(KEY_IMMERSIVE_MODE);
         mImmersiveModePref.setOnPreferenceChangeListener(this);
@@ -91,18 +108,20 @@ public class PowerMenu extends SettingsPreferenceFragment implements
         updateExpandedDesktopSummary(expandedDesktopValue);
     }
 
- 	public boolean onPreferenceChange(Preference preference, Object newValue) {
+ public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mImmersiveModePref) {
             int expandedDesktopValue = Integer.valueOf((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.GLOBAL_IMMERSIVE_MODE_STYLE, expandedDesktopValue);
             updateExpandedDesktopSummary(expandedDesktopValue);
             return true;
-
-        } else if (preference == mOnTheGoPowerMenu) {
-            boolean value = (Boolean) newValue;
+ 	} else if (preference == mEnablePowerMenu) {
             Settings.System.putInt(getContentResolver(),
-	    Settings.System.POWER_MENU_ONTHEGO_ENABLED, value ? 1 : 0);
+                    Settings.System.LOCKSCREEN_ENABLE_POWER_MENU, (Boolean) newValue ? 1 : 0);
+	return true;
+        } else if (preference == mOnTheGoPowerMenu) {
+            Settings.System.putInt(getContentResolver(),
+	    Settings.System.POWER_MENU_ONTHEGO_ENABLED, (Boolean) newValue ? 1 : 0);
 	return true;
 	}
         return false;
@@ -137,6 +156,9 @@ public class PowerMenu extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.POWER_MENU_SILENT_ENABLED,
                     value ? 1 : 0);
+	} else if (preference == mSeeThrough) {
+            Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH,
+                    mSeeThrough.isChecked() ? 1 : 0);
         } else {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
