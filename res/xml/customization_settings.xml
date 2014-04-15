@@ -20,12 +20,6 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceScreen
-        android:id="@+id/theme_settings_slim"
-        android:title="@string/themes_settings_title"
-        android:summary="@string/themes_settings_summary"
-        android:fragment="com.android.settings.mahdi.themes.ThemeSettings" />
-
-    <PreferenceScreen
         android:key="system_bars"
         android:title="@string/system_bars_title"
         android:summary="@string/system_bars_summary"
