@@ -77,6 +77,13 @@
                 android:title="@string/notification_pulse_title"
                 android:persistent="false" />
 
+            <com.android.settings.mahdi.SystemSettingCheckBoxPreference
+                android:key="screen_on_notification_led"
+                android:title="@string/screen_on_notification_led_title"
+                android:summary="@string/screen_on_notification_led_summary"
+                android:dependency="notification_pulse"
+                android:defaultValue="false" />
+
             <PreferenceScreen
                 android:key="notification_light"
                 android:title="@string/notification_light_title"

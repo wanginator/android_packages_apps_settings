@@ -57,6 +57,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_LIGHT_OPTIONS = "category_light_options";
     private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
+    private static final String KEY_SCREEN_ON_NOTIFICATION_LED = "screen_on_notification_led";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_SCREEN_SAVER = "screensaver";
     private static final String KEY_DISPLAY_ROTATION = "display_rotation";
@@ -80,6 +81,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mNotificationPulse;
     private PreferenceCategory mLightOptions;
     private PreferenceScreen mNotificationLight;
+    private CheckBoxPreference mScreenOnLed;
     private PreferenceScreen mBatteryPulse;
     private PreferenceCategory mWakeUpOptions;
     private CheckBoxPreference mVolumeWake;
@@ -149,6 +151,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mLightOptions = (PreferenceCategory) prefSet.findPreference(KEY_LIGHT_OPTIONS);
         mNotificationPulse = (CheckBoxPreference) findPreference(KEY_NOTIFICATION_PULSE);
         mNotificationLight = (PreferenceScreen) findPreference(KEY_NOTIFICATION_LIGHT);
+        mScreenOnLed = (CheckBoxPreference) findPreference(KEY_SCREEN_ON_NOTIFICATION_LED);
         mBatteryPulse = (PreferenceScreen) findPreference(KEY_BATTERY_LIGHT);
         if (mNotificationPulse != null && mNotificationLight != null && mBatteryPulse != null) {
             if (getResources().getBoolean(
@@ -156,6 +159,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                  if (getResources().getBoolean(
                          com.android.internal.R.bool.config_multiColorNotificationLed)) {
                      mLightOptions.removePreference(mNotificationPulse);
+                     mLightOptions.removePreference(mScreenOnLed);
                      updateLightPulseDescription();
                  } else {
                      mLightOptions.removePreference(mNotificationLight);
