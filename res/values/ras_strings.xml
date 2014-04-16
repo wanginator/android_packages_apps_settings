@@ -579,7 +579,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="battery_icon_title">Battery icon</string>
     <string name="battery_icon_summary">View or change the battery style settings</string>
     <string name="battery_status_icon">Icon</string>
-    <string name="battery_status_percentage">Percentage</string>
     <string name="battery_status_icon_percentage">Icon with percentage</string>
     <string name="battery_status_circle">Circle</string>
     <string name="battery_status_circle_percentage">Circle with percentage</string>

@@ -51,7 +51,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment
 
     private static final String PREF_ENABLE = "clock_style";
     private static final String PREF_AM_PM_STYLE = "status_bar_am_pm";
-    private static final String PREF_COLOR_PICKER = "clock_color";
+    //private static final String PREF_COLOR_PICKER = "clock_color";
     private static final String PREF_CLOCK_DATE_DISPLAY = "clock_date_display";
     private static final String PREF_CLOCK_DATE_STYLE = "clock_date_style";
     private static final String PREF_CLOCK_DATE_FORMAT = "clock_date_format";
@@ -65,7 +65,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment
 
     private ListPreference mClockStyle;
     private ListPreference mClockAmPmStyle;
-    private ColorPickerPreference mColorPicker;
+    //private ColorPickerPreference mColorPicker;
     private ListPreference mClockDateDisplay;
     private ListPreference mClockDateStyle;
     private ListPreference mClockDateFormat;
@@ -103,7 +103,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment
                 0)));
         mClockAmPmStyle.setSummary(mClockAmPmStyle.getEntry());
 
-        mColorPicker = (ColorPickerPreference) findPreference(PREF_COLOR_PICKER);
+        /**mColorPicker = (ColorPickerPreference) findPreference(PREF_COLOR_PICKER);
         mColorPicker.setOnPreferenceChangeListener(this);
         int intColor = Settings.System.getInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_CLOCK_COLOR, -2);
@@ -115,7 +115,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment
             String hexColor = String.format("#%08x", (0xffffffff & intColor));
             mColorPicker.setSummary(hexColor);
         }
-        mColorPicker.setNewPreviewColor(intColor);
+        mColorPicker.setNewPreviewColor(intColor);**/
 
         mClockDateDisplay = (ListPreference) findPreference(PREF_CLOCK_DATE_DISPLAY);
         mClockDateDisplay.setOnPreferenceChangeListener(this);
@@ -186,14 +186,14 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment
                     Settings.System.STATUSBAR_CLOCK_STYLE, val);
             mClockStyle.setSummary(mClockStyle.getEntries()[index]);
             return true;
-        } else if (preference == mColorPicker) {
+        /**} else if (preference == mColorPicker) {
             String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String
                     .valueOf(newValue)));
             preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_CLOCK_COLOR, intHex);
-            return true;
+            return true;**/
         } else if (preference == mClockDateDisplay) {
             int val = Integer.parseInt((String) newValue);
             int index = mClockDateDisplay.findIndexOfValue((String) newValue);
@@ -270,7 +270,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment
         return false;
     }
 
-    @Override
+    /*@Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.add(0, MENU_RESET, 0, R.string.reset)
                 .setIcon(R.drawable.ic_settings_backup) // use the backup icon
@@ -292,7 +292,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
         alertDialog.setTitle(R.string.reset);
         alertDialog.setMessage(R.string.status_bar_clock_style_reset_message);
-        alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+        /**alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Settings.System.putInt(getActivity().getContentResolver(),
                         Settings.System.STATUSBAR_CLOCK_COLOR, -2);
@@ -301,7 +301,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment
         });
         alertDialog.setNegativeButton(R.string.cancel, null);
         alertDialog.create().show();
-    }
+    }*/
 
     private void parseClockDateFormats() {
         // Parse and repopulate mClockDateFormats's entries based on current date.
