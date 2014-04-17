@@ -26,7 +26,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements OnP
     // General
     private static String STATUS_BAR_GENERAL_CATEGORY = "status_bar_general_category";
 
- private static final String STATUS_BAR_BATTERY = "status_bar_battery";
+    private static final String STATUS_BAR_BATTERY = "status_bar_battery";
+    private static final String STATUS_BAR_BATTERY_SHOW_PERCENT = "status_bar_battery_show_percent";
+    private static final String STATUS_BAR_STYLE_HIDDEN = "4";
+    private static final String STATUS_BAR_STYLE_TEXT = "6";
 
     // Brightness control
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
@@ -56,6 +59,7 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
     private ListPreference mNetTrafficState;
     private ListPreference mNetTrafficUnit;
     private ListPreference mStatusBarBattery;
+    private SystemSettingCheckBoxPreference mStatusBarBatteryShowPercent;
     private ListPreference mNetTrafficPeriod;
     private CheckBoxPreference mStatusBarNetworkActivity;
     private CheckBoxPreference mStatusBarNotifCount;
@@ -101,6 +105,10 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
         mStatusBarBattery.setOnPreferenceChangeListener(this);
+
+ 	mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY);
+        mStatusBarBatteryShowPercent =
+                (SystemSettingCheckBoxPreference) findPreference(STATUS_BAR_BATTERY_SHOW_PERCENT);
 
 
 	    // Status bar double-tap to sleep
@@ -268,6 +276,12 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
             return true;
         }
 		return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+ 	private void enableStatusBarBatteryDependents(String value) {
+        boolean enabled = !(value.equals(STATUS_BAR_STYLE_TEXT)
+                || value.equals(STATUS_BAR_STYLE_HIDDEN));
+        mStatusBarBatteryShowPercent.setEnabled(enabled);
     }
 }
 
