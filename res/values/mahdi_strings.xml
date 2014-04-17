@@ -1496,7 +1496,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="system_power_crt_mode_scale">Scale down</string>
 
     <!-- Animation Control -->
-    <string name="interface_animation_title">Animation Control</string>
+    <string name="interface_animation_title">Animation control</string>
     <string name="interface_animation_summary">Choose alternative animations for System, Listview, Scroll and Keyboard</string>
 
     <!-- ListView animation -->
@@ -1863,8 +1863,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="voice_tts_new_sms">New text message from </string>
     <!-- require add space in the end of string -->
     <string name="voice_tts_new_notif">New notification from </string>
-    <string name="voice_tts_title">Driving Mode</string>
-    <string name="voice_tts_summary">Enable Driving mode then choose what you want to speak while driving</string>
+    <string name="voice_tts_title">Driving mode</string>
+    <string name="voice_tts_summary">Enable driving mode then choose what you want to speak while driving</string>
     <string name="tts_settings_reset_message">Reset all settings to default?</string>
     <string name="voice_tts_notification_title">Drive mode</string>
     <string name="voice_tts_notification_summary_on">Enable driving mode</string>
