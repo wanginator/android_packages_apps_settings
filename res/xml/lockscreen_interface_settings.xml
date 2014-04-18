@@ -74,23 +74,6 @@
         android:title="@string/style_title"
         android:key="lockscreen_style_category" >
 
-        <com.android.settings.mahdi.SystemSettingCheckBoxPreference
-            android:key="lockscreen_see_through"
-            android:title="@string/lockscreen_see_through_title"
-            android:summary="@string/lockscreen_see_through_summary"
-            android:defaultValue="false" />
-
-        <Preference
-            android:key="lockscreen_custom_wallpaper"
-            android:title="@string/lockscreen_wallpaper_title"
-            android:summary="@string/lockscreen_wallpaper_summary"
-            android:persistent="false">
-            <intent
-                    android:targetPackage="com.android.wallpapercropper"
-                    android:targetClass="com.android.wallpapercropper.LockscreenWallpaper" />
-        </Preference>
- 
-
         <PreferenceScreen
             android:key="keyguard_style"
             android:fragment="com.android.settings.mahdi.LockscreenStyle"
