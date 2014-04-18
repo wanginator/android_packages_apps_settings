@@ -25,6 +25,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements OnP
 
     // General
     private static String STATUS_BAR_GENERAL_CATEGORY = "status_bar_general_category";
+
+ private static final String STATUS_BAR_BATTERY = "status_bar_battery";
+
     // Brightness control
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
  // Double-tap to sleep
@@ -52,6 +55,7 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
     // Network Traffic
     private ListPreference mNetTrafficState;
     private ListPreference mNetTrafficUnit;
+    private ListPreference mStatusBarBattery;
     private ListPreference mNetTrafficPeriod;
     private CheckBoxPreference mStatusBarNetworkActivity;
     private CheckBoxPreference mStatusBarNotifCount;
@@ -92,7 +96,14 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
                 }
             }
 
- // Status bar double-tap to sleep
+	mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY);
+        int batteryStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BATTERY, 0);
+        mStatusBarBattery.setValue(String.valueOf(batteryStyle));
+        mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
+        mStatusBarBattery.setOnPreferenceChangeListener(this);
+
+
+	    // Status bar double-tap to sleep
             mStatusBarDoubleTapSleepGesture = (CheckBoxPreference) getPreferenceScreen().findPreference(DOUBLE_TAP_SLEEP_GESTURE);
             mStatusBarDoubleTapSleepGesture.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.DOUBLE_TAP_SLEEP_GESTURE, 0) == 1));
@@ -166,7 +177,12 @@ private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_ac
             Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_NOTIF_COUNT,
                     ((CheckBoxPreference)preference).isChecked() ? 0 : 1);
             return true;
-
+ 	} else if (preference == mStatusBarBattery) {
+            int batteryStyle = Integer.valueOf((String) objValue);
+            int index = mStatusBarBattery.findIndexOfValue((String) objValue);
+            Settings.System.putInt(resolver, Settings.System.STATUS_BAR_BATTERY, batteryStyle);
+            mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
+            return true;
         } else if (preference == mNetTrafficState) {
             int intState = Integer.valueOf((String)objValue);
             mNetTrafficVal = setBit(mNetTrafficVal, MASK_UP, getBit(intState, MASK_UP));
