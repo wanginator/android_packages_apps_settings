@@ -2004,4 +2004,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Custom lockscreen -->
     <string name="lockscreen_enable_modlock_title">Custom lock screen</string>
 
+    <!-- Bluetooth accept all file types -->
+    <string name="bluetooth_accept_all_files">Accept all file types</string>
+
 </resources>
