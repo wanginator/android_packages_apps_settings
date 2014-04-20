@@ -1216,8 +1216,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="development_shortcut_summary">Enable \'wipe data\' and \'force close\' options in notification area and recent apps list</string>
 
     <!-- Recents panel menu -->
-    <string name="recents_panel_settings_title">Recents panel</string>
-    <string name="recents_panel_settings_summary">Enable a clear all button in the recents panel and more</string>
+    <string name="recents_panel_settings_title">Multitasking</string>
+    <string name="recents_panel_settings_summary">Multitasking options including slim recents and more</string>
 
     <!-- Recents clear all -->
     <string name="aosp_recents_category">AOSP Recents</string>
@@ -1497,7 +1497,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Animation Control -->
     <string name="interface_animation_title">Animation control</string>
-    <string name="interface_animation_summary">Choose alternative animations for System, Listview, Scroll and Keyboard</string>
+    <string name="interface_animation_summary">Choose alternative animations for System, Listview, Scroll and more</string>
 
     <!-- ListView animation -->
     <string name="system_animation_title">System</string>

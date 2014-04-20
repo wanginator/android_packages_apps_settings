@@ -83,7 +83,7 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         mRecentPanelExpandedMode = (ListPreference) findPreference(RECENT_PANEL_EXPANDED_MODE);
         String recentPanelExpandedMode = Settings.System.getString(resolver, Settings.System.RECENT_PANEL_EXPANDED_MODE);
         if (recentPanelExpandedMode != null) {
-            mRecentPanelExpandedMode.setValue(recentPanelScale);
+            mRecentPanelExpandedMode.setValue(recentPanelExpandedMode);
         }
         mRecentPanelExpandedMode.setOnPreferenceChangeListener(this);
 
