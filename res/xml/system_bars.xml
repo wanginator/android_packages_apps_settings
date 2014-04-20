@@ -45,7 +45,6 @@
         <PreferenceScreen
             android:key="status_bar"
             android:title="@string/more_title"
-            android:summary="@string/status_bar_summary"
             android:fragment="com.android.settings.mahdi.StatusBar" />
 
     </PreferenceCategory>
@@ -95,8 +94,7 @@
     
         <PreferenceScreen
             android:key="navigation_settings"
-	    android:title="@string/more_title"
-            android:summary="@string/navigation_settings_summary"
+            android:title="@string/more_title"
             android:fragment="com.android.settings.mahdi.NavbarSettings"
             android:dependency="enable_nav_bar" />
 

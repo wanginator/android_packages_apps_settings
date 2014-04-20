@@ -119,6 +119,7 @@ public class SystemBars extends SettingsPreferenceFragment implements
             int index = mStatusBarBattery.findIndexOfValue((String) newValue);
             Settings.System.putInt(getContentResolver(), Settings.System.STATUS_BAR_BATTERY, batteryStyle);
             mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
+            return true;
         } else if (preference == mEnableNavigationBar) {
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_SHOW,

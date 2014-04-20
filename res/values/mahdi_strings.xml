@@ -446,11 +446,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="lockgesture_change_lock_pattern_label">Change unlock gesture</string>
     <string name="lockgesture_change_lock_pin_label">Change unlock PIN</string>
     <string name="lockgesture_need_to_unlock">Confirm saved gesture</string>
-    <!-- Do not translate. -->
-    <string name="lockgesture_need_to_unlock_footer" />
     <string name="lockgesture_need_to_unlock_wrong">Try again:</string>
-    <!-- Do not translate. -->
-    <string name="lockgesture_need_to_unlock_wrong_footer" />
     <string name="lockgesture_recording_intro_header">Draw an unlock gesture:</string>
     <string name="lockgesture_recording_intro_footer">Press Menu for help.</string>
     <string name="lockgesture_recording_inprogress">Release finger when done.</string>
@@ -477,6 +473,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="unlock_set_unlock_gesture_title">Gesture</string>
     <string name="unlock_set_unlock_gesture_summary">Low security, experimental</string>
     <string name="unlock_set_unlock_mode_gesture">Gesture</string>
+    <!-- Do not translate. -->
+    <string name="lockgesture_need_to_unlock_footer" />    
+    <!-- Do not translate. -->
+    <string name="lockgesture_need_to_unlock_wrong_footer" />
 
     <!-- Quick settings panel  -->
     <string name="quick_settings_panel_title">Quick settings panel</string>
@@ -655,7 +655,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Status bar | Clock -->
     <string name="status_bar_title">Status bar</string>
-    <string name="status_bar_summary">More status bar options</string>
     <string name="status_bar_style_title">Style</string>
 
     <string name="status_bar_clock">Clock and date</string>
@@ -948,7 +947,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="navigation_settings_options_title">Navigation options</string>
     <string name="navigation_settings_category_title">Navigation</string>
     <string name="navigation_settings_title">Navigation bar</string>
-    <string name="navigation_settings_summary">More navigation bar options</string>
 
     <!-- Navigation bar -->
     <string name="navigation_bar_size_42_dp_default">42 dp (default)</string>
@@ -1907,8 +1905,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="voice_tts_summary">Enable driving mode then choose what you want to speak while driving</string>
     <string name="tts_settings_reset_message">Reset all settings to default?</string>
     <string name="voice_tts_notification_title">Drive mode</string>
-    <string name="voice_tts_notification_summary_on">Enable driving mode</string>
-    <string name="voice_tts_notification_summary_off">Disable driving mode</string>
+    <string name="voice_tts_notification_summary_on">Enabled</string>
+    <string name="voice_tts_notification_summary_off">Disabled</string>
     <string name="voice_tts_volume_title">Volume</string>
     <string name="voice_tts_volume_summary">Set volume for speak</string>
     <string name="voice_tts_call_title">Incoming call</string>
