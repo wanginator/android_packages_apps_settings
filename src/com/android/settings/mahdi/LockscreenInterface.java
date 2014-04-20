@@ -110,7 +110,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         // Find categories
         PreferenceCategory generalCategory = (PreferenceCategory)
                 findPreference(LOCKSCREEN_GENERAL_CATEGORY);
-        PreferenceCategory generalCategory = (PreferenceCategory)
+        PreferenceCategory lockscreen_shortcuts_category = (PreferenceCategory)
                 findPreference(LOCKSCREEN_SHORTCUTS_CATEGORY);
 
         mEnableModLock = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_MODLOCK_ENABLED);
@@ -139,9 +139,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         // Remove glowpad torch if device doesn't have a torch
         mGlowpadTorch = (CheckBoxPreference) findPreference(PREF_LOCKSCREEN_TORCH);
         if (!Utils.isPhone(getActivity())) {
-            PreferenceCategory lockscreen_shortcuts_category =
-                (PreferenceCategory) findPreference(LOCKSCREEN_SHORTCUTS_CATEGORY);
             lockscreen_shortcuts_category.removePreference(mGlowpadTorch);
+        }
+
+        if (mEnableModLock != null) {
+            generalCategory.removePreference(mEnableModLock);
+            mEnableModLock = null;
         }
 
         mLockBackground = (ListPreference) findPreference(LOCKSCREEN_BACKGROUND_STYLE);
@@ -152,11 +155,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 
         final int unsecureUnlockMethod = Settings.Secure.getInt(getActivity().getContentResolver(),
                 Settings.Secure.LOCKSCREEN_UNSECURE_USED, 1);
-
-        if (mEnableModLock != null) {
-            generalCategory.removePreference(mEnableModLock);
-            mEnableModLock = null;
-        }
 
         //setup custom lockscreen customize view
         if ((unsecureUnlockMethod != 1)
