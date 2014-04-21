@@ -6,17 +6,26 @@
 
     <PreferenceScreen
        android:id="@+id/omniswitch"
-       android:title="@string/omniswitch_category"
-       android:fragment="com.android.settings.rascarlo.OmniSwitch" />
+       android:icon="@drawable/ic_settings_omniswitch" 
+       android:fragment="com.android.settings.rascarlo.OmniSwitch"
+       android:title="@string/omniswitch_category" />
 
     <PreferenceScreen
             android:key="wakelock_blocker"
             android:fragment="com.android.settings.rascarlo.WakeLockBlocker"
+	    android:icon="@drawable/ic_settings_wakelock_blocker"
             android:title="@string/wakelock_blocker" />
+
+	<PreferenceScreen
+                android:key="screen_recorder"
+                android:title="@string/screen_recorder_title"
+		android:icon="@drawable/ic_settings_src"
+                android:fragment="com.android.settings.chameleonos.ScreenRecorderSettings" />
 
     <PreferenceScreen
         android:id="@+id/theme_settings"
         android:fragment="com.android.settings.slim.themes.ThemeSettings"
+	android:icon="@drawable/ic_settings_themes"
         android:title="@string/theme_menu_title" />
 
     <PreferenceScreen
