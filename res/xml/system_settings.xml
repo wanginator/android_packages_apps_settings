@@ -29,15 +29,25 @@
         android:title="@string/theme_menu_title" />
 
     <PreferenceScreen
+        android:fragment="com.android.settings.rascarlo.NotificationLightSettings"
+        android:key="notification_pulse"
+	android:icon="@drawable/ic_buildtweaks_notificationled"
+        android:title="@string/led_settings_category_title" />
+
+ <PreferenceCategory
+        android:title="@string/category_app_circle_bar_title">
+
+	<PreferenceScreen
+	android:id="@+id/app_circle_sidebar"
+        android:title="@string/app_circle_bar_title"
+        android:summary="@string/app_circle_sidebar_summary_real"
+        android:fragment="com.android.settings.rascarlo.AppCircleSidebar" />
+    </PreferenceCategory>
+
+    <PreferenceScreen
         android:key="recents_panel"
         android:title="@string/recents_panel_settings_title"
         android:summary="@string/recents_panel_settings_summary"
         android:fragment="com.android.settings.rascarlo.RecentsPanelSettings" />
-
-    <PreferenceScreen
-        android:fragment="com.android.settings.rascarlo.NotificationLightSettings"
-        android:key="notification_pulse"
-        android:title="@string/led_settings_category_title" />
-
 </PreferenceScreen>
 
