@@ -38,8 +38,6 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.android.settings.rascarlo.lsn.AppMultiSelectListPreference;
-import com.android.internal.util.rascarlo.DeviceUtils;
-
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -99,3 +97,4 @@ public class AppCircleSidebar extends SettingsPreferenceFragment implements
                 Settings.System.WHITELIST_APP_CIRCLE_BAR, builder.toString());
     }
 }
+
