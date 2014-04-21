@@ -33,12 +33,11 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.text.TextUtils;
-
+import android.preference.CheckBoxPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.android.settings.rascarlo.lsn.AppMultiSelectListPreference;
-import com.android.internal.util.rascarlo.DeviceUtils;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -48,8 +47,10 @@ public class AppCircleSidebar extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "AppCircleSidebar";
 
+    private static final String PREF_ENABLE_APP_CIRCLE_BAR = "enable_app_circle_bar";
     private static final String PREF_INCLUDE_APP_CIRCLE_BAR_KEY = "app_circle_bar_included_apps";
 
+   private CheckBoxPreference mEnableAppCircleBar;
     private AppMultiSelectListPreference mIncludedAppCircleBar;
 
     @Override
@@ -60,10 +61,29 @@ public class AppCircleSidebar extends SettingsPreferenceFragment implements
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
 
+        mEnableAppCircleBar = (CheckBoxPreference) prefSet.findPreference(PREF_ENABLE_APP_CIRCLE_BAR);
+        mEnableAppCircleBar.setChecked((Settings.System.getInt(resolver,
+                Settings.System.ENABLE_APP_CIRCLE_BAR, 0) == 1));
+
         mIncludedAppCircleBar = (AppMultiSelectListPreference) prefSet.findPreference(PREF_INCLUDE_APP_CIRCLE_BAR_KEY);
         Set<String> includedApps = getIncludedApps();
         if (includedApps != null) mIncludedAppCircleBar.setValues(includedApps);
         mIncludedAppCircleBar.setOnPreferenceChangeListener(this);
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        boolean value;
+	if (preference == mEnableAppCircleBar) {
+            boolean checked = ((CheckBoxPreference)preference).isChecked();
+            Settings.System.putInt(resolver,
+                    Settings.System.ENABLE_APP_CIRCLE_BAR, checked ? 1:0);
+        } else {
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
+        }
+
+        return true;
     }
 
     @Override

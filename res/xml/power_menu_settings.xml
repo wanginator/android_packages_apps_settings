@@ -21,11 +21,21 @@
 
 	<PreferenceScreen
         android:fragment="com.android.settings.rascarlo.LockscreenTargets"
+	android:icon="@drawable/ic_settings_lockscreen"
         android:key="lockscreen_targets"
         android:title="@string/lockscreen_target_title" />
+	<!--android:icon="@drawable/ic_settings_locktargets"-->
+
+        <PreferenceScreen
+        android:key="lockscreen_notifications"
+        android:fragment="com.android.settings.rascarlo.lsn.LockscreenNotifications"
+	android:icon="@drawable/ic_settings_actived"
+        android:title="@string/lockscreen_notifications"
+        android:summary="@string/lockscreen_notifications_summary"/>
 
 	<PreferenceScreen
 	android:title="@string/category_power_menu_title"
+	android:icon="@drawable/ic_lock_power_off"
 	android:key="category_power_menu">
 
 	<CheckBoxPreference
@@ -72,12 +82,6 @@
             android:summary="@string/power_menu_onthego_title_summary"
             android:defaultValue="false" />
     </PreferenceScreen>
-
-    <PreferenceScreen
-        android:key="lockscreen_notifications"
-        android:fragment="com.android.settings.rascarlo.lsn.LockscreenNotifications"
-        android:title="@string/lockscreen_notifications"
-        android:summary="@string/lockscreen_notifications_summary"/>
 
 	<CheckBoxPreference
             android:key="see_through"
