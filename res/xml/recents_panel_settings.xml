@@ -35,4 +35,14 @@
             android:defaultValue="2"
             android:dependency="recent_menu_clear_all" />
 
+    <PreferenceCategory
+        android:title="@string/category_app_circle_bar_title">
+
+            <PreferenceScreen
+                android:id="@+id/app_circle_sidebar"
+                android:title="@string/app_circle_bar_title"
+                android:summary="@string/app_circle_sidebar_summary_real"
+                android:fragment="com.android.settings.rascarlo.AppCircleSidebar" />
+
+    </PreferenceCategory>
 </PreferenceScreen>
