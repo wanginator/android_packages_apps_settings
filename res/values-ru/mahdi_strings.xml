@@ -860,7 +860,7 @@
     <string name="title_pref_menu_display">Видимость меню</string>
     <string name="summary_pref_menu_display">Как и когда появляться кнопкам меню</string>
     <string name="navbar_enable_bar">Включить панель навигации</string>
-    <string name="navbar_enable_bar_summary">Включает панель навигации</string
+    <string name="navbar_enable_bar_summary">Включает панель навигации</string>
     <string name="navigation_bar_left_title">Режим левши</string>
     <string name="navigation_bar_left_summary">Отображает панель навигации на левой стороне экрана в ландшафтном режиме</string>
     <string name="navigation_bar_height_title">Высота панели навигации</string>
@@ -1580,7 +1580,7 @@
     <string name="progressbar_color_1_title">Цвет1</string>
     <string name="progressbar_color_2_title">Цвет2</string>
     <string name="progressbar_color_3_title">Цвет3</string>
-    <string name="progressbar_color_4_title">Цвет4</string>>
+    <string name="progressbar_color_4_title">Цвет4</string>
     <string name="sample_progressbar_text">Индикатор прогресса : предпросмотр</string>
     <string name="progressbar_interpolator">Интерполятор</string>
     <string name="progressbar_none">Нет</string>
@@ -1775,7 +1775,7 @@
     <string name="summary_immersive_mode">%1$s</string>
     <string name="immersive_mode_summary_status_bar">Расширенный рабочий стол со строкой состояния</string>
     <string name="immersive_mode_summary_no_status_bar">Расширенный рабочий стол без строки состояния</string>
-    <string name="immersive_mode_disabled">Обычный</string>Без строки состояния
+    <string name="immersive_mode_disabled">Обычный</string>
     <string name="immersive_mode_status_bar">Отображать строку состояния</string>
     <string name="immersive_mode_no_status_bar">Скрыть строку состояния</string>
 
@@ -1931,7 +1931,7 @@
     <string name="pie_button_second_layer">Второй уровень кнопок</string>
     <string name="pie_button_second_layer_summary">Изменить второй уровень кнопок</string>
     <string name="pie_button_style_summary">Изменить стиль кнопок</string>
-    <string name="pie_style_reset_message">Сбросить стили к значениям по умолчанию?</string
+    <string name="pie_style_reset_message">Сбросить стили к значениям по умолчанию?</string>
     <string name="pie_disable_ime_triggers_title">Уменьшить размер переключателей клавиатуры</string>
     <string name="pie_disable_ime_triggers_summary">Уменьшает левый и правый переключатели, если клавиатура запущена</string>
 
