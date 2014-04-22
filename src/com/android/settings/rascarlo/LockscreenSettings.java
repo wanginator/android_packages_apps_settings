@@ -31,6 +31,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
+import com.android.settings.rascarlo.lsn.LockscreenNotificationsPreference;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -41,10 +42,12 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     private static final String KEY_SEE_THROUGH = "see_through";
     private static final String KEY_PEEK = "notification_peek";
     private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
+    private static final String KEY_LOCKSCREEN_NOTIFICATONS = "lockscreen_notifications";
 
     private CheckBoxPreference mSeeThrough;
     private SystemSettingCheckBoxPreference mNotificationPeek;
     private ListPreference mPeekPickupTimeout;
+    private LockscreenNotificationsPreference mLockscreenNotifications;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
             mSeeThrough.setChecked(Settings.System.getInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
         }
+        mLockscreenNotifications = (LockscreenNotificationsPreference) findPreference(KEY_LOCKSCREEN_NOTIFICATONS);
 
 	mNotificationPeek = (SystemSettingCheckBoxPreference) findPreference(KEY_PEEK);
 
@@ -93,7 +97,9 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
             Settings.System.putInt(getContentResolver(), Settings.System.PEEK_STATE,
                     mNotificationPeek.isChecked() ? 1 : 0);
 	return true; 
-	}
+	}else if (preference == mLockscreenNotifications) {
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
+        }        
 		return super.onPreferenceTreeClick(preferenceScreen, preference);
 
     }
