@@ -60,6 +60,8 @@ import com.android.settings.ChooseLockSettingsHelper;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
+import com.android.settings.mahdi.lsn.LockscreenNotificationsPreference;
+
 public class LockscreenInterface extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
@@ -69,8 +71,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
     private static final String LOCKSCREEN_GENERAL_CATEGORY = "lockscreen_general_category";
     private static final String KEY_LOCKSCREEN_MODLOCK_ENABLED = "lockscreen_modlock_enabled";
+    private static final String KEY_LOCKSCREEN_NOTIFICATONS = "lockscreen_notifications";
     private static final String KEY_BATTERY_STATUS = "lockscreen_battery_status";
-    private static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
     private static final String LOCKSCREEN_SHORTCUTS_CATEGORY = "lockscreen_shortcuts_category";
     private static final String PREF_LOCKSCREEN_EIGHT_TARGETS = "lockscreen_eight_targets";
     private static final String PREF_LOCKSCREEN_TORCH = "lockscreen_glowpad_torch";
@@ -82,8 +84,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final int REQUEST_PICK_WALLPAPER = 201;
         
     private CheckBoxPreference mEnableModLock;
+    private LockscreenNotificationsPreference mLockscreenNotifications;
     private ListPreference mBatteryStatus;
-    private CheckBoxPreference mLockRingBattery;
     private CheckBoxPreference mLockscreenEightTargets;
     private CheckBoxPreference mGlowpadTorch;
     private Preference mShortcuts;
@@ -127,6 +129,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             mEnableModLock.setOnPreferenceChangeListener(this);
         }
 
+        mLockscreenNotifications = (LockscreenNotificationsPreference) findPreference(KEY_LOCKSCREEN_NOTIFICATONS);
+
         mBatteryStatus = (ListPreference) findPreference(KEY_BATTERY_STATUS);
         if (mBatteryStatus != null) {
             mBatteryStatus.setOnPreferenceChangeListener(this);
@@ -140,10 +144,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             mBatteryStatus.setValueIndex(batteryStatus);
             mBatteryStatus.setSummary(mBatteryStatus.getEntries()[batteryStatus]);
         }
-
-        mLockRingBattery = (CheckBoxPreference)findPreference(BATTERY_AROUND_LOCKSCREEN_RING);
-        mLockRingBattery.setChecked(Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, 0) == 1);
 
         mLockscreenEightTargets = (CheckBoxPreference) findPreference(
                 PREF_LOCKSCREEN_EIGHT_TARGETS);
@@ -218,13 +218,10 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     }
 
     @Override
-    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {        
-        if (preference == mLockRingBattery) {
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, 
-                    mLockRingBattery.isChecked() ? 1 : 0);
-            return true;
-        }
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mLockscreenNotifications) {
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
+        }        
        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
