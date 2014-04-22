@@ -20,6 +20,7 @@ import static com.android.internal.util.mahdi.QSConstants.TILES_DEFAULT;
 import static com.android.internal.util.mahdi.QSConstants.TILE_AIRPLANE;
 import static com.android.internal.util.mahdi.QSConstants.TILE_AUTOROTATE;
 import static com.android.internal.util.mahdi.QSConstants.TILE_BATTERY;
+import static com.android.internal.util.mahdi.QSConstants.TILE_BATTERYSAVER;
 import static com.android.internal.util.mahdi.QSConstants.TILE_BLUETOOTH;
 import static com.android.internal.util.mahdi.QSConstants.TILE_BRIGHTNESS;
 import static com.android.internal.util.mahdi.QSConstants.TILE_CAMERA;
@@ -96,7 +97,7 @@ public class QuickSettingsUtil {
                 TILE_BRIGHTNESS, R.string.title_tile_brightness,
                 "com.android.systemui:drawable/ic_qs_brightness_auto_off"));
         registerTile(new QuickSettingsUtil.TileInfo(
-                 TILE_CAMERA, R.string.title_tile_camera,
+                TILE_CAMERA, R.string.title_tile_camera,
                 "com.android.systemui:drawable/ic_qs_camera"));
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_CONTACT, R.string.title_tile_contact,
@@ -173,10 +174,10 @@ public class QuickSettingsUtil {
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_NETWORKADB, R.string.title_tile_network_adb,
                 "com.android.systemui:drawable/ic_qs_network_adb_on"));
-	registerTile(new QuickSettingsUtil.TileInfo(
+        registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_NAVBAR, R.string.title_tile_navbar,
                 "com.android.systemui:drawable/ic_qs_navbar_on"));
-	registerTile(new QuickSettingsUtil.TileInfo(
+        registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_NETWORKTRAFFIC, R.string.title_tile_network_traffic,
                 "com.android.systemui:drawable/ic_qs_network_traffic_on"));
         registerTile(new QuickSettingsUtil.TileInfo(
@@ -185,6 +186,9 @@ public class QuickSettingsUtil {
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_ONTHEGO, R.string.title_tile_onthego,
                 "com.android.systemui:drawable/ic_qs_onthego"));
+        registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_BATTERYSAVER, R.string.title_tile_batterysaver,
+                "com.android.systemui:drawable/ic_qs_battery_saver_on"));
     }
 
     private static void registerTile(QuickSettingsUtil.TileInfo info) {
@@ -230,7 +234,7 @@ public class QuickSettingsUtil {
         // Don't show the LTE tile if not supported
         if (!QSUtils.deviceSupportsLte(context)) {
             removeTile(TILE_LTE);
-        }        
+        }
 
         // Don't show the Torch tile if not supported
         if (!context.getResources().getBoolean(R.bool.has_led_flash)) {
