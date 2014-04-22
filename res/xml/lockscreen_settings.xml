@@ -11,13 +11,6 @@
         android:title="@string/lockscreen_target_title" />
 	<!--android:icon="@drawable/ic_settings_locktargets"-->
 
-        <PreferenceScreen
-        android:key="lockscreen_notifications"
-        android:fragment="com.android.settings.rascarlo.lsn.LockscreenNotifications"
-	android:icon="@drawable/ic_settings_actived"
-        android:title="@string/lockscreen_notifications"
-        android:summary="@string/lockscreen_notifications_summary"/>
-
 	<PreferenceScreen
 	android:key="category_power_menu"
         android:fragment="com.android.settings.rascarlo.PowerMenu"
@@ -33,6 +26,14 @@
         <PreferenceCategory
             android:key="notification_category"
             android:title="@string/notification_category">
+
+        <com.android.settings.rascarlo.lsn.LockscreenNotificationsPreference
+            android:key="lockscreen_notifications"
+            android:defaultValue="false"
+            android:fragment="com.android.settings.rascarlo.lsn.LockscreenNotifications"
+            android:title="@string/lockscreen_notifications"
+            android:summary="@string/lockscreen_notifications_summary"
+            android:widgetLayout="@layout/listview_embedded_switchpreference" />
 
        <com.android.settings.rascarlo.SystemSettingCheckBoxPreference
             android:key="notification_peek"
