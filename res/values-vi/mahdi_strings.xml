@@ -1225,7 +1225,7 @@ Xóa sẽ gỡ bỏ dòng.
     <string name="new_recents_screen_title">Kiểu Slims</string>
     <string name="new_recents_screen_summary">Thế danh sách ứng dụng gần đây theo kiểu thẻ Google mới.</string>
     <string name="recent_panel_scale_title">Kích thước</string>
-    <string name="recent_panel_scale_summary">Kích thước trang ứng dụng gần đây theo %.</string>
+    <string name="recent_panel_scale_summary">Kích thước trang ứng dụng gần đây theo phần trăm</string>
     <string name="recent_panel_100">100% (mặc định)</string>
     <string name="recent_panel_85">85%</string>
     <string name="recent_panel_70">70%</string>

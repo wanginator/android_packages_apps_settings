@@ -39,7 +39,7 @@
     <string name="add">Aggiungi</string>
     <string name="reset_message">Resettare tutto le impostazioni di default?</string>
     <string name="style_title">Stile</string>
-    <string name="more_title">Più...</string>
+    <string name="more_title">Altro...</string>
 
     <!-- Display settings screen, notification light settings -->
     <string name="display_category_light_options_title">Opzioni LED</string>
