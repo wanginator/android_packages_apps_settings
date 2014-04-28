@@ -43,7 +43,6 @@ public class PowerMenu extends SettingsPreferenceFragment implements
     private static final String KEY_SCREENRECORD = "power_menu_screenrecord";
     private static final String POWER_MENU_ONTHEGO_ENABLED = "power_menu_onthego_enabled";
     private static final String KEY_ENABLE_POWER_MENU = "lockscreen_enable_power_menu";
-    private static final String KEY_SEE_THROUGH = "see_through";
 
     private CheckBoxPreference mRebootPref;
     private CheckBoxPreference mScreenshotPref;
@@ -53,7 +52,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
     private CheckBoxPreference mScreenrecordPref;
     private CheckBoxPreference mOnTheGoPowerMenu;
     private CheckBoxPreference mEnablePowerMenu;
-    private CheckBoxPreference mSeeThrough;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,13 +85,6 @@ public class PowerMenu extends SettingsPreferenceFragment implements
         mOnTheGoPowerMenu.setChecked((Settings.System.getInt(getContentResolver(),
         Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0) == 1));
         mOnTheGoPowerMenu.setOnPreferenceChangeListener(this);
-	
-	// lockscreen see through
-        mSeeThrough = (CheckBoxPreference) prefSet.findPreference(KEY_SEE_THROUGH);
-        if (mSeeThrough != null) {
-            mSeeThrough.setChecked(Settings.System.getInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
-        }
 
 	mEnablePowerMenu = (CheckBoxPreference) findPreference(KEY_ENABLE_POWER_MENU);
 	if (mEnablePowerMenu != null) {
@@ -156,10 +148,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.POWER_MENU_SILENT_ENABLED,
                     value ? 1 : 0);
-	} else if (preference == mSeeThrough) {
-            Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH,
-                    mSeeThrough.isChecked() ? 1 : 0);
-        } else {
+	} else {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
 
