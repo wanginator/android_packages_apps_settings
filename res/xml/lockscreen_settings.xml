@@ -1,0 +1,31 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/lockscreen_title"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+
+	<PreferenceScreen
+        android:fragment="com.android.settings.rascarlo.LockscreenTargets"
+	android:icon="@drawable/ic_settings_lockscreen"
+        android:key="lockscreen_targets"
+        android:title="@string/lockscreen_target_title" />
+	<!--android:icon="@drawable/ic_settings_locktargets"-->
+
+        <PreferenceScreen
+        android:key="lockscreen_notifications"
+        android:fragment="com.android.settings.rascarlo.lsn.LockscreenNotifications"
+	android:icon="@drawable/ic_settings_actived"
+        android:title="@string/lockscreen_notifications"
+        android:summary="@string/lockscreen_notifications_summary"/>
+
+	<PreferenceScreen
+	android:key="category_power_menu"
+        android:fragment="com.android.settings.rascarlo.PowerMenu"
+	android:title="@string/category_power_menu_title"
+	android:icon="@drawable/ic_lock_power_off"/>
+
+	<CheckBoxPreference
+        android:key="see_through"
+        android:title="@string/see_through_title"
+        android:summary="@string/see_through_summary" />
+</PreferenceScreen>

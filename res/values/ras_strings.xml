@@ -340,7 +340,7 @@
     	<string name="lockscreen_enable_power_menu_summary">Show power menu when screen is locked</string>
 
 	<!-- Power menu enable disable -->
-	<string name="power_menu_title">Lockscreen</string>
+	<string name="lockscreen_title">Lockscreen</string>
 	<string name="category_power_menu_title">Power Menu Settings</string>
 	<string name="power_menu_reboot_title">Reboot menu</string>
 	<string name="power_menu_screenshot_title">Screenshot</string>

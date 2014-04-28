@@ -23,8 +23,8 @@ import android.view.ViewGroup;
 
 import com.android.settings.rascarlo.StatusBarSettings;
 import com.android.settings.rascarlo.NavigationBarSettings;
-import com.android.settings.rascarlo.PowerMenu;
 import com.android.settings.rascarlo.SystemSettings;
+import com.android.settings.rascarlo.LockscreenSettings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -82,7 +82,7 @@ public class AdditionalSettings extends SettingsPreferenceFragment {
 	    frags[0] = new SystemSettings();
             frags[1] = new StatusBarSettings();
             frags[2] = new NavigationBarSettings();
-            frags[3] = new PowerMenu();
+            frags[3] = new LockscreenSettings();
         }
 
         @Override
@@ -107,7 +107,7 @@ public class AdditionalSettings extends SettingsPreferenceFragment {
 		    getString(R.string.system_category),
                     getString(R.string.status_bar_title),
                     getString(R.string.navigation_bar_title),
-                    getString(R.string.power_menu_title)};
+                    getString(R.string.lockscreen_title)};
         return titleString;
     }
 }
