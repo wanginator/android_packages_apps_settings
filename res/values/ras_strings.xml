@@ -594,6 +594,14 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!--  development shortcut -->
     <string name="development_shortcut_title">Development shortcut</string>
     <string name="development_shortcut_summary">Enable \'wipe data\' and \'force close\' options in notification area and recent apps list</string>
+    
     <!-- Adding more interface -->
     <string name="interface_more_title">More\u2026</string>
+
+    <!--Notification category-->
+    <string name="notification_category">Notifications</string>
+
+    <!--Notification peek-->
+    <string name="notification_peek_title">Notification peek</string>
+    <string name="notification_peek_summary">Show latest notification after picking up your device</string>
 </resources>

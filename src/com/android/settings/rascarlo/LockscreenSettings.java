@@ -18,6 +18,7 @@ package com.android.settings.rascarlo;
 
 import android.content.ContentResolver;
 import android.database.ContentObserver;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.CheckBoxPreference;
@@ -37,8 +38,10 @@ import com.android.settings.Utils;
 public class LockscreenSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
     private static final String TAG = "LockscreenSettings";
     private static final String KEY_SEE_THROUGH = "see_through";
+    private static final String KEY_PEEK = "notification_peek";
 
     private CheckBoxPreference mSeeThrough;
+    private SystemSettingCheckBoxPreference mNotificationPeek;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
                     Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
         }
 
+	mNotificationPeek = (SystemSettingCheckBoxPreference) findPreference(KEY_PEEK);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -66,11 +70,14 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
 	if (preference == mSeeThrough) {
             Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH,
                     mSeeThrough.isChecked() ? 1 : 0);
-        }else{ 
+	return true;
+	} else if (preference == mNotificationPeek) {
+            Settings.System.putInt(getContentResolver(), Settings.System.PEEK_STATE,
+                    mNotificationPeek.isChecked() ? 1 : 0);
+	return true; 
+	}
 		return super.onPreferenceTreeClick(preferenceScreen, preference);
-    }
 
-        return true;
     }
 
     @Override
