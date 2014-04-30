@@ -1392,7 +1392,7 @@
     <string name="lockscreen_battery_status_alwaysoff">Не показывать</string>
 
     <!-- Privacy Settings Header item -->
-    <string name="privacy_settings_mahdi_title">Безопасность</string>
+    <string name="privacy_settings_mahdi_title">Приватность</string>
 
     <!-- Superuser header name -->
     <string name="superuser">Суперпользователь</string>
