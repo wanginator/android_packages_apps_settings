@@ -16,11 +16,11 @@
 	    android:icon="@drawable/ic_settings_wakelock_blocker"
             android:title="@string/wakelock_blocker" />
 
-	<PreferenceScreen
-                android:key="screen_recorder"
-                android:title="@string/screen_recorder_title"
-		android:icon="@drawable/ic_settings_src"
-                android:fragment="com.android.settings.chameleonos.ScreenRecorderSettings" />
+    <PreferenceScreen
+        android:fragment="com.android.settings.rascarlo.VolumeRocker"
+        android:key="volume_rocker_settings"
+        android:icon="@drawable/ic_buildtweaks_volumerocker"
+        android:title="@string/volume_rocker_category_title" />
 
     <PreferenceScreen
         android:id="@+id/theme_settings"
