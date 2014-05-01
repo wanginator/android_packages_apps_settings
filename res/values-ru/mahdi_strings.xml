@@ -96,11 +96,9 @@
     <string name="power_menu_screenshot_title">Снимок экрана</string>
     <string name="power_menu_screenrecord_title">Запись с экрана</string>
     <string name="power_menu_profiles_title">Выбор профиля</string>
-    <string name="power_menu_profiles_disabled">Отключено</string>
-    <string name="power_menu_profiles_lock">Отключено на экране блокировки</string>
-    <string name="power_menu_profiles_all">Всегда показывать</string>
     <string name="power_menu_airplane_title">Режим полёта</string>
     <string name="power_menu_silent_title">Звуковая панель</string> 
+	<string name="power_menu_expanded_desktop">Расширенный рабочий стол</string>
 
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Расширенная перезагрузка</string>
@@ -376,7 +374,7 @@
 
     <!-- Quick settings panel  -->
     <string name="quick_settings_panel_title">Панель быстрых настроек</string>
-    <string name="quick_settings_summary">Дабавить или удалить плитки и изменить параметры</string>
+    <string name="quick_settings_summary">Добавить или удалить плитки и изменить параметры</string>
     <string name="title_static_tiles">Статические плитки</string>
     <string name="tile_picker_title">Плитки и размещение</string>
     <string name="tile_picker_summary">Просмотр, выбор или изменение размещения отображаемых плиток</string>
@@ -447,11 +445,11 @@
     <string name="summary_collapse_panel">Скрывать панель быстрых настроек после переключения</string>
 
     <!-- QuickSettings: Smart Pulldown -->
-    <string name="smart_pulldown_title">\"Умная\" панель уведомлений</string>
+    <string name="smart_pulldown_title">\"Умная\" панель уведомлений для</string>
     <string name="smart_pulldown_summary">Открывать быстрые настройки, если нет %1$s уведомлений</string>
     <string name="smart_pulldown_off">Выкл</string>
-    <string name="smart_pulldown_dismissable">Удаляемые</string>
-    <string name="smart_pulldown_persistent">Постоянные</string>
+    <string name="smart_pulldown_dismissable">Удаляемых</string>
+    <string name="smart_pulldown_persistent">Постоянных</string>
 
     <string name="pref_network_mode_title">Режимы сети</string>
     <string name="pref_screentimeout_mode_title">Режимы откл. экрана</string>
@@ -959,7 +957,7 @@
     <string name="show_network_traffic_state">Показывать скорость передачи данных</string>
     <string name="show_network_traffic_unit">Единицы измерения</string>
     <string name="show_network_traffic_frequency">Частота обновления</string>
-    <string name="show_network_traffic_disable">Отключен</string>
+    <string name="show_network_traffic_disable">Отключено</string>
     <string name="show_network_traffic_up">Исходящий</string>
     <string name="show_network_traffic_down">Входящий</string>
     <string name="show_network_traffic_all">Исходящий и входящий</string>
@@ -1026,6 +1024,8 @@
     <string name="lockscreen_disable_hints_summary">Отключить свечение, окружающее виджет в портретном режиме</string>
     <string name="lockscreen_use_widget_container_carousel_title">Включить круговое листание виджетов</string>
     <string name="lockscreen_use_widget_container_carousel_summary">Использовать анимацию в стиле карусели при листании виджетов экрана блокировки в портретном режиме</string>
+    <string name="lockscreen_widget_frame_title">Отключить рамки виджетов</string>
+    <string name="lockscreen_widget_frame_summary">Отключить фоновые рамки виджетов</string>
 
     <!-- Lockscreen Notifications -->
     <!-- Categories --> 
@@ -1064,10 +1064,15 @@
     <string name="notification_color">Цвет фона уведомления</string>
 
     <!-- Lock Screen Shortcuts -->
-    <string name="title_shortcuts">Ярлыки</string>
+    <string name="title_shortcuts">Ярлыки и кольцо</string>
     <string name="lockscreen_target_info">Потяните ползунок к цели, чтобы назначить ярлык</string>
     <string name="lockscreen_target_title">Ярлыки кольца блокировки</string>
     <string name="lockscreen_target_summary">Установка или настройка ярлыков кольца блокировки</string>
+    <string name="lockscreen_target_color_title">Цвет значков действий</string>
+    <string name="lockscreen_eight_targets_title">Включить 8-целевое кольцо</string>
+    <string name="lockscreen_eight_targets_summary">Включить режим, когда на кольцо можно назначить 8 действий.\nПримечание: включение этой настройки сбросит ваши текущие действия.</string>
+    <string name="lockscreen_enable_eight_targets_dialog">Включение этой настройки сбросит ваши текущие действия.</string>
+    <string name="lockscreen_enable_eight_targets_enabled_dialog">\n\nНельзя использовать одновременно и кольцо из 8 действий, и ярлыки экрана блокировки.</string>
     <string name="lockscreen_target_reset">Ярлыки кольца блокировки сброшены по умолчанию</string>
     <string name="lockscreen_target_reset_title">Сброс</string>
     <string name="lockscreen_target_reset_message">Удалить все созданные ярлыки кольца блокировки и восстановить значения по умолчанию?</string>
@@ -1077,6 +1082,16 @@
     <string name="lockscreen_glowpad_torch_title">Фонарик на ползунке</string>
     <string name="lockscreen_glowpad_torch_summary">Дважды нажмите и удерживайте ползунок, чтобы включить фонарик</string>
 
+	<!-- Description of accessibility direction for targets [CHAR LIMIT=NONE] -->
+    <string name="accessibility_target_direction">Проведите для активации цели</string>
+    <!-- Description of the unlock target in the Slide unlock screen. [CHAR LIMIT=NONE] -->
+    <string name="description_target_unlock">Разблокировать</string>
+
+    <!-- Lockscreen Shortcuts -->
+    <string name="lockscreen_shortcuts_title">Ярлыки</string>
+    <string name="lockscreen_shortcuts_summary">Посмотреть или изменить ярлыки экрана блокировки</string>
+    <string name="lockscreen_shorcuts_longpress_title">Длительное нажатие на ярлык</string>
+    <string name="lockscreen_shorcuts_longpress_summary">Пользовательское действие при длительном нажатии</string>
     <!-- Lock screen shortcuts -->
     <string name="picker_activities">Действия</string>
     <string name="select_custom_app_title">Выбрать собственное приложение</string>
@@ -1087,7 +1102,7 @@
     <string name="icon_picker_calendar">Календарь</string>
     <string name="icon_picker_camera">Камера</string>
     <string name="icon_picker_chrome">Chrome</string>
-    <string name="icon_picker_contacts">Contacts</string>
+    <string name="icon_picker_contacts">Контакты</string>
     <string name="icon_picker_email">Email</string>
     <string name="icon_picker_email2">Email Holo</string>
     <string name="icon_picker_facebook">Facebook</string>
@@ -1123,6 +1138,50 @@
     <string name="wakeup_when_plugged_unplugged_title">Пробуждение при зарядке</string>
     <string name="wakeup_when_plugged_unplugged_summary">Подключение/отключение зарядного устройства пробуждает телефон</string>
 
+	<!-- Shake to secure -->
+    <string name="shake_to_secure_title">Потрясите устройством на экране блокировки для включения защиты</string>
+    <string name="shake_to_secure_summary">Защита будет отключаться после каждой успешной разблокировки</string>
+    <string name="shake_to_secure_dlg_title">Внимание:</string>
+    <string name="shake_to_secure_dlg_message">Ваше устройство не будет защищено до тех пор, пока вы не потрясете его, чтобы включить временную защиту. Защита однократна: после успешной разблокировки защита отключается до следующей тряски.</string>
+    <string name="shake_secure_timeout_title">Включать защиту автоматически</string>
+    <string name="shake_secure_timeout_disabled">Никогда не включать автоматически</string>
+    <string name="shake_secure_timeout_1min">1 минута после отключения экрана</string>
+    <string name="shake_secure_timeout_5min">5 минут после отключения экрана</string>
+    <string name="shake_secure_timeout_10min">10 минут после отключения экрана</string>
+    <string name="shake_secure_timeout_30min">30 минут после отключения экрана</string>
+
+	<!-- Lock Gesture settings -->
+    <string name="lockgesture_change_lock_pattern_label">Изменить жест разблокировки</string>
+    <string name="lockgesture_change_lock_pin_label">Изменить PIN разблокировки</string>
+    <string name="lockgesture_need_to_unlock">Подтвердите сохранение жеста</string>
+    <string name="lockgesture_need_to_unlock_wrong">Попробуйте еще раз:</string>
+    <string name="lockgesture_recording_intro_header">Нарисуйте жест разблокировки:</string>
+    <string name="lockgesture_recording_intro_footer">Нажмите \"Меню\" для помощи.</string>
+    <string name="lockgesture_recording_inprogress">Отпустите палец, когда закончите.</string>
+    <string name="lockgesture_pattern_entered_header">Жест записан.</string>
+    <string name="lockgesture_need_to_confirm">Нарисуйте жест еще раз для подтверждения:</string>
+    <string name="lockgesture_pattern_confirmed_header">Ваш новый жест разблокировки:</string>
+    <string name="lockgesture_confirm_button_text">Подтвердить</string>
+    <string name="lockgesture_restart_button_text">Перерисовать</string>
+    <string name="lockgesture_retry_button_text">Повторить</string>
+    <string name="lockgesture_continue_button_text">Продолжить</string>
+    <string name="lockgesture_settings_title">Жест разблокировки</string>
+    <string name="lockgesture_settings_enable_title">Требовать жест</string>
+    <string name="lockgesture_settings_enable_summary">Нужно нарисовать жест, чтобы разблокировать экран</string>
+    <string name="lockgesture_settings_enable_visible_pattern_title">Сделать жест видимым</string>
+    <string name="lockgesture_settings_enable_power_button_instantly_locks">Мгновенная блокировка кнопкой питания</string>
+    <string name="lockgesture_settings_choose_lock_pattern">Установить жест разблокировки</string>
+    <string name="lockgesture_settings_change_lock_pattern">Изменить жест разблокировки</string>
+    <string name="lockgesture_settings_help_how_to_record">Как нарисовать жест разблокировки</string>
+    <string name="lockgesture_too_many_failed_confirmation_attempts_header">Слишком много неудачных попыток!</string>
+    <string name="lockgesture_too_many_failed_confirmation_attempts_footer">Повторите попытку через <xliff:g id="number">%d</xliff:g> секунд.</string>
+    <string name="lockpassword_gesture_set_toast">Жест установлен</string>
+    <string name="lockpassword_confirm_your_gesture_header">Подтвердите свой жест</string>
+    <string name="lockpassword_choose_your_gesture_header">Нарисуйте свой жест</string>
+    <string name="unlock_set_unlock_gesture_title">Жест</string>
+    <string name="unlock_set_unlock_gesture_summary">Низкая безопасность, экспериментальная</string>
+    <string name="unlock_set_unlock_mode_gesture">Жест</string>
+	
     <!-- Lockscreen pin shuffle -->
     <string name="lock_numpad_random_title">Изменять порядок кнопок при вводе PIN</string>
     <string name="lock_numpad_random_dialog_title">Поризвольный порядок цифр PIN</string>
@@ -1274,7 +1333,8 @@
     <string name="bootanim_settings_title">Анимация загрузки</string>
     <string name="soundpack_settings_title">Звуковые пакеты</string>
 
-    <!-- DarkUI -->
+    <!-- Themes -->
+	<string name="theme_settings_title_slim">Темы</string>
     <string name="theme_auto_mode_title">Dark UI</string>
     <string name="theme_auto_mode_off">Вручную</string>
     <string name="theme_auto_mode_lightsensor">При изменении освещения</string>
@@ -1332,7 +1392,7 @@
     <string name="lockscreen_battery_status_alwaysoff">Не показывать</string>
 
     <!-- Privacy Settings Header item -->
-    <string name="privacy_settings_mahdi_title">Безопасность</string>
+    <string name="privacy_settings_mahdi_title">Приватность</string>
 
     <!-- Superuser header name -->
     <string name="superuser">Суперпользователь</string>
@@ -1472,9 +1532,9 @@
 
     <!-- ListView animation -->
     <string name="system_animation_title">Настройки анимации</string>
-    <string name="system_animation_summary">Посмотрить или изменить системые анимации</string>
+    <string name="system_animation_summary">Посмотреть или изменить системные анимации</string>
     <string name="listview_title">Списки</string>
-    <string name="listview_summary">Посмотрить или изменить анимацию списков</string>
+    <string name="listview_summary">Посмотреть или изменить анимацию списков</string>
     <string name="listview_animation_title">Анимация списков</string>
     <string name="listview_off">По умолчанию</string>
     <string name="listview_wave_left">Волна (слева)</string>
@@ -1562,7 +1622,7 @@
     <!-- IME Animation Controls -->
     <string name="ime_animation_title">Клавиатура</string>
     <string name="ime_animation_summary">Посмотреть или изменить анимацию клавиатуры</string>
-    <string name="ime_animation_test_title">Проверить анимацию клавиатуры здесь</string>
+    <string name="ime_animation_test_title">Проверить анимацию клавиатуры</string>
     <string name="ime_enter_animation_title">Анимация появления</string>
     <string name="ime_exit_animation_title">Анимация исчезания</string>
     <string name="ime_interpolator_title">Эффект</string>
@@ -1651,8 +1711,8 @@
     <string name="pref_battery_saver_screen_off_summary">Активировать режим \"Энергосбережения\", когда экран выключается</string>
     <string name="pref_battery_saver_ignore_locked_title">Игнорировать во время блокировки</string>
     <string name="pref_battery_saver_ignore_locked_summary">При выключении экрана, режим энергосбережения не будет отключен</string>
-    <string name="pref_battery_saver_mode_change_delay_title">Изменение задержки смены режмов</string>
-    <string name="pref_battery_saver_mode_change_delay_summary">Позволяет изменить величину задержки при смене режмов</string>
+    <string name="pref_battery_saver_mode_change_delay_title">Изменение задержки смены режимов</string>
+    <string name="pref_battery_saver_mode_change_delay_summary">Позволяет изменить величину задержки при смене режимов</string>
     <string name="pref_battery_saver_battery_title">Когда батарея разряжена</string>
     <string name="pref_battery_saver_battery_summary">Активировать режим \"Энергосбережения\", когда батарея разряжена</string>
     <string name="pref_battery_saver_mode_battery_level_title">По уровню заряда батареи</string>
@@ -1709,24 +1769,26 @@
     <string name="noti_reminder_interval_3dot5s">3.5 секунды</string>
     <string name="noti_reminder_interval_4s">4 секунды</string>
 
-    <!-- Lockscreen see through -->
-    <string name="lockscreen_see_through_title">Вид \"насквозь\"</string>
-    <string name="lockscreen_see_through_summary">Показывает содержимое позади экрана блокировки, ваши данные могут быть видны для окружающих</string>
     <!-- Lockscreen style settings -->
     <string name="lockscreen_style_reset_message">Сбросить все цвета экрана блокировки?</string>
     <string name="lockscreen_icon_title">Значок ползунка блокировки</string>
     <string name="lockscreen_lock_icon_custom">Свой значок</string>
+	<string name="lockscreen_lock_icon_mahdi">Значок Mahdi</string>
     <string name="lockscreen_lock_icon_default">Значок по умолчанию</string>
     <string name="lockscreen_colorize_handle_title">Цвет своего значка</string>
     <string name="lockscreen_colorize_handle_summary">Установить цвет блокировщика для значка блокировки</string>
     <string name="lockscreen_style_title">Стиль темы</string>
-    <string name="lockscreen_style_summary">Выбрать свой pначок ползунка и т.д.</string>
+    <string name="lockscreen_style_summary">Выбрать свой значок ползунка и т.д.</string>
     <string name="lockscreen_frame_color_title">Цвет рамки</string>
     <string name="lockscreen_frame_color_summary">Цвет рамок виджета и разблокировки</string>
     <string name="lockscreen_lock_color_title">Цвет блокировщика</string>
     <string name="lockscreen_lock_color_summary">Цвет значков ползунка блокировки</string>
     <string name="lockscreen_dots_color_title">Цвет точек</string>
     <string name="lockscreen_dots_color_summary">Цвет точек экрана блокировки</string>
+	<string name="lockscreen_targets_color_title">Цвет миниатюр</string>
+    <string name="lockscreen_targets_color_summary">Цвет миниатюр кольца блокировки</string>
+    <string name="lockscreen_misc_color_title">Цвет остального</string>
+    <string name="lockscreen_misc_color_summary">Цвет остальных элементов</string>
 
     <!-- Lockscreen Wallpaper -->
     <string name="lockscreen_wallpaper_title">Фон экрана блокировки</string>
@@ -1919,4 +1981,22 @@
     <!-- Shortcuts -->
     <string name="shortcut_picker">Действия</string>
     
+	<!-- Lockscreen background -->
+    <string name="lockscreen_background">Фон</string>
+    <string name="lockscreen_background_style_title">Фон экрана блокировки</string>
+    <string name="background_default">Фон по умолчанию</string>
+    <string name="background_wallpaper">Пользовательские обои</string>
+    <string name="background_result_successful">Фон успешно изменён</string>
+    <string name="background_result_not_successful">Фон не изменился</string>
+    <string name="setting_lockscreen_background">Установка фона</string>
+    <!-- Custom lockscreen -->
+    <string name="lockscreen_enable_modlock_title">Пользовательский экран блокировки</string>
+
+    <!-- Bluetooth accept all file types -->
+    <string name="bluetooth_accept_all_files">Принимать все типы файлов</string>
+
+    <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
+    <string name="font_size_sample">Образец</string>
+
 </resources>
