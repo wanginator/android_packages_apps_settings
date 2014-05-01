@@ -1711,8 +1711,8 @@
     <string name="pref_battery_saver_screen_off_summary">Активировать режим \"Энергосбережения\", когда экран выключается</string>
     <string name="pref_battery_saver_ignore_locked_title">Игнорировать во время блокировки</string>
     <string name="pref_battery_saver_ignore_locked_summary">При выключении экрана, режим энергосбережения не будет отключен</string>
-    <string name="pref_battery_saver_mode_change_delay_title">Изменение задержки смены режмов</string>
-    <string name="pref_battery_saver_mode_change_delay_summary">Позволяет изменить величину задержки при смене режмов</string>
+    <string name="pref_battery_saver_mode_change_delay_title">Изменение задержки смены режимов</string>
+    <string name="pref_battery_saver_mode_change_delay_summary">Позволяет изменить величину задержки при смене режимов</string>
     <string name="pref_battery_saver_battery_title">Когда батарея разряжена</string>
     <string name="pref_battery_saver_battery_summary">Активировать режим \"Энергосбережения\", когда батарея разряжена</string>
     <string name="pref_battery_saver_mode_battery_level_title">По уровню заряда батареи</string>
