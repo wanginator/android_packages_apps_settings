@@ -163,6 +163,12 @@
         android:key="category_battery_saver_system"
         android:title="@string/battery_saver_system_title"/>
 
+        <com.android.settings.mahdi.GlobalCheckBoxPreference
+            android:key="battery_saver_wifi_mode"
+            android:title="@string/pref_battery_saver_wifi_title"
+            android:summary="@string/pref_battery_saver_wifi_summary"
+            android:dependency="pref_battery_saver_enable"/>
+
         <CheckBoxPreference
             android:key="pref_battery_saver_mode_led"
             android:persistent="false"
