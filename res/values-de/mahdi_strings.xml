@@ -483,7 +483,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="quick_settings_summary">Konfiguration der Schnelleinstellungen, Anzahl der Kacheln und Reihenfolge ändern</string>
     <string name="title_static_tiles">Statische Kacheln</string>
     <string name="tile_picker_title">Kacheln anordnen</string>
-    <string name="tile_picker_summary">Konfiguration der Kacheln<string>
+    <string name="tile_picker_summary">Konfiguration der Kacheln</string>
     <string name="tile_choose_title">Kachel auswählen</string>
 
     <string name="title_tile_airplane">Flugmodus</string>
