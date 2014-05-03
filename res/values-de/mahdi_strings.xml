@@ -20,7 +20,7 @@ limitations under the License.
     <string name="customization_settings_title">Benutzeroptionen</string>
 
     <!-- About phone screen, Mod Version -->
-    <string name="mod_version">Mahdi Rom Version</string>
+    <string name="mod_version">Build-Version</string>
     <string name="mod_version_default">Unbekannt</string>
     <!-- About phone screen, Build date of ROM -->
     <string name="build_date">Build-Datum</string>
@@ -42,7 +42,7 @@ limitations under the License.
     <string name="reset_message">Auf Standardeinstellungen zurücksetzen?</string>
     <string name="style_title">Optik</string>
     <string name="more_title">Mehr...</string>
-
+	
     <!-- Display settings screen, notification light settings -->
     <string name="display_category_light_options_title">LED-Einstellungen</string>
     <string name="notification_light_title">Benachrichtigungs-LED</string>
@@ -56,9 +56,9 @@ limitations under the License.
     <string name="notification_light_add">Hinzufügen</string>
 
     <!-- Screen-On Notification Light -->
-	<string name="screen_on_notification_led_title">Bei eingeschaltetem Bildschirm aktiv</string>
+    <string name="screen_on_notification_led_title">Bei eingeschaltetem Bildschirm aktiv</string>
     <string name="screen_on_notification_led_summary">LED ist auch bei eingeschaltetem Bildschirm aktiv</string>
-
+	
     <!-- Notification light dialogs -->
     <string name="edit_light_settings">Farbeinstellungen ändern</string>
     <string name="pulse_speed_title">Pulsdauer und Geschwindigkeit</string>
@@ -312,7 +312,7 @@ limitations under the License.
     <string name="button_volume_default_media">Medien</string>
     <string name="button_volume_default_title">Standardregler</string>
     <string name="button_volume_default_summary">Standardbelegung der Lautstärketasten festlegen</string>
-    <!-- Launch music app on connect -->
+    <!-- Volume panel timeout -->
     <string name="volume_panel_timeout_title">Anzeigedauer</string>
     <string name="volume_panel_timeout_summary">Anzeigedauer des Lautstärke-Reglers festlegen</string>
     <!-- Launch music app on connect -->
@@ -1096,18 +1096,18 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="screen_recorder_size_600x1024">600x1024</string>
     <string name="screen_recorder_size_720x1280">720x1280</string>
     <!-- frame rates -->
-    <string name="screen_recorder_bitrate_title_100000">100 kB/s</string>
-    <string name="screen_recorder_bitrate_title_250000">250 kB/s</string>
-    <string name="screen_recorder_bitrate_title_500000">500 kB/s</string>
-    <string name="screen_recorder_bitrate_title_1000000">1 MB/s</string>
-    <string name="screen_recorder_bitrate_title_2000000">2 MB/s</string>
-    <string name="screen_recorder_bitrate_title_3000000">3 MB/s</string>
-    <string name="screen_recorder_bitrate_title_4000000">4 MB/s</string>
-    <string name="screen_recorder_bitrate_title_5000000">5 MB/s</string>
-    <string name="screen_recorder_bitrate_title_10000000">10 MB/s</string>
-    <string name="screen_recorder_bitrate_title_20000000">20 MB/s</string>
-    <string name="screen_recorder_bitrate_title_50000000">50 MB/s</string>
-    <string name="screen_recorder_bitrate_title_100000000">100 MB/s</string>
+    <string name="screen_recorder_bitrate_title_100000">100 KB/S</string>
+    <string name="screen_recorder_bitrate_title_250000">250 KB/S</string>
+    <string name="screen_recorder_bitrate_title_500000">500 KB/S</string>
+    <string name="screen_recorder_bitrate_title_1000000">1 MB/S</string>
+    <string name="screen_recorder_bitrate_title_2000000">2 MB/S</string>
+    <string name="screen_recorder_bitrate_title_3000000">3 MB/S</string>
+    <string name="screen_recorder_bitrate_title_4000000">4 MB/S</string>
+    <string name="screen_recorder_bitrate_title_5000000">5 MB/S</string>
+    <string name="screen_recorder_bitrate_title_10000000">10 MB/S</string>
+    <string name="screen_recorder_bitrate_title_20000000">20 MB/S</string>
+    <string name="screen_recorder_bitrate_title_50000000">50 MB/S</string>
+    <string name="screen_recorder_bitrate_title_100000000">100 MB/S</string>
     <string name="screen_recorder_bitrate_100000">100000</string>
     <string name="screen_recorder_bitrate_250000">250000</string>
     <string name="screen_recorder_bitrate_500000">500000</string>
@@ -1194,13 +1194,13 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="accessibility_target_direction">Schieber zur gewünschten Position ziehen um ein Ziel zu aktivieren</string>
     <!-- Description of the unlock target in the Slide unlock screen. [CHAR LIMIT=NONE] -->
     <string name="description_target_unlock">Entsperren</string>
-
+	
     <!-- Lockscreen Shortcuts -->
     <string name="lockscreen_shortcuts_title">Verknüpfungen</string>
     <string name="lockscreen_shortcuts_summary">Verküpfungen zum Sperrbildschirm hinzufügen</string>
     <string name="lockscreen_shorcuts_longpress_title">Verknüfungen öffnen</string>
     <string name="lockscreen_shorcuts_longpress_summary">Taste lange drücken um die Verknüpfungen des Sperrbildschirm zu öffnen</string>
-
+		
     <!-- Lock screen targets and shortcuts -->
     <string name="picker_activities">Aktivitäten</string>
     <string name="select_custom_activity_title">Aktivität wählen</string>
@@ -1352,7 +1352,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="theme_auto_mode_lightsensor">Bei Änderung der Lichtverhältnisse</string>
     <string name="theme_auto_mode_twilight">Tageszeitabhängig</string>
     <string name="theme_auto_switch_mode_error">Automatischer Änderungsmodus durch Lichtverhältnisse aktiviert. Manuelles Umschalten nicht möglich.</string>
-
+	
     <!-- Notification drawer background -->
     <string name="notification_style_title">Aussehen</string>
     <string name="notification_background_title">Hintergrund</string>
@@ -1962,7 +1962,7 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="time_quarter_to">Viertel vor</string>
     <string name="time_ten_to">Zehn vor</string>
     <string name="time_five_to">Fünf vor</string>
-
+	
     <!-- Pie Control -->
     <string name="pie_control_title">Pie Steuerung</string>
     <string name="pie_control_summary">Pie aktivieren</string>
@@ -2031,4 +2031,41 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     multiple font sizes in a limited amount of space. -->
     <string name="font_size_sample">Beispiel</string>
 
-</resources> 
+    <!-- vibrate during phone calls -->
+    <string name="notification_vibrate_during_calls_title">Während Telefonaten vibrieren</string>
+    <string name="notification_vibrate_during_calls_summary">Vibration bei eingehenden Benachrichtigungen während eines Telefonats</string>
+
+    <!--Notification category-->
+    <string name="notification_category">Benachrichtigungen</string>
+    <!--Notification peek-->
+    <string name="notification_peek_title">Benachrichtigung bei Aufnahme</string>
+    <string name="notification_peek_summary">Anzeige der neuesten Benachrichtigungen nach Aufnahme des Gerätes</string>
+
+    <!-- Battery Bar -->
+    <string name="battery_bar_title">Batterieleiste</string>
+    <string name="battery_bar_summary">Konfiguration der Baterieleiste</string>
+    <string name="battery_bar">Battery bar location</string>
+    <string name="battery_bar_color">Farbe</string>
+    <string name="battery_bar_cat">Aussehen</string>
+    <string name="battery_bar_style_title">Ausrichtung</string>
+    <string name="battery_bar_thickness_title">Dicke</string>
+    <string name="battery_bar_animate_title">Ladeanimation</string>
+    <string name="battery_bar_animate_summary">Die Ladeanimation kann das Gerät verlangsamen oder Instabiel machen. Aktivierung dieser Funktion in eigenem Ermessen.</string>
+    <string name="battery_bar_reset_message">Auf Standardeinstellungen zurücksetzen?</string>
+
+    <!-- Volume Steps -->
+    <string name="volume_steps_title">Lautstärkestufen</string>
+    <string name="volume_steps_60">60</string>
+    <string name="volume_steps_45">45</string>
+    <string name="volume_steps_30">30</string>
+    <string name="volume_steps_15">15</string>
+    <string name="volume_steps_7">7</string>
+    <string name="volume_steps_5">5</string>
+    <string name="volume_steps_alarm_title">Wecker</string>
+    <string name="volume_steps_dtmf_title">DTMF</string>
+    <string name="volume_steps_music_title">Musik</string>
+    <string name="volume_steps_notification_title">Benachrichtigungen</string>
+    <string name="volume_steps_ring_title">Klingelton</string>
+    <string name="volume_steps_system_title">System</string>
+    <string name="volume_steps_voice_call_title">Anrufe</string>
+</resources>
