@@ -1053,7 +1053,7 @@ name="quiet_hours_auto_sms_call_title">Chiamate in arrivo </string>
     <string name="Lockscreen_notifications_header">Notifiche in lockscreen </string>
     <string name="lockscreen_notifications">Notifiche in lockscreen </string>
     <string name="lockscreen_notifications_summary">Mostra notifiche nella lockscreen </string>
-    <string name="pocket_mode">Modalità tasca</string>
+    <string name="pocket_mode">Modalità Pocket</string>
     <string name="pocket_mode_summary">Lo schermo si accende e mostra tutte le notifiche quando il dispositivo è tirato fuori dalla tasca. Lo schermo si spegne quando il dispositivo torna in tasca </string>
     <string name="show_always">Mostra sempre </string>
     <string name="show_always_summary">Accendi sempre lo schermo quando tirato fuori dalla tasca, anche quando non ci sono notifiche </string>
@@ -1231,6 +1231,11 @@ name="quiet_hours_auto_sms_call_title">Chiamate in arrivo </string>
     <string name="recent_panel_100">100% (Predefinito)</string>
     <string name="recent_panel_85">85%</string>
     <string name="recent_panel_70">70%</string>
+    <string name="recent_panel_expanded_mode_title">Modalità Estensione</string>
+    <string name="recent_panel_expanded_mode_summary">Modlità anteprima app Slim Recents </string>
+    <string name="recent_panel_expanded_mode_auto">Automatica</string>
+    <string name="recent_panel_expanded_mode_always">Sempre</string></string>
+    <string name="recent_panel_expanded_mode_never">Mai</string>
 
     <!-- ATTENTION: RTL languages need to replace left with right -->
     <string name="recent_panel_lefty_mode_title">Mostra a sinistra </string>
@@ -1944,4 +1949,62 @@ name="quiet_hours_auto_sms_call_title">Chiamate in arrivo </string>
     <string name="pie_style_reset_message">Ripristinare i valori di default? </string>
     <string name="pie_disable_ime_triggers_title">Riduci grandezza inneschi con la tastiera </string>
     <string name="pie_disable_ime_triggers_summary">Riduci gli inneschi da destra e sinistra se c\'è la tastiera </string>    
+ <!-- Shortcuts -->
+    <string name="shortcut_picker">Azioni</string>
+
+    <!-- Lockscreen background -->
+    <string name="lockscreen_background">Sfondo</string>
+    <string name="lockscreen_background_style_title">Sfondo Lockscreen</string>
+    <string name="background_default">Sfondo Predefinito</string>
+    <string name="background_wallpaper">Sfondo Personalizzato</string>
+    <string name="background_result_successful">Sfondo Cambiato</string>
+    <string name="background_result_not_successful">Sfondo non cambiato</string>
+    <string name="setting_lockscreen_background">Applicazione sfondo</string>
+    <!-- Custom lockscreen -->
+    <string name="lockscreen_enable_modlock_title">Lockscreen Personalizzata</string>
+
+    <!-- Bluetooth accept all file types -->
+    <string name="bluetooth_accept_all_files">Accetta tutti i tipe di file</string>
+
+    <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
+    <string name="font_size_sample">Esempio</string>
+
+    <!-- vibrate during phone calls -->
+    <string name="notification_vibrate_during_calls_title">Vibra durante la chiamata</string>
+    <string name="notification_vibrate_during_calls_summary">Le notifiche in arrivo vibreranno</string>
+
+    <!--Notification category-->
+    <string name="notification_category">Notifiche</string>
+    <!--Notification peek-->
+    <string name="notification_peek_title">Notifiche peek</string>
+    <string name="notification_peek_summary">Mostra l\'ultima notifica quando si prende il telefono</string>
+
+    <!-- Battery Bar -->
+    <string name="battery_bar_title">Barra batteria</string>
+    <string name="battery_bar_summary">Vedi o cambia impostazioni barra batteria</string>
+    <string name="battery_bar">Posizione barra batteria</string>
+    <string name="battery_bar_color">Colore barra batteria</string>
+    <string name="battery_bar_cat">Stile barra batteria</string>
+    <string name="battery_bar_style_title">Allineamento barra batteria</string>
+    <string name="battery_bar_thickness_title">Spessore barra batteria</string>
+    <string name="battery_bar_animate_title">Animazione in carica</string>
+    <string name="battery_bar_animate_summary">L\'animazione di carica potrebbe essere di una povera esperienza d\'uso.Attivala a tua discrezione</string>
+    <string name="battery_bar_reset_message">Ripristinare la barra batteria predefinita?</string>
+
+    <!-- Volume Steps -->
+    <string name="volume_steps_title">Numero Livelli Volume</string>
+    <string name="volume_steps_60">60</string>
+    <string name="volume_steps_45">45</string>
+    <string name="volume_steps_30">30</string>
+    <string name="volume_steps_15">15</string>
+    <string name="volume_steps_7">7</string>
+    <string name="volume_steps_5">5</string>
+    <string name="volume_steps_alarm_title">Allarme</string>
+    <string name="volume_steps_dtmf_title">DTMF</string>
+    <string name="volume_steps_music_title">Musica</string>
+    <string name="volume_steps_notification_title">Notifiche</string>
+    <string name="volume_steps_ring_title">Suoneria</string>
+    <string name="volume_steps_system_title">Sistema</string>
+    <string name="volume_steps_voice_call_title">Chiamata vocale</string>
 </resources>
