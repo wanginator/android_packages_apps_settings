@@ -15,6 +15,8 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Custom settings  -->
+    <string name="custom_settings_category">Personal</string>
     <!-- Customization Interface settings  -->
     <string name="customization_settings_title">Personalización</string>
 
@@ -53,7 +55,10 @@
     <string name="notification_light_voicemail_title">Voicemail</string>
     <string name="notification_light_choose_app">Elija la aplicación</string>
     <string name="notification_light_add">Añadir</string>
-    <string name="notification_light_screenon_title">Activar con pantalla encendida</string>
+    
+    <!-- Screen-On Notification Light -->
+    <string name="screen_on_notification_led_title">Luz de notificación pantalla encendida</string>
+    <string name="screen_on_notification_led_summary">Activar luz de notificación cuando la pantalla esté encendida</string>
 
     <!-- Notification light dialogs -->
     <string name="edit_light_settings">Editar la configuración de LED</string>
@@ -92,11 +97,9 @@
     <string name="power_menu_screenshot_title">Captura de pantalla</string>
     <string name="power_menu_screenrecord_title">Grabador de pantalla</string>
     <string name="power_menu_profiles_title">Selector de Perfiles</string>
-    <string name="power_menu_profiles_disabled">Desactivar</string>
-    <string name="power_menu_profiles_lock">Desactivado en bloqueo de pantalla</string>
-    <string name="power_menu_profiles_all">Mostrar siempre</string>
     <string name="power_menu_airplane_title">Modo avión</string>
-    <string name="power_menu_silent_title">Panel de sonido</string> 
+    <string name="power_menu_silent_title">Panel de sonido</string>
+    <string name="power_menu_expanded_desktop">Modo Inmersivo</string>
 
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Reinicio avanzado</string>
@@ -383,6 +386,96 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="lock_before_unlock_title">Mostrar deslizador antes del desbloqueo seguro</string>
     <string name="lock_before_unlock_summary">Mostrar deslizador de pantalla de bloqueo antes del desbloqueo seguro</string>
 
+    <!-- Shake to secure -->
+    <string name="shake_to_secure_title">Agite pantalla de bloqueo para activar la seguridad</string>
+    <string name="shake_to_secure_summary">Seguridad quedará inhabilitada después de cada desbloqueo correcto</string>
+    <string name="shake_to_secure_dlg_title">Advertencia:</string>
+    <string name="shake_to_secure_dlg_message">Su dispositivo no estará seguro hasta que agite para permitir un cierre de seguridad temporal. Una vez seguro: Si el dispositivo está desbloqueado con éxito se convertirá en no seguro hasta agitar de nuevo.</string>
+    <string name="shake_secure_timeout_title">Volver automáticamente seguro</string>
+    <string name="shake_secure_timeout_disabled">Nunca asegure automáticamente</string>
+    <string name="shake_secure_timeout_1min">1 minutos después de la pantalla apagada</string>
+    <string name="shake_secure_timeout_5min">5 minutos después de la pantalla apagada</string>
+    <string name="shake_secure_timeout_10min">10 minutos después de la pantalla apagada</string>
+    <string name="shake_secure_timeout_30min">30 minutos después de la pantalla apagada</string>
+	
+    <!-- Lockscreen pin shuffle -->
+    <string name="lock_numpad_random_title">Cambiar el orden de los números del teclado PIN</string>
+    <string name="lock_numpad_random_dialog_title">PIN orden aleatorio</string>
+    <string name="lock_numpad_random_off">Desactivado</string>
+    <string name="lock_numpad_random_always">Siempre</string>
+    <string name="lock_numpad_random_on_request">A petición</string>
+
+    <!-- Sizes for pattern lockscreen -->
+    <string name="lock_pattern_size_3">3x3</string>
+    <string name="lock_pattern_size_4">4x4</string>
+    <string name="lock_pattern_size_5">5x5</string>
+    <string name="lock_pattern_size_6">6x6</string>
+
+    <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
+    <string name="lockpattern_settings_enable_error_path_title">Mostrar error patrón</string>
+    <!-- Whether the dots will be drawn when using the lockscreen pattern -->
+    <string name="lockpattern_settings_enable_dots_title">Mostrar patrón de puntos</string>
+
+    <!-- Security settings home unlock -->
+    <string name="unlock_home_unlock_title">Desbloqueo de Inicio</string>
+    <string name="unlock_home_unlock_summary">Al pulsar el botón de inicio desbloquea el dispositivo</string>
+
+    <!-- Quick unlock -->
+    <string name="unlock_quick_unlock_control_title">Desbloqueo rápido</string>
+    <string name="unlock_quick_unlock_control_summary">Desbloquear automáticamente cuando se introduce el PIN/contraseña correcta</string>
+
+    <!-- Slide lock delay -->
+    <string name="delay_and_timeout_title">Retraso bloqueo</string>
+    <string name="slide_lock_delay_title">Retardo bloqueo de pantalla</string>
+    <string name="slide_lock_timeout_delay_title">Retardo tras tiempo de espera</string>
+    <string name="slide_lock_screenoff_delay_title">Retardo tras apagado</string>
+    <string name="slide_lock_delay_none">Ninguno</string>
+    <string name="slide_lock_delay_1s">1 seg</string>
+    <string name="slide_lock_delay_5s">5 seg</string>
+    <string name="slide_lock_delay_10s">10 seg</string>
+    <string name="slide_lock_delay_15s">15 seg</string>
+    <string name="slide_lock_delay_30s">30 seg</string>
+    <string name="slide_lock_delay_1m">1 min</string>
+    <string name="slide_lock_delay_5m">5 min</string>
+    <string name="slide_lock_delay_10m">10 min</string>
+    <string name="slide_lock_delay_30m">30 min</string>
+
+    <!-- Lock Gesture settings -->
+    <string name="lockgesture_change_lock_pattern_label">Cambio gesto desbloqueo</string>
+    <string name="lockgesture_change_lock_pin_label">Cambio desbloqueo PIN</string>
+    <string name="lockgesture_need_to_unlock">Confirmar gesto guardado</string>
+    <string name="lockgesture_need_to_unlock_wrong">Inténtelo de nuevo:</string>
+    <string name="lockgesture_recording_intro_header">Dibuja un gesto de desbloqueo:</string>
+    <string name="lockgesture_recording_intro_footer">Pulse Menú para obtener ayuda.</string>
+    <string name="lockgesture_recording_inprogress">Suelte el dedo cuando haya terminado.</string>
+    <string name="lockgesture_pattern_entered_header">Gesto grabado.</string>
+    <string name="lockgesture_need_to_confirm">Dibuje el trazo de nuevo para confirmar:</string>
+    <string name="lockgesture_pattern_confirmed_header">Su nuevo gesto de desbloqueo:</string>
+    <string name="lockgesture_confirm_button_text">Confirmar</string>
+    <string name="lockgesture_restart_button_text">Redibujar</string>
+    <string name="lockgesture_retry_button_text">Reintentar</string>
+    <string name="lockgesture_continue_button_text">Continuar</string>
+    <string name="lockgesture_settings_title">Gesto de desbloqueo</string>
+    <string name="lockgesture_settings_enable_title">Requerir gesto</string>
+    <string name="lockgesture_settings_enable_summary">Debe dibujar el gesto para desbloquear la pantalla</string>
+    <string name="lockgesture_settings_enable_visible_pattern_title">Hacer gesto visible</string>
+    <string name="lockgesture_settings_enable_power_button_instantly_locks">Botón de encendido al instante bloquea</string>
+    <string name="lockgesture_settings_choose_lock_pattern">Establecer gesto de desbloqueo</string>
+    <string name="lockgesture_settings_change_lock_pattern">Cambio gesto desbloqueo</string>
+    <string name="lockgesture_settings_help_how_to_record">Cómo dibujar un gesto de desbloqueo</string>
+    <string name="lockgesture_too_many_failed_confirmation_attempts_header">Demasiados intentos incorrectos!</string>
+    <string name="lockgesture_too_many_failed_confirmation_attempts_footer">Intentar otra vez en <xliff:g id="number">%d</xliff:g> segundos.</string>
+    <string name="lockpassword_gesture_set_toast">Gesto se ha establecido</string>
+    <string name="lockpassword_confirm_your_gesture_header">Confirme su gesto </string>
+    <string name="lockpassword_choose_your_gesture_header">Dibuja tu gesto</string>
+    <string name="unlock_set_unlock_gesture_title">Gesto</string>
+    <string name="unlock_set_unlock_gesture_summary">Baja seguridad, experimental</string>
+    <string name="unlock_set_unlock_mode_gesture">Gesto</string>
+    <!-- Do not translate. -->
+    <string name="lockgesture_need_to_unlock_footer" />    
+    <!-- Do not translate. -->
+    <string name="lockgesture_need_to_unlock_wrong_footer" />
+
     <!-- Quick settings panel  -->
     <string name="quick_settings_panel_title">Panel de configuración rápida</string>
     <string name="quick_settings_summary">Añadir o quitar toggles y cambiar otras opciones de configuración rápida</string>
@@ -501,7 +594,7 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="flip_qs_tiles_title">Voltear toggles</string>
     <string name="flip_qs_tiles_summary">Voltear toggles con un toque</string>
 	
-	<!-- QuickSettings haptic feedback -->
+    <!-- QuickSettings haptic feedback -->
     <string name="haptic_qs_tiles_title">Vibrar al tocar</string>
     <string name="haptic_qs_tiles_summary">Vibrar al tocar toggle</string>
 	
@@ -560,7 +653,6 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
 
     <!-- Status bar | Clock -->
     <string name="status_bar_title">Barra de estado</string>
-    <string name="status_bar_summary">Cambiar opciones de la barra de estado, incluyendo estilos batería y reloj</string>
     <string name="status_bar_style_title">Estilos</string>
 
     <string name="status_bar_clock">Reloj y fecha</string>
@@ -732,6 +824,7 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="shortcut_action_notifications">Notificaciones</string>
     <string name="shortcut_action_menu_big">Menú</string>
     <string name="shortcut_action_qs">Panel de configuración rápida</string>
+    <string name="shortcut_action_smart">Desplegable inteligente</string>
     <string name="shortcut_action_none">Ninguno</string>
     <string name="shortcut_action_power_menu">Menú de encendido</string>
     <string name="shortcut_action_ring_vib">Sonido/Vib</string>
@@ -852,7 +945,6 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="navigation_settings_options_title">Opciones de navegación</string>
     <string name="navigation_settings_category_title">Barra de navegación</string>
     <string name="navigation_settings_title">Barra de navegación en pantalla</string>
-    <string name="navigation_settings_summary">Ver o cambiar la configuración de la barra de navegación</string>
 
     <!-- Navigation bar -->
     <string name="navigation_bar_size_42_dp_default">42 dp (predeterminado)</string>
@@ -1045,6 +1137,8 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="lockscreen_disable_hints_summary">Desactiva el brillo en los bordes que rodean el widget en la pantalla de bloqueo en el modo vertical</string>
     <string name="lockscreen_use_widget_container_carousel_title">Activar carrusel</string>
     <string name="lockscreen_use_widget_container_carousel_summary">Utilice la animación carrusel al cambiar entre widgets de la pantalla de bloqueo</string>
+    <string name="lockscreen_widget_frame_title">Disactivar marco de widget</string>
+    <string name="lockscreen_widget_frame_summary">Disactivar fondo marco widget</string>
 
     <!-- Lockscreen Notifications -->
     <!-- Categories --> 
@@ -1082,31 +1176,43 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="excluded_apps_summary">Aplicaciones excluidas no aparecerán como notificaciones de pantalla de bloqueo</string>
     <string name="notification_color">Color de fondo de notificación</string>
 	
-    <!-- Lock Screen Shortcuts -->
-    <string name="title_shortcuts">Accesos directos</string>
-    <string name="lockscreen_target_info">Arrastre el control deslizante para asignar accesos directos</string>
-    <string name="lockscreen_target_title">Accesos directos deslizantes</string>
-    <string name="lockscreen_target_summary">Ver o cambiar los accesos directos de la pantalla de bloqueo personalizada</string>
-    <string name="lockscreen_target_reset">Restablecer por defecto accesos directos de pantalla de bloqueo</string>
-    <string name="lockscreen_target_reset_title">Resetear</string>
-    <string name="lockscreen_target_reset_message">¿Eliminar todos los accesos directos de la pantalla de bloqueo creados por el usuario y restaurar los valores predeterminados?</string>
-    <string name="lockscreen_target_empty">Vacío</string>
-    <string name="lockscreen_target_edit_title">Editar acceso directo y el icono</string>
-    <string name="lockscreen_target_edit_msg">Seleccionar o cambiar la aplicación o actividad deseada y el icono asociado</string>
+    <!-- Lock Screen -->
+    <string name="title_shortcuts">Objetos y accesos directos deslizantes</string>
+    <!-- Lock Screen Targets -->
+    <string name="lockscreen_target_info">Arrastre el control deslizante a objeto para asignar aplicaciones</string>
+    <string name="lockscreen_target_title">Objetos deslizantes</string>
+    <string name="lockscreen_target_summary">Ver o cambiar objetos de la pantalla de bloqueo personalizada</string>
+    <string name="lockscreen_target_color_title">Color icono objeto</string>
+    <string name="lockscreen_eight_targets_title">8 objetos deslizantes</string>
+    <string name="lockscreen_eight_targets_summary">Habilitar ocho objetos de la pantalla de bloqueo personalizada.</string>
+    <string name="lockscreen_enable_eight_targets_dialog">Cambiar esta opción restablece sus objetos LockScreen actuales a la configuración por defecto.</string>
+    <string name="lockscreen_enable_eight_targets_enabled_dialog">\n\nCon ocho objetos Lockscreen habilitados no puede utilizar los atajos de pantalla de bloqueo al mismo tiempo.</string>
     <string name="lockscreen_glowpad_torch_title">Linterna deslizante</string>
-    <string name="lockscreen_glowpad_torch_summary">Doble toque y mantenga el control deslizante para iniciar la linterna</string>
+    <string name="lockscreen_glowpad_torch_summary">Doble toque y mantenga el control deslizante para iniciar la antorcha</string>
+    <string name="lockscreen_target_reset">Objetos de bloqueo de pantalla restablecidos por defecto</string>
+    <string name="lockscreen_target_reset_message">¿Eliminar todos los objetos de la pantalla de bloqueo creados por el usuario y restaurar a los valores predeterminados ?</string>
+    <string name="lockscreen_target_empty">Ninguno</string>
+    <string name="lockscreen_target_edit_title">Editar objeto e icono</string>
+    <string name="lockscreen_target_edit_msg">Seleccionar o cambiar la aplicación o actividad deseada y el icono asociado</string>
+
+    <!-- Description of accessibility direction for targets [CHAR LIMIT=NONE] -->
+    <string name="accessibility_target_direction">Desliza para activar objeto</string>
+    <!-- Description of the unlock target in the Slide unlock screen. [CHAR LIMIT=NONE] -->
+    <string name="description_target_unlock">Desbloqueo</string>
+	
+    <!-- Lockscreen Shortcuts -->
+    <string name="lockscreen_shortcuts_title">Accesos directos</string>
+    <string name="lockscreen_shortcuts_summary">Ver o cambiar los accesos directos de la pantalla de bloqueo personalizada</string>
+    <string name="lockscreen_shorcuts_longpress_title">Pulsación larga accesos directos</string>
+    <string name="lockscreen_shorcuts_longpress_summary">Abra atajos de la pantalla de bloqueo personalizada con pulsación larga</string>
 
     <!-- Lock screen shortcuts -->
     <string name="picker_activities">Actividades</string>
     <string name="select_custom_app_title">Seleccionar aplicación personalizada</string>
-    <string name="select_custom_activity_title">Seleccionar actividad personalizada</string>
-    <string name="icon_picker_choose_icon_title">Elija icono</string>
     <string name="icon_picker_alarm">Alarma</string>
     <string name="icon_picker_browser">Navegador</string>
     <string name="icon_picker_calendar">Calendario</string>
     <string name="icon_picker_camera">Cámara</string>
-    <string name="icon_picker_chrome">Chrome</string>
-    <string name="icon_picker_contacts">Contactos</string>
     <string name="icon_picker_email">Email</string>
     <string name="icon_picker_email2">Email Holo</string>
     <string name="icon_picker_facebook">Facebook</string>
@@ -1115,6 +1221,7 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="icon_picker_googleplus">Google Plus</string>
     <string name="icon_picker_googletalk">Hangouts</string>
     <string name="icon_picker_maps">Maps</string>
+    <string name="icon_picker_sms">Mensajes</string>
     <string name="icon_picker_movie">Películas</string>
     <string name="icon_picker_music">Música</string>
     <string name="icon_picker_nav_normal">Navegador</string>
@@ -1122,7 +1229,6 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="icon_picker_podcast">Podcast</string>
     <string name="icon_picker_rss">Rss</string>
     <string name="icon_picker_search">Búsqueda</string>
-    <string name="icon_picker_sms">Mensajería</string>
     <string name="icon_picker_twitter">Twitter</string>
 
     <!-- String for IconPicker -->
@@ -1131,64 +1237,6 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="icon_picker_gallery_title">Galería</string>
     <string name="icon_picker_pack_title">Pack de iconos</string>
 
-    <!--Quick unlock -->
-    <string name="unlock_quick_unlock_control_title">Desbloqueo rápido</string>
-    <string name="unlock_quick_unlock_control_summary">Desbloquear automáticamente cuando se introduce el PIN / contraseña correcta</string>
-
-    <!-- Wakeup options -->
-    <string name="display_category_wakeup_options_title">Opciones de despertar</string>
-
-    <!--Wakeup when plugged/unplugged -->
-    <string name="wakeup_when_plugged_unplugged_title">Despertar al cargar</string>
-    <string name="wakeup_when_plugged_unplugged_summary">Despierta el dispositivo si el cargador está enchufado / desenchufado.</string>
-
-    <!-- Lockscreen pin shuffle -->
-    <string name="lock_numpad_random_title">Cambiar el orden de los números del teclado PIN</string>
-    <string name="lock_numpad_random_dialog_title">Orden aleatorio de teclas PIN</string>
-    <string name="lock_numpad_random_off">Desactivar</string>
-    <string name="lock_numpad_random_always">Siempre</string>
-    <string name="lock_numpad_random_on_request">Solicitada</string>
-
-    <!-- Sizes for pattern lockscreen -->
-    <string name="lock_pattern_size_3">3x3</string>
-    <string name="lock_pattern_size_4">4x4</string>
-    <string name="lock_pattern_size_5">5x5</string>
-    <string name="lock_pattern_size_6">6x6</string>
-
-    <!-- Whether a visible red line will be drawn after the user has drawn the unlock pattern incorrectly -->
-    <string name="lockpattern_settings_enable_error_path_title">Mostrar error de patrón</string>
-    <!-- Whether the dots will be drawn when using the lockscreen pattern -->
-    <string name="lockpattern_settings_enable_dots_title">Mostrar puntos patrón</string>
-
-    <!-- Lock screen vibrate settings -->
-    <string name="lockscreen_vibrate_enabled_title">Vibrar</string>
-    <string name="lockscreen_vibrate_enabled_head">Vibrar al desbloquear</string>
-
-    <!-- security settings menu unlock -->
-    <string name="unlock_menu_unlock_title">Menú de desbloqueo</string>
-    <string name="unlock_menu_unlock_summary">Al pulsar el botón de menú desbloquea el dispositivo</string>
-    <!-- security settings home unlock -->
-    <string name="unlock_home_unlock_title">Desbloqueo Home</string>
-    <string name="unlock_home_unlock_summary">Al pulsar el botón de inicio desbloquea el dispositivo</string>
-    <!--Quick unlock -->
-    <string name="unlock_quick_unlock_control_title">Desbloqueo rápido</string>
-    <string name="unlock_quick_unlock_control_summary">Desbloquear automáticamente cuando se introduce el PIN / contraseña correcta</string>
-
-    <!-- Slide lock delay -->
-    <string name="delay_and_timeout_title">Retraso de bloqueo</string>
-    <string name="slide_lock_delay_title">Retraso de pantalla de bloqueo</string>
-    <string name="slide_lock_timeout_delay_title">Retraso después de tiempo de espera</string>
-    <string name="slide_lock_screenoff_delay_title">Retraso tras apagado</string>
-    <string name="slide_lock_delay_none">Ninguno</string>
-    <string name="slide_lock_delay_1s">1 seg</string>
-    <string name="slide_lock_delay_5s">5 seg</string>
-    <string name="slide_lock_delay_10s">10 seg</string>
-    <string name="slide_lock_delay_15s">15 seg</string>
-    <string name="slide_lock_delay_30s">30 seg</string>
-    <string name="slide_lock_delay_1m">1 min</string>
-    <string name="slide_lock_delay_5m">5 min</string>
-    <string name="slide_lock_delay_10m">10 min</string>
-    <string name="slide_lock_delay_30m">30 min</string>
 
     <!-- Delete apn confirmation dialog message -->
     <string name="confirm_delete_apn">La APN se borrará.</string>
@@ -1226,13 +1274,18 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
 
     <!-- New Recents Screen -->
     <string name="new_recents_category">Slim Recientes</string>
-    <string name="new_recents_screen_title">Usar Slim recientes</string>
+    <string name="new_recents_screen_title">Slim recientes</string>
     <string name="new_recents_screen_summary">Reemplaza la pantalla de recientes por una basada en nuevas tarjetas ópticas de Google.</string>
-    <string name="recent_panel_scale_title">Tamaño</string>
+    <string name="recent_panel_scale_title">Tamaño panel</string>
     <string name="recent_panel_scale_summary">Tamaño en porcentaje del panel de apps recientes.</string>
-    <string name="recent_panel_100">100% (por defecto)</string>
-    <string name="recent_panel_85">85%</string>
-    <string name="recent_panel_70">70%</string>
+    <string name="recent_panel_100">100 porciento (por defecto)</string>
+    <string name="recent_panel_85">85 porciento</string>
+    <string name="recent_panel_70">70 porciento</string>
+	<string name="recent_panel_expanded_mode_title">Modo expandido</string>
+    <string name="recent_panel_expanded_mode_summary">Modo previo de tarea de recientes expandida</string>
+    <string name="recent_panel_expanded_mode_auto">Auto (por defecto)</string>
+    <string name="recent_panel_expanded_mode_always">Siempre</string>
+    <string name="recent_panel_expanded_mode_never">Nunca</string>
 	
     <!-- ATTENTION: RTL languages need to replace left with right -->
     <string name="recent_panel_lefty_mode_title">Mostrar en el borde izquierdo</string>
@@ -1281,8 +1334,16 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
 
     <!-- Themes settings  -->
     <string name="themes_settings_title">Temas</string>
-    <string name="themes_settings_summary">Cambia temas con T-Mobiles theme engine o seleccione DarkUI</string>
-    <string name="themes_engine_summary">Change themes with T-Mobiles theme engine</string>
+
+    <!-- The following are entries under the themes menu -->
+    <string name="themepacks_settings_title">Pack de temas</string>
+    <string name="styles_settings_title">Estilos</string>
+    <string name="icons_settings_title">Iconos</string>
+    <string name="fonts_settings_title">Fuentes</string>
+    <string name="wallpaper_settings_title">Wallpapers</string>
+    <string name="lockscreen_wallpaper_settings_title">Fondos bloqueo pantalla</string>
+    <string name="bootanim_settings_title">Boot Animations</string>
+    <string name="soundpack_settings_title">Packs de sonido</string>
 	
     <!-- DarkUI -->
     <string name="theme_auto_mode_title">Dark-UI</string>
@@ -1724,13 +1785,11 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="noti_reminder_interval_3dot5s">3.5 seg</string>
     <string name="noti_reminder_interval_4s">4 seg</string>
 
-    <!-- Lockscreen see through -->
-    <string name="lockscreen_see_through_title">Ver a través de</string>
-    <string name="lockscreen_see_through_summary">Muestra el contenido de detrás de la pantalla de bloqueo, sus datos pueden ser visibles a los que le rodean</string>
     <!-- Lockscreen style settings -->
     <string name="lockscreen_style_reset_message">¿Reestablecer todos los colores de pantalla de bloqueo?</string>
     <string name="lockscreen_icon_title">Icono de bloqueo</string>
     <string name="lockscreen_lock_icon_custom">Icono personal</string>
+    <string name="lockscreen_lock_icon_mahdi">Icono Mahdi</string>
     <string name="lockscreen_lock_icon_default">Icono por defecto</string>
     <string name="lockscreen_colorize_handle_title">Colorear bloqueo personal</string>
     <string name="lockscreen_colorize_handle_summary">El color del bloqueo se ajustará a la imagen personalizada</string>
@@ -1742,10 +1801,19 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="lockscreen_lock_color_summary">Colores del bloqueo</string>
     <string name="lockscreen_dots_color_title">Color de puntos</string>
     <string name="lockscreen_dots_color_summary">Colores de puntos</string>
+    <string name="lockscreen_targets_color_title">Color objetos</string>
+    <string name="lockscreen_targets_color_summary">Colores de los objetos</string>
+    <string name="lockscreen_misc_color_title">Color miscelánea</string>
+    <string name="lockscreen_misc_color_summary">Color del resto de cosas</string>
+	
+    <!-- Themes -->
+    <string name="theme_settings_title_slim">Temas</string>
+    <string name="theme_auto_mode_title">Dark UI</string>
+    <string name="theme_auto_mode_off">Manual</string>
+    <string name="theme_auto_mode_lightsensor">Cambio según condiciones de luz</string>
+    <string name="theme_auto_mode_twilight">En día</string>
+    <string name="theme_auto_switch_mode_error">Modo cambio automático de la condición de luz está activado. Cambio manual no es posible.</string>
 
-    <!-- Lockscreen Wallpaper -->
-    <string name="lockscreen_wallpaper_title">Fondo pantalla de bloqueo</string>
-    <string name="lockscreen_wallpaper_summary">Puede elegir diferentes wallpapers para su pantalla de bloqueo</string>
 
     <!-- Double-tap to sleep -->
     <string name="double_tap_sleep_title">Pulse dos veces para apagar</string>
@@ -1834,8 +1902,8 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="voice_tts_summary">Activa el modo de conducción y luego elija lo que desea hablar mientras se conduce</string>
     <string name="tts_settings_reset_message">¿Restablecer todos los ajustes a los valores predeterminados?</string>
     <string name="voice_tts_notification_title">Modo coche</string>
-    <string name="voice_tts_notification_summary_on">Activar el modo de conducción</string>
-    <string name="voice_tts_notification_summary_off">Desactivar el modo de conducción</string>
+    <string name="voice_tts_notification_summary_on">Activado el modo de conducción</string>
+    <string name="voice_tts_notification_summary_off">Desactivado el modo de conducción</string>
     <string name="voice_tts_volume_title">Volumen</string>
     <string name="voice_tts_volume_summary">Ajuste de volumen para hablar</string>
     <string name="voice_tts_call_title">Llamada entrante</string>
@@ -1953,6 +2021,71 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="pie_button_style_summary">Cambiar estilo de botón Pie</string>
     <string name="pie_style_reset_message">¿Restablecer entradas estilo por defecto?</string>
     <string name="pie_disable_ime_triggers_title">Reducir el tamaño de Pie en el teclado</string>
-    <string name="pie_disable_ime_triggers_summary">Reduce el tamaño Pie izquierdo y derecho si el teclado está activo</string>  
+    <string name="pie_disable_ime_triggers_summary">Reduce el tamaño Pie izquierdo y derecho si el teclado está activo</string>
+
+    <!-- Shortcuts -->
+    <string name="shortcut_picker">Acciones</string>
+
+    <!-- Lockscreen background -->
+    <string name="lockscreen_background">Fondo</string>
+    <string name="lockscreen_background_style_title">Fondo pantalla de bloqueo</string>
+    <string name="background_default">Fondo por defecto</string>
+    <string name="background_wallpaper">Wallpaper personal</string>
+    <string name="background_result_successful">Fondo cambiado</string>
+    <string name="background_result_not_successful">Fondo no cambiado</string>
+    <string name="setting_lockscreen_background">Aplicando fondo</string>
+    <!-- Custom lockscreen -->
+    <string name="lockscreen_enable_modlock_title">Bloqueo de pantalla personal</string>
+
+    <!-- Bluetooth accept all file types -->
+    <string name="bluetooth_accept_all_files">Aceptar todo tipo de archivos</string>
+
+    <!-- Font size sample text. This needs to be a very short string, as it is shown in
+    multiple font sizes in a limited amount of space. -->
+    <string name="font_size_sample">Muestra</string>
+
+    <!-- vibrate during phone calls -->
+    <string name="notification_vibrate_during_calls_title">Vibrar durante la llamada</string>
+    <string name="notification_vibrate_during_calls_summary">Notificaciones entrantes vibrarán suavemente durante las llamadas telefónicas</string>
+
+    <!--Notification category-->
+    <string name="notification_category">Notificaciones</string>
+    <!--Notification peek-->
+    <string name="notification_peek_title">Notification peek</string>
+    <string name="notification_peek_summary">Mostrar última notificación después de recoger su dispositivo</string>
+	<string name="peek_pickup_timeout_title">Peek pickup tiempo de espera</string>
+    <string name="peek_pickup_15seconds">15 seg (default)</string>
+    <string name="peek_pickup_30seconds">30 seg</string>
+    <string name="peek_pickup_45seconds">45 seg</string>
+    <string name="peek_pickup_60seconds">1 min</string>
+    <string name="peek_pickup_120seconds">2 min</string>
+
+    <!-- Battery Bar -->
+    <string name="battery_bar_title">Barra de batería</string>
+    <string name="battery_bar_summary">Ver o cambiar la configuración de la barra de la batería</string>
+    <string name="battery_bar">Ubicación</string>
+    <string name="battery_bar_color">Color</string>
+    <string name="battery_bar_cat">Estilo</string>
+    <string name="battery_bar_style_title">Alineación</string>
+    <string name="battery_bar_thickness_title">Espesor</string>
+    <string name="battery_bar_animate_title">Animación de carga</string>
+    <string name="battery_bar_animate_summary">La animación de carga puede dar lugar a una experiencia de usuario pobre. Habilita bajo tu propia responsabilidad</string>
+    <string name="battery_bar_reset_message">¿Restablecer estilo de la barra de la batería por defecto?</string>
+
+    <!-- Volume Steps -->
+    <string name="volume_steps_title">Niveles de volumen</string>
+    <string name="volume_steps_60">60</string>
+    <string name="volume_steps_45">45</string>
+    <string name="volume_steps_30">30</string>
+    <string name="volume_steps_15">15</string>
+    <string name="volume_steps_7">7</string>
+    <string name="volume_steps_5">5</string>
+    <string name="volume_steps_alarm_title">Alarma</string>
+    <string name="volume_steps_dtmf_title">DTMF</string>
+    <string name="volume_steps_music_title">Música</string>
+    <string name="volume_steps_notification_title">Notificación</string>
+    <string name="volume_steps_ring_title">Tono</string>
+    <string name="volume_steps_system_title">Sistema</string>
+    <string name="volume_steps_voice_call_title">Llamada de voz</string>
 </resources>
 
