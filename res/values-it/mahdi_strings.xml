@@ -1234,7 +1234,7 @@ name="quiet_hours_auto_sms_call_title">Chiamate in arrivo </string>
     <string name="recent_panel_expanded_mode_title">Modalità Estensione</string>
     <string name="recent_panel_expanded_mode_summary">Modlità anteprima app Slim Recents </string>
     <string name="recent_panel_expanded_mode_auto">Automatica</string>
-    <string name="recent_panel_expanded_mode_always">Sempre</string></string>
+    <string name="recent_panel_expanded_mode_always">Sempre</string>
     <string name="recent_panel_expanded_mode_never">Mai</string>
 
     <!-- ATTENTION: RTL languages need to replace left with right -->
