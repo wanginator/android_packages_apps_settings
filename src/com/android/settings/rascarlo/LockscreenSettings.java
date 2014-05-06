@@ -20,6 +20,7 @@ import android.content.ContentResolver;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.os.Handler;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -39,9 +40,11 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     private static final String TAG = "LockscreenSettings";
     private static final String KEY_SEE_THROUGH = "see_through";
     private static final String KEY_PEEK = "notification_peek";
+    private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
 
     private CheckBoxPreference mSeeThrough;
     private SystemSettingCheckBoxPreference mNotificationPeek;
+    private ListPreference mPeekPickupTimeout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,11 +61,26 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
         }
 
 	mNotificationPeek = (SystemSettingCheckBoxPreference) findPreference(KEY_PEEK);
-    }
 
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        return false;
+        mPeekPickupTimeout = (ListPreference) prefSet.findPreference(KEY_PEEK_PICKUP_TIMEOUT);
+        int peekTimeout = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.PEEK_PICKUP_TIMEOUT, 0, UserHandle.USER_CURRENT);
+        mPeekPickupTimeout.setValue(String.valueOf(peekTimeout));
+        mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntry());
+        mPeekPickupTimeout.setOnPreferenceChangeListener(this);
     }
+    @Override
+    public boolean onPreferenceChange(Preference pref, Object value) {
+	if (pref == mPeekPickupTimeout) {
+            int peekTimeout = Integer.valueOf((String) value);
+            Settings.System.putIntForUser(getContentResolver(),
+                Settings.System.PEEK_PICKUP_TIMEOUT,
+                    peekTimeout, UserHandle.USER_CURRENT);
+            updatePeekTimeoutOptions(value);
+            return true;
+	}
+    	    return false;
+}
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -80,10 +98,17 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
 
     }
 
+	private void updatePeekTimeoutOptions(Object newValue) {
+        int index = mPeekPickupTimeout.findIndexOfValue((String) newValue);
+        int value = Integer.valueOf((String) newValue);
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.System.PEEK_PICKUP_TIMEOUT, value);
+        mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntries()[index]);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
     }
 
 }
-
