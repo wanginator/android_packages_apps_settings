@@ -17,37 +17,9 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/lock_screen_title" >
 
-    <PreferenceScreen
-        android:key="screen_security"
-        android:fragment="com.android.settings.SecuritySettings"
-        android:title="@string/screen_security_category"
-        android:summary="@string/screen_security_summary">                        
-    </PreferenceScreen>
-
-    <PreferenceCategory
-        android:title="@string/title_general"
-        android:key="lockscreen_general_category" >
-
-        <CheckBoxPreference
+    <SwitchPreference
             android:key="lockscreen_modlock_enabled"
             android:title="@string/lockscreen_enable_modlock_title" />
-
-        <ListPreference
-            android:key="lockscreen_battery_status"
-            android:persistent="false"
-            android:dialogTitle="@string/lockscreen_battery_status_title"
-            android:title="@string/lockscreen_battery_status_title"
-            android:entries="@array/lockscreen_battery_status_entries"
-            android:entryValues="@array/lockscreen_battery_status_values"
-            android:defaultValue="0" />
-
-        <com.android.settings.mahdi.SystemSettingCheckBoxPreference
-            android:key="battery_around_lockscreen_ring"
-            android:title="@string/battery_around_lockscreen_ring"
-      	    android:summary="@string/battery_around_lockscreen_ring_summary"
-            android:defaultValue="true" />
-
-    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="notification_category"
@@ -61,8 +33,8 @@
             android:summary="@string/lockscreen_notifications_summary"
             android:widgetLayout="@layout/listview_embedded_switchpreference" />
 
-        <com.android.settings.mahdi.SystemSettingCheckBoxPreference
-            android:key="peek_state"
+        <SwitchPreference
+            android:key="notification_peek"
             android:title="@string/notification_peek_title"
             android:summary="@string/notification_peek_summary" />
 
@@ -72,7 +44,46 @@
             android:persistent="false"
             android:entries="@array/peek_pickup_timeout_entries"
             android:entryValues="@array/peek_pickup_timeout_values"
-            android:dependency="peek_state" />
+            android:dependency="notification_peek" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/style_title"
+        android:key="lockscreen_style_category" >
+
+        <Preference
+            android:id="@+id/lockscreen_wallpaper_settings"
+            android:title="@string/lockscreen_wallpaper_settings_title">
+            <intent android:targetPackage="com.cyanogenmod.trebuchet"
+                    android:targetClass="com.android.launcher3.LockWallpaperPickerActivity" />
+        </Preference>
+
+        <PreferenceScreen
+            android:key="keyguard_enable_widgets"
+            android:fragment="com.android.settings.mahdi.LockscreenWidgets"
+            android:title="@string/lockscreen_widgets_title" />
+
+        <ListPreference
+            android:key="lockscreen_battery_status"
+            android:persistent="false"
+            android:dialogTitle="@string/lockscreen_battery_status_title"
+            android:title="@string/lockscreen_battery_status_title"
+            android:entries="@array/lockscreen_battery_status_entries"
+            android:entryValues="@array/lockscreen_battery_status_values"
+            android:defaultValue="0" />
+
+        <com.android.settings.mahdi.SystemSettingCheckBoxPreference
+            android:key="battery_around_lockscreen_ring"
+            android:title="@string/battery_around_lockscreen_ring"
+            android:summary="@string/battery_around_lockscreen_ring_summary"
+            android:defaultValue="false" />
+
+        <PreferenceScreen
+            android:key="keyguard_style"
+            android:fragment="com.android.settings.mahdi.LockscreenStyle"
+            android:title="@string/lockscreen_style_title"
+            android:summary="@string/lockscreen_style_summary" />
 
     </PreferenceCategory>
 
@@ -108,25 +119,6 @@
                 <extra android:name="useAppPickerOnly" android:value="true" />
                 <extra android:name="fragment" android:value="com.android.settings.slim.fragments.LockscreenShortcutFragment" />
         </PreferenceScreen>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/style_title"
-        android:key="lockscreen_style_category" >
-
-        <Preference
-            android:id="@+id/lockscreen_wallpaper_settings"
-            android:title="@string/lockscreen_wallpaper_settings_title">
-            <intent android:targetPackage="com.cyanogenmod.trebuchet"
-                    android:targetClass="com.android.launcher3.LockWallpaperPickerActivity" />
-        </Preference>
-
-        <PreferenceScreen
-            android:key="keyguard_style"
-            android:fragment="com.android.settings.mahdi.LockscreenStyle"
-            android:title="@string/lockscreen_style_title"
-            android:summary="@string/lockscreen_style_summary" />
 
     </PreferenceCategory>
 
