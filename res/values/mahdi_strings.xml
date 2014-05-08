@@ -2074,6 +2074,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Volume Steps -->
     <string name="volume_steps_title">Volume steps</string>
+    <string name="volume_steps_summary">Choose the amount of steps you want between min and max</string>
     <string name="volume_steps_60">60</string>
     <string name="volume_steps_45">45</string>
     <string name="volume_steps_30">30</string>

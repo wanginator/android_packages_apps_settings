@@ -38,26 +38,11 @@
             android:persistent="false"
             android:streamType="ring" />
 
-        <PreferenceScreen
-            android:key="volume_steps_settings"
-            android:fragment="com.android.settings.mahdi.VolumeSteps"
-            android:title="@string/volume_steps_title" />
-
         <ListPreference
             android:key="volume_overlay"
             android:title="@string/volume_overlay_title"
             android:entries="@array/volume_overlay_entries"
             android:entryValues="@array/volume_overlay_values" />
-
-        <com.android.settings.mahdi.chameleonos.SeekBarPreference
-            android:key="volume_panel_timeout"
-            android:title="@string/volume_panel_timeout_title"
-            android:summary="@string/volume_panel_timeout_summary"
-            android:max="10"
-            settings:min="1"
-            settings:unitsLeft=""
-            settings:unitsRight="sec"
-            android:persistent="false" />
 
         <PreferenceScreen
             android:key="advanced_sound_settings"
@@ -89,6 +74,12 @@
              android:title="@string/vibrate_when_ringing_title"
              android:persistent="false" />
 
+        <CheckBoxPreference
+            android:key="notification_vibrate_during_calls"
+            android:title="@string/notification_vibrate_during_calls_title"
+            android:persistent="false"
+            android:defaultValue="false" />
+
     <PreferenceCategory
         android:title="@string/sound_category_system_title"/>
 
@@ -107,13 +98,6 @@
             android:summary="@string/less_notification_sounds_summary"
             android:entries="@array/less_notification_sounds_entries"
             android:entryValues="@array/less_notification_sounds_values" />
-
-        <CheckBoxPreference
-            android:key="notification_vibrate_during_calls"
-            android:title="@string/notification_vibrate_during_calls_title"
-            android:summary="@string/notification_vibrate_during_calls_summary"
-            android:persistent="false"
-            android:defaultValue="false" />
 
         <CheckBoxPreference
             android:key="dtmf_tone"
