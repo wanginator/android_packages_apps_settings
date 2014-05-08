@@ -1237,6 +1237,12 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="icon_picker_gallery_title">Galería</string>
     <string name="icon_picker_pack_title">Pack de iconos</string>
 
+    <!-- Wakeup options -->
+    <string name="display_category_wakeup_options_title">Opciones de despertar</string>
+
+    <!--Wakeup when plugged/unplugged -->
+    <string name="wakeup_when_plugged_unplugged_title">Despertar al cargar</string>
+    <string name="wakeup_when_plugged_unplugged_summary">Despierta el dispositivo si el cargador está enchufado / desenchufado.</string>
 
     <!-- Delete apn confirmation dialog message -->
     <string name="confirm_delete_apn">La APN se borrará.</string>
