@@ -1535,8 +1535,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="app_ops_reset_confirm_mesg">Are you sure you wish to reset AppOps counters?</string>
 
     <!-- Screen off animation options -->
-    <string name="system_power_crt_mode_title">CRT animation </string>
-    <string name="system_power_crt_mode_dialog_title">CRT animation</string>
+    <string name="system_power_crt_mode_title">Screen off </string>
+    <string name="system_power_crt_mode_dialog_title">Screen off animation</string>
     <string name="system_power_crt_mode_off">Don\'t show</string>
     <string name="system_power_crt_mode_horizontal">Collapse horizontal</string>
     <string name="system_power_crt_mode_vertical">Collapse vertical</string>
@@ -1670,23 +1670,23 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="ram_bar_reset">Reset</string>
 
     <!-- Toast Animation -->
-    <string name="toast_animation_title">Toast animation</string>
+    <string name="toast_animation_title">Toast</string>
     <string name="toast_none_animation">None</string>
     <string name="toast_default_animation">Default</string>
-    <string name="toast_fade_animation">Fade animation</string>
-    <string name="toast_SlideRight_animation">SlideRight animation</string>
-    <string name="toast_SlideLeft_animation">SlideLeft animation</string>
-    <string name="toast_Xylon_animation">Xylon animation</string>
-    <string name="toast_Toko_animation">Toko animation</string>
-    <string name="toast_Tn_animation">Tn animation</string>
-    <string name="toast_Honami_animation">Honami animation</string>
-    <string name="toast_FastFade_animation">FastFade animation</string>
-    <string name="toast_GrowFade_animation">GrowFade animation</string>
-    <string name="toast_GrowFadeCenter_animation">GrowFadeCenter animation</string>
-    <string name="toast_GrowFadeBottom_animation">GrowFadeBottom animation</string>
-    <string name="toast_Translucent_animation">Translucent animation</string>
-    <string name="toast_SlideLeftRight_animation">Slide left to right animation</string>
-    <string name="toast_SlideRightLeft_animation">Slide right to left animation</string>
+    <string name="toast_fade_animation">Fade</string>
+    <string name="toast_SlideRight_animation">SlideRight</string>
+    <string name="toast_SlideLeft_animation">SlideLeft</string>
+    <string name="toast_Xylon_animation">Xylon</string>
+    <string name="toast_Toko_animation">Toko</string>
+    <string name="toast_Tn_animation">Tn</string>
+    <string name="toast_Honami_animation">Honami</string>
+    <string name="toast_FastFade_animation">FastFade</string>
+    <string name="toast_GrowFade_animation">GrowFade</string>
+    <string name="toast_GrowFadeCenter_animation">GrowFadeCenter</string>
+    <string name="toast_GrowFadeBottom_animation">GrowFadeBottom</string>
+    <string name="toast_Translucent_animation">Translucent</string>
+    <string name="toast_SlideLeftRight_animation">Slide left to right</string>
+    <string name="toast_SlideRightLeft_animation">Slide right to left</string>
 
     <!-- Chamber of Secrets -->
     <string name="chamber_title">Chamber of secrets</string>

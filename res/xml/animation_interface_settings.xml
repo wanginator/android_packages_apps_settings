@@ -39,31 +39,26 @@
     <PreferenceScreen
         android:key="interface_animation_system"
         android:fragment="com.android.settings.mahdi.aokp.SystemAnimationInterfaceSettings"
-        android:title="@string/system_animation_title"
-        android:summary="@string/system_animation_summary" />
+        android:title="@string/system_animation_title" />
 
     <PreferenceScreen
         android:key="interface_animation_listview"
         android:fragment="com.android.settings.mahdi.aokp.ListViewAnimationInterfaceSettings"
-        android:title="@string/listview_title"
-        android:summary="@string/listview_summary" />
+        android:title="@string/listview_title" />
 
     <PreferenceScreen
         android:key="interface_animation_scroll"
         android:fragment="com.android.settings.mahdi.aokp.ScrollAnimationInterfaceSettings"
-        android:title="@string/scrolling_title"
-        android:summary="@string/scrolling_summary" />
+        android:title="@string/scrolling_title" />
 
     <PreferenceScreen
         android:key="interface_animation_keyboard"
         android:fragment="com.android.settings.mahdi.aokp.KeyboardAnimationInterfaceSettings"
-        android:title="@string/ime_animation_title"
-        android:summary="@string/ime_animation_summary" />
+        android:title="@string/ime_animation_title" />
 
     <PreferenceScreen
         android:key="progressbar_settings"
         android:fragment="com.android.settings.mahdi.aokp.ProgressBar"
-        android:title="@string/progressbar_title"
-        android:summary="@string/progressbar_summary" />
+        android:title="@string/progressbar_title" />
 
 </PreferenceScreen>
