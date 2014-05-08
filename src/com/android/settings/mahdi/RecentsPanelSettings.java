@@ -85,6 +85,7 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         String recentPanelExpandedMode = Settings.System.getString(resolver, Settings.System.RECENT_PANEL_EXPANDED_MODE);
         if (recentPanelExpandedMode != null) {
             mRecentPanelExpandedMode.setValue(recentPanelExpandedMode);
+            mRecentPanelExpandedMode.setSummary(mRecentPanelExpandedMode.getEntry());
         }
         mRecentPanelExpandedMode.setOnPreferenceChangeListener(this);
 
@@ -97,6 +98,7 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         String recentClearAllPosition = Settings.System.getString(resolver, Settings.System.CLEAR_RECENTS_BUTTON_LOCATION);
         if (recentClearAllPosition != null) {
             mRecentClearAllPosition.setValue(recentClearAllPosition);
+            mRecentClearAllPosition.setSummary(mRecentClearAllPosition.getEntry());
         }
         mRecentClearAllPosition.setOnPreferenceChangeListener(this);
         
@@ -132,6 +134,7 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         } else if (preference == mRecentClearAllPosition) {
             String value = (String) newValue;
             Settings.System.putString(resolver, Settings.System.CLEAR_RECENTS_BUTTON_LOCATION, value);
+            updateRecentClearAllPositionOptions(newValue);
             return true;
         } else if (preference == mRecentsCustom) { // Enable||disable Slim Recent
             Settings.System.putBoolean(resolver,
@@ -150,6 +153,7 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
             int value = Integer.parseInt((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.RECENT_PANEL_EXPANDED_MODE, value);
+            updateRecentPanelExpandedModeOptions(newValue);
             return true;
         } else if (preference == mRecentPanelLeftyMode) {
             Settings.System.putInt(getContentResolver(),
@@ -166,5 +170,21 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         Settings.Secure.putInt(getActivity().getContentResolver(),
                 Settings.System.RECENT_PANEL_SCALE_FACTOR, value);
         mRecentPanelScale.setSummary(mRecentPanelScale.getEntries()[index]);
+    }
+
+    private void updateRecentPanelExpandedModeOptions(Object newValue) {
+        int index = mRecentPanelExpandedMode.findIndexOfValue((String) newValue);
+        int value = Integer.valueOf((String) newValue);
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.System.RECENT_PANEL_EXPANDED_MODE, value);
+        mRecentPanelExpandedMode.setSummary(mRecentPanelExpandedMode.getEntries()[index]);
+    }
+
+    private void updateRecentClearAllPositionOptions(Object newValue) {
+        int index = mRecentClearAllPosition.findIndexOfValue((String) newValue);
+        int value = Integer.valueOf((String) newValue);
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.System.CLEAR_RECENTS_BUTTON_LOCATION, value);
+        mRecentClearAllPosition.setSummary(mRecentClearAllPosition.getEntries()[index]);
     }
 }
