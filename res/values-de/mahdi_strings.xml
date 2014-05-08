@@ -1024,6 +1024,9 @@ Mittels \"Entfernen\" kann die ausgewählte Stützstelle aus dem Helligkeitsverl
     <string name="quiet_hours_dim">Benachrichtigungslicht deaktivieren</string>
     <string name="quiet_hours_dim_on">Benachrichtigungslicht deaktiviert</string>
     <string name="quiet_hours_dim_off">Benachrichtigungslicht wie eingestellt</string>
+    <string name="quiet_hours_system">Systemtöne deaktivieren</string>
+    <string name="quiet_hours_system_on">Systemtöne deaktiviert</string>
+    <string name="quiet_hours_system_off">Systemtöne wie eingestellt</string>
     <string name="quiet_hours_haptic">Haptisches Feedback deaktivieren</string>
     <string name="quiet_hours_haptic_on">Haptisches Feedback deaktiviert</string>
     <string name="quiet_hours_haptic_off">Haptisches Feedback wie eingestellt</string>
