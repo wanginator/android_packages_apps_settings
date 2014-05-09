@@ -203,6 +203,7 @@
     <!-- Lock Screen Shortcuts -->
     <string name="lockscreen_target_info">Drag the slider to targets to assign shortcuts</string>
     <string name="lockscreen_target_title">Lockscreen slider</string>
+    <string name="lockscreen_target_summary">View or change custom lock screen targets</string>
     <string name="lockscreen_target_reset">Lockscreen slider reset to default</string>
     <string name="lockscreen_target_reset_message">Delete all user created lockscreen shortcuts and restore to default?</string>
     <string name="lockscreen_target_empty">Empty</string>
@@ -342,6 +343,7 @@
 	<!-- Power menu enable disable -->
 	<string name="lockscreen_title">Lockscreen</string>
 	<string name="category_power_menu_title">Power Menu Settings</string>
+        <string name="power_menu_summary">View or change the power menu list</string>
 	<string name="power_menu_reboot_title">Reboot menu</string>
 	<string name="power_menu_screenshot_title">Screenshot</string>
 	<string name="power_menu_screenrecord_title">Screen record</string>
