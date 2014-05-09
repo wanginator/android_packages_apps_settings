@@ -17,6 +17,8 @@
 package com.android.settings.mahdi;
 
 import android.content.ContentResolver;
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -30,11 +32,14 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import com.android.internal.util.mahdi.DeviceUtils;
 
-public class PowerMenu extends SettingsPreferenceFragment {
+public class PowerMenu extends SettingsPreferenceFragment implements
+        Preference.OnPreferenceChangeListener {
     private static final String TAG = "PowerMenu";
 
+    private static final String POWER_MENU_MOBILE_DATA = "power_menu_mobile_data";
     private static final String KEY_ONTHEGO = "power_menu_onthego_enabled";
 
+    private CheckBoxPreference mMobileDataPowerMenu;
     private CheckBoxPreference mOnthegoPref;
 
     @Override
@@ -44,6 +49,19 @@ public class PowerMenu extends SettingsPreferenceFragment {
         addPreferencesFromResource(R.xml.power_menu_settings);
 
         final ContentResolver resolver = getContentResolver();
+        PreferenceScreen prefSet = getPreferenceScreen();
+
+        mMobileDataPowerMenu = (CheckBoxPreference) prefSet.findPreference(POWER_MENU_MOBILE_DATA);
+        Context context = getActivity();
+        ConnectivityManager cm = (ConnectivityManager)
+                context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(cm.isNetworkSupported(ConnectivityManager.TYPE_MOBILE)) {
+            mMobileDataPowerMenu.setChecked(Settings.System.getInt(resolver,
+                Settings.System.POWER_MENU_MOBILE_DATA_ENABLED, 0) == 1);
+            mMobileDataPowerMenu.setOnPreferenceChangeListener(this);
+        } else {
+            prefSet.removePreference(mMobileDataPowerMenu);
+        }
 
         // Only enable on the go item if device has camera
         findPreference(Settings.System.POWER_MENU_ONTHEGO_ENABLED).setEnabled(
@@ -52,6 +70,7 @@ public class PowerMenu extends SettingsPreferenceFragment {
         mOnthegoPref = (CheckBoxPreference) findPreference(KEY_ONTHEGO);
         mOnthegoPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0) == 1));
+        mOnthegoPref.setOnPreferenceChangeListener(this);
 
         // Only enable expanded desktop item if expanded desktop support is also enabled
         findPreference(Settings.System.POWER_MENU_GLOBAL_IMMERSIVE_MODE_ENABLED).setEnabled(
@@ -64,17 +83,25 @@ public class PowerMenu extends SettingsPreferenceFragment {
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        boolean value;
+            return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+
+        boolean value = (Boolean) objValue;
 
         if (preference == mOnthegoPref) {
-            value = mOnthegoPref.isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.POWER_MENU_ONTHEGO_ENABLED,
                     value ? 1 : 0);
+            return true;
+        } else if (preference == mMobileDataPowerMenu) {            
+            Settings.System.putInt(getContentResolver(), 
+                    Settings.System.POWER_MENU_MOBILE_DATA_ENABLED, 
+                    value ? 1 : 0);
+            return true;
         } else {
-            return super.onPreferenceTreeClick(preferenceScreen, preference);
-        }
-
-        return true;
+            return false;
+        } 
     }
 }
