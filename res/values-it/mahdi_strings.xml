@@ -77,7 +77,7 @@
     <string name="pulse_speed_very_slow">Molto lento</string>
 
     <!-- Battery light settings -->
-    <string name="battery_light_title">LED Notifica</string>
+    <string name="battery_light_title">LED Batteria</string>
     <string name="battery_low_pulse_title">Lampeggia se la batteria è quasi scarica</string>
     <string name="battery_light_list_title">Colori durante la ricarica</string>
     <string name="battery_light_low_color_title">Batteria quasi scarica</string>
